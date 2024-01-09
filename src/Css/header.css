@@ -52,6 +52,7 @@
 .collapse.show {
     background-color: #D9FFCF;
     padding-bottom: 20px;
+    z-index: 1000;
 }
 
 .collapse.show .btn{
