@@ -49,6 +49,11 @@
     color: #EBFFE5 !important;
 }
 
+.collapse.show {
+    background-color: #D9FFCF;
+    padding-bottom: 20px;
+}
+
 .collapse.show .btn{
     margin-top: 49px;
     width: 150px;

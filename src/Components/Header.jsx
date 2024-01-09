@@ -12,7 +12,7 @@ const Header = () => {
       <Container fluid className="section">
         <Navbar.Brand href="#home"><img src={logo} alt="logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="text-center">
+        <Navbar.Collapse id="basic-navbar-nav" className="text-center w-100">
           <Nav className="me-auto links">
             <Nav.Link href="#dashboard">Dashboard</Nav.Link>
             <Nav.Link href="#profile">Profile</Nav.Link>
