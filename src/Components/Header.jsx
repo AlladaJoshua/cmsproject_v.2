@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/TsukidenLogo.png";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Navbar expand="lg" className="navbar">
@@ -16,11 +17,10 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="text-center w-100">
           <Nav className="me-auto links">
-            <Nav.Link href="#dashboard">Dashboard</Nav.Link>
-            <Nav.Link href="#profile">Profile</Nav.Link>
+            <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#certificate">Certificate</NavDropdown.Item>
-            </NavDropdown>{" "}
+              <NavDropdown.Item as={Link} to="certificate">Certificate</NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="#myCourse">My Course</Nav.Link>
             <Nav.Link href="#forum">Forum</Nav.Link>
           </Nav>

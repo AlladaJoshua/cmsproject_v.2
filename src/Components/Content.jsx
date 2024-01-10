@@ -1,7 +1,6 @@
 import React from "react";
 import "../Css/content.css";
 import cert from "../assets/cert.png";
-
 const Content = () => {
   return (
     <div>
@@ -16,7 +15,7 @@ const Content = () => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <button className="download">Dowload</button>
+              <a href="./PDF/Sample.pdf" download="Certificate.pdf"><button className="download">Dowload</button></a>
             </div>
           </div>
         </div>
@@ -26,7 +25,7 @@ const Content = () => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <button className="download">Dowload</button>
+              <a href="./PDF/Sample.pdf" download="Certificate.pdf"><button className="download">Dowload</button></a>
             </div>
           </div>
         </div>
@@ -36,7 +35,7 @@ const Content = () => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <button className="download">Dowload</button>
+              <a href="./PDF/Sample.pdf" download="Certificate.pdf"><button className="download">Dowload</button></a>
             </div>
           </div>
         </div>
@@ -46,7 +45,7 @@ const Content = () => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <button className="download">Dowload</button>
+              <a href="./PDF/Sample.pdf" download="Certificate.pdf"><button className="download">Dowload</button></a>
             </div>
           </div>
         </div>
