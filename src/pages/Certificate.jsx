@@ -2,9 +2,10 @@ import React from 'react'
 import Content from '../Components/Content'
 
 const Certificate = () => {
+  const samplePDF = '/PDF/Sample.pdf';
   return (
     <div>
-        <Content/>
+        <Content pdfPath={samplePDF}/>
     </div>
   )
 }

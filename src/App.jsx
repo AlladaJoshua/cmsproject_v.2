@@ -6,12 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Certificate from "./pages/Certificate";
 import Dashboard from "./pages/Dashboard";
 function App() {
+  
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="certificate" element={<Certificate />} />
+        <Route path="certificate" element={<Certificate/>} />
       </Routes>
     </BrowserRouter>
   );

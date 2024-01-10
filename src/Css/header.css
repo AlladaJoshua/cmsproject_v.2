@@ -55,6 +55,19 @@
     z-index: 1000;
 }
 
+.dropdown-menu.show .dropdown-item {
+    text-align: center;
+}
+
+.dropdown-menu.show .dropdown-item:hover {
+    background-color: #D9FFCF;
+    color: #126912 !important;
+}
+
+.dropdown-menu.show .dropdown-item:focus {
+    color: #126912 !important;
+}
+
 .collapse.show .btn{
     margin-top: 49px;
     width: 150px;
@@ -62,4 +75,15 @@
 
 .dropdown-menu.show {
     background-color: #D9FFCF;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-brand {
+        margin-right: 25px !important;
+    }
+
+    .navbar-brand img {
+        width: 171.667px;
+        height: 50px;
+    }
 }

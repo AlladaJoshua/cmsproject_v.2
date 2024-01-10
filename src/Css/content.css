@@ -99,6 +99,20 @@
     .certificates {
         padding: 0 25px;
         padding-bottom: 25px;
-        gap: 40px;    
+        gap: 25px;    
     }
+
+    .cert img {
+        width: 286px;
+        height: 178.67px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    
+    .content h1 {
+        font-size: 36px;
+    }
+
+    
 }
