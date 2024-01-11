@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../Css/content.css";
 import cert from "../assets/cert.png";
 import { pdfjs } from "react-pdf";
+import { Alert } from "react-bootstrap";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
 const Content = ({ pdfPath }) => {
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
+  const [disableDownloadButton, setDisableDownloadButton] = useState(false);
 
   useEffect(() => {
     const fetchThumbnail = async () => {
@@ -36,6 +40,28 @@ const Content = ({ pdfPath }) => {
 
     fetchThumbnail();
   }, [pdfPath]);
+
+  const handleDownloadClick = () => {
+    if (disableDownloadButton) {
+      return; // Do nothing if the button is disabled
+    }
+
+    // Trigger the download
+    const link = document.createElement("a");
+    link.href = pdfPath;
+    link.download = "Certificate.pdf";
+    link.click();
+
+    // Show the notification
+    setShowNotification(true);
+
+    // Disable the button for a specified duration (e.g., 5 seconds)
+    setDisableDownloadButton(true);
+    setTimeout(() => {
+      setDisableDownloadButton(false);
+    }, 5000); // 5000 milliseconds (adjust as needed)
+  };
+  
   return (
     <div>
       <section className="content">
@@ -53,9 +79,13 @@ const Content = ({ pdfPath }) => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <a href="./PDF/Sample.pdf" download="Certificate.pdf">
-                <button className="download">Dowload</button>
-              </a>
+              <button
+                className="download"
+                onClick={handleDownloadClick}
+                disabled={disableDownloadButton}
+              >
+                Download
+              </button>
             </div>
           </div>
         </div>
@@ -69,9 +99,13 @@ const Content = ({ pdfPath }) => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <a href="./PDF/Sample.pdf" download="Certificate.pdf">
-                <button className="download">Dowload</button>
-              </a>
+              <button
+                className="download"
+                onClick={handleDownloadClick}
+                disabled={disableDownloadButton}
+              >
+                Download
+              </button>
             </div>
           </div>
         </div>
@@ -85,9 +119,13 @@ const Content = ({ pdfPath }) => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <a href="./PDF/Sample.pdf" download="Certificate.pdf">
-                <button className="download">Dowload</button>
-              </a>
+              <button
+                className="download"
+                onClick={handleDownloadClick}
+                disabled={disableDownloadButton}
+              >
+                Download
+              </button>
             </div>
           </div>
         </div>
@@ -101,13 +139,32 @@ const Content = ({ pdfPath }) => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">View</button>
-              <a href="./PDF/Sample.pdf" download="Certificate.pdf">
-                <button className="download">Dowload</button>
-              </a>
+              <button
+                className="download"
+                onClick={handleDownloadClick}
+                disabled={disableDownloadButton}
+              >
+                Download
+              </button>
             </div>
           </div>
         </div>
       </section>
+      {showNotification && (
+        <Alert
+          variant="success"
+          onClose={() => setShowNotification(false)}
+          dismissible
+          style={{
+            position: "fixed",
+            top: "10px", // Adjust the top position as needed
+            right: "10px", // Adjust the right position as needed
+            zIndex: 1000, // Ensure the alert appears above other elements
+          }}
+        >
+          Download successful!
+        </Alert>
+      )}
     </div>
   );
 };
