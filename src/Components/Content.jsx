@@ -3,8 +3,14 @@ import "../Css/content.css";
 import cert from "../assets/cert.png";
 import { pdfjs } from "react-pdf";
 import { Alert } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import { BiFileFind } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -68,7 +74,19 @@ const Content = ({ pdfPath }) => {
   return (
     <div>
       <section className="content">
-        <h1>Certifications</h1>
+        <section className="withSearchBar">
+          <h1>Certifications</h1>
+          <InputGroup expand="lg" size="sm" className="float-right">
+            <Form.Control
+              placeholder="Certificate Name"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+            />
+            <Button variant="success" id="button-addon2">
+              Search
+            </Button>
+          </InputGroup>
+        </section>
         <div className="hr"></div>
       </section>
       <section className="certificates">
@@ -103,7 +121,7 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-            <button className="view">
+              <button className="view">
                 <BiFileFind className="icon view_icon" />
               </button>
               <button
@@ -125,7 +143,7 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-            <button className="view">
+              <button className="view">
                 <BiFileFind className="icon view_icon" />
               </button>
               <button
@@ -147,7 +165,7 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-            <button className="view">
+              <button className="view">
                 <BiFileFind className="icon view_icon" />
               </button>
               <button
