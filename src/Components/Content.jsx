@@ -3,6 +3,9 @@ import "../Css/content.css";
 import cert from "../assets/cert.png";
 import { pdfjs } from "react-pdf";
 import { Alert } from "react-bootstrap";
+import { BiFileFind } from "react-icons/bi";
+import { MdOutlineFileDownload } from "react-icons/md";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Content = ({ pdfPath }) => {
@@ -61,11 +64,11 @@ const Content = ({ pdfPath }) => {
       setDisableDownloadButton(false);
     }, 5000); // 5000 milliseconds (adjust as needed)
   };
-  
+
   return (
     <div>
       <section className="content">
-        <h1>Certification</h1>
+        <h1>Certifications</h1>
         <div className="hr"></div>
       </section>
       <section className="certificates">
@@ -78,13 +81,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">View</button>
+              <button className="view">
+                <BiFileFind className="icon view" />
+              </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                Download
+                <MdOutlineFileDownload className="icon download" />
               </button>
             </div>
           </div>
@@ -98,13 +103,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">View</button>
+              <button className="view">
+                <BiFileFind className="icon view" />
+              </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                Download
+                <MdOutlineFileDownload className="icon download" />
               </button>
             </div>
           </div>
@@ -118,13 +125,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">View</button>
+              <button className="view">
+                <BiFileFind className="icon view" />
+              </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                Download
+                <MdOutlineFileDownload className="icon download" />
               </button>
             </div>
           </div>
@@ -138,13 +147,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">View</button>
+              <button className="view">
+                <BiFileFind className="icon view" />
+              </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                Download
+                <MdOutlineFileDownload className="icon download" />
               </button>
             </div>
           </div>
