@@ -63,7 +63,7 @@
   .cert:hover .overlay {
     opacity: 1;
   }
-
+  
   .buttons button {
     margin: 5px;
     padding: 8px 16px;
@@ -75,20 +75,26 @@
     background-color: #3498db;
     color: #fff;
     border-radius: 15px;
+    border: 1.5px solid #3498db;
   }
   
   .buttons .download {
     background-color: #2ecc71;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 15px;
+    border: 1.5px solid #2ecc71;
   }
   
   .buttons .view:hover {
-    background-color: #006384;
+    background-color: white;
+    color: #006384;
+    border: 2px solid #006384;
   }
 
   .buttons .download:hover {
-    background-color: #16A765;
+    background-color: white;
+    color: #16A765;
+    border: 2px solid #16A765;
   }
 
 .cert img {
