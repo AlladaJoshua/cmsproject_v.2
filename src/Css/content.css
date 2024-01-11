@@ -3,9 +3,9 @@
     padding: 0 75px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    /* gap: 5px; */
     background: #EBFFE5;
-    margin-top: 30px;
+    margin-top: 15px;
 }   
 
 .content h1 {
@@ -20,12 +20,12 @@
 
 .content .hr {
     width: 100%;
-    height: 1px;
+    height: 1.5px;
     background-color: black;
 }
 
 .certificates {
-    margin-top: 65px;
+    margin-top: 50px;
     padding: 0 75px;
     padding-bottom: 25px;
     display: flex;
@@ -93,13 +93,14 @@
     }
 
     .content h1 {
-        font-size: 45px;
+        font-size: 40px;
     }
 
     .certificates {
         padding: 0 25px;
         padding-bottom: 25px;
         gap: 25px;    
+        margin-top: 35px;
     }
 
     .cert img {

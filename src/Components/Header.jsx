@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Css/header.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -7,7 +7,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/TsukidenLogo.png";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+
 const Header = () => {
+  
   const [expanded, setExpanded] = useState(false);
 
   const handleNavbarToggle = () => {
