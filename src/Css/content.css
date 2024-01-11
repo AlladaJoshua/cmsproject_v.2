@@ -80,7 +80,15 @@
   .buttons .download {
     background-color: #2ecc71;
     color: #fff;
-    border-radius: 15px;
+    border-radius: 20px;
+  }
+  
+  .buttons .view:hover {
+    background-color: #006384;
+  }
+
+  .buttons .download:hover {
+    background-color: #16A765;
   }
 
 .cert img {
@@ -92,6 +100,8 @@
     width: 25px;
     height: 25px;
 }
+
+
 @media only screen and (max-width: 600px) {
     .content {
         align-items: center;

@@ -82,14 +82,14 @@ const Content = ({ pdfPath }) => {
           <div className="overlay">
             <div className="buttons">
               <button className="view">
-                <BiFileFind className="icon view" />
+                <BiFileFind className="icon view_icon" />
               </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                <MdOutlineFileDownload className="icon download" />
+                <MdOutlineFileDownload className="icon download_icon" />
               </button>
             </div>
           </div>
@@ -103,15 +103,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view" />
+            <button className="view">
+                <BiFileFind className="icon view_icon" />
               </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                <MdOutlineFileDownload className="icon download" />
+                <MdOutlineFileDownload className="icon download_icon" />
               </button>
             </div>
           </div>
@@ -125,15 +125,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view" />
+            <button className="view">
+                <BiFileFind className="icon view_icon" />
               </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                <MdOutlineFileDownload className="icon download" />
+                <MdOutlineFileDownload className="icon download_icon" />
               </button>
             </div>
           </div>
@@ -147,15 +147,15 @@ const Content = ({ pdfPath }) => {
           <p>Course Title</p>
           <div className="overlay">
             <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view" />
+            <button className="view">
+                <BiFileFind className="icon view_icon" />
               </button>
               <button
                 className="download"
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                <MdOutlineFileDownload className="icon download" />
+                <MdOutlineFileDownload className="icon download_icon" />
               </button>
             </div>
           </div>
