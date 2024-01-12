@@ -95,10 +95,10 @@ const Content = ({ pdfPath }) => {
     <div>
       <section className="content">
         <section className="withSearchBar">
-          <h1>Certifications</h1>
+          <h1>Certificate</h1>
           <InputGroup expand="lg" size="sm" className="float-right">
             <Form.Control
-              placeholder="Certificate Name"
+              placeholder="Search"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
             />
