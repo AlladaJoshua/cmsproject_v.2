@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="navbar" expanded={expanded} onToggle={handleNavbarToggle}>
       <Container fluid className="section">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

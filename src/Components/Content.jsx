@@ -8,9 +8,10 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BiFileFind } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { FiSearch } from "react-icons/fi";
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -59,16 +60,35 @@ const Content = ({ pdfPath }) => {
     const link = document.createElement("a");
     link.href = pdfPath;
     link.download = "Certificate.pdf";
+
+    link.addEventListener("abort", () => {
+      setShowNotification({
+        type: "danger",
+        message: "Download aborted. Please try again.",
+      });
+    });
+
+    link.addEventListener("error", () => {
+      setShowNotification({
+        type: "danger",
+        message: "Error during download. Please try again.",
+      });
+    });
+
     link.click();
 
     // Show the notification
-    setShowNotification(true);
+    setShowNotification({
+      type: "success",
+      message: "Download successful!",
+    });
 
-    // Disable the button for a specified duration (e.g., 5 seconds)
+    // Disable the button for a specified duration (e.g., 10 seconds)
     setDisableDownloadButton(true);
     setTimeout(() => {
       setDisableDownloadButton(false);
-    }, 5000); // 5000 milliseconds (adjust as needed)
+      setShowNotification(null);
+    }, 10000); // 10000 milliseconds (10 seconds)
   };
 
   return (
@@ -83,7 +103,7 @@ const Content = ({ pdfPath }) => {
               aria-describedby="basic-addon2"
             />
             <Button variant="success" id="button-addon2">
-              Search
+              <FiSearch className="icon search_icon"/>
             </Button>
           </InputGroup>
         </section>
@@ -181,8 +201,8 @@ const Content = ({ pdfPath }) => {
       </section>
       {showNotification && (
         <Alert
-          variant="success"
-          onClose={() => setShowNotification(false)}
+          variant={showNotification.type}
+          onClose={() => setShowNotification(null)}
           dismissible
           style={{
             position: "fixed",
@@ -191,7 +211,7 @@ const Content = ({ pdfPath }) => {
             zIndex: 1000, // Ensure the alert appears above other elements
           }}
         >
-          Download successful!
+          {showNotification.message}
         </Alert>
       )}
     </div>
