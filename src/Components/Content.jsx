@@ -103,100 +103,112 @@ const Content = ({ pdfPath }) => {
               aria-describedby="basic-addon2"
             />
             <Button variant="success" id="button-addon2">
-              <FiSearch className="icon search_icon"/>
+              <FiSearch className="icon search_icon" />
             </Button>
           </InputGroup>
         </section>
         <div className="hr"></div>
       </section>
       <section className="certificates">
-        <div className="cert">
-          {thumbnailUrl ? (
-            <img src={thumbnailUrl} alt="PDF Thumbnail" />
-          ) : (
-            <p>Loading thumbnail...</p>
-          )}
-          <p>Course Title</p>
-          <div className="overlay">
-            <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view_icon" />
-              </button>
-              <button
-                className="download"
-                onClick={handleDownloadClick}
-                disabled={disableDownloadButton}
-              >
-                <MdOutlineFileDownload className="icon download_icon" />
-              </button>
+        <div className="certificate_thumbnail">
+          <div className="cert">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            <div className="overlay">
+              <div className="buttons">
+                <button className="view">
+                  <BiFileFind className="icon view_icon" />
+                </button>
+                <button
+                  className="download"
+                  onClick={handleDownloadClick}
+                  disabled={disableDownloadButton}
+                >
+                  <MdOutlineFileDownload className="icon download_icon" />
+                </button>
+              </div>
             </div>
           </div>
+          <p>Course Title</p>
         </div>
-        <div className="cert">
-          {thumbnailUrl ? (
-            <img src={thumbnailUrl} alt="PDF Thumbnail" />
-          ) : (
-            <p>Loading thumbnail...</p>
-          )}
-          <p>Course Title</p>
-          <div className="overlay">
-            <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view_icon" />
-              </button>
-              <button
-                className="download"
-                onClick={handleDownloadClick}
-                disabled={disableDownloadButton}
-              >
-                <MdOutlineFileDownload className="icon download_icon" />
-              </button>
+        <div className="certificate_thumbnail">
+          <div className="cert">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            <div className="overlay">
+              <div className="buttons">
+                <button className="view">
+                  <BiFileFind className="icon view_icon" />
+                </button>
+                <button
+                  className="download"
+                  onClick={handleDownloadClick}
+                  disabled={disableDownloadButton}
+                >
+                  <MdOutlineFileDownload className="icon download_icon" />
+                </button>
+              </div>
             </div>
           </div>
+          <p>Course Title</p>
         </div>
-        <div className="cert">
-          {thumbnailUrl ? (
-            <img src={thumbnailUrl} alt="PDF Thumbnail" />
-          ) : (
-            <p>Loading thumbnail...</p>
-          )}
-          <p>Course Title</p>
-          <div className="overlay">
-            <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view_icon" />
-              </button>
-              <button
-                className="download"
-                onClick={handleDownloadClick}
-                disabled={disableDownloadButton}
-              >
-                <MdOutlineFileDownload className="icon download_icon" />
-              </button>
+        <div className="certificate_thumbnail">
+          <div className="cert">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            <div className="overlay">
+              <div className="buttons">
+                <button className="view">
+                  <BiFileFind className="icon view_icon" />
+                </button>
+                <button
+                  className="download"
+                  onClick={handleDownloadClick}
+                  disabled={disableDownloadButton}
+                >
+                  <MdOutlineFileDownload className="icon download_icon" />
+                </button>
+              </div>
             </div>
           </div>
+          <p>Course Title</p>
         </div>
-        <div className="cert">
-          {thumbnailUrl ? (
-            <img src={thumbnailUrl} alt="PDF Thumbnail" />
-          ) : (
-            <p>Loading thumbnail...</p>
-          )}
-          <p>Course Title</p>
-          <div className="overlay">
-            <div className="buttons">
-              <button className="view">
-                <BiFileFind className="icon view_icon" />
-              </button>
-              <button
-                className="download"
-                onClick={handleDownloadClick}
-                disabled={disableDownloadButton}
-              >
-                <MdOutlineFileDownload className="icon download_icon" />
-              </button>
+        <div className="certificate_thumbnail">
+          <div className="cert">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            <div className="overlay">
+              <div className="buttons">
+                <button className="view">
+                  <BiFileFind className="icon view_icon" />
+                </button>
+                <button
+                  className="download"
+                  onClick={handleDownloadClick}
+                  disabled={disableDownloadButton}
+                >
+                  <MdOutlineFileDownload className="icon download_icon" />
+                </button>
+              </div>
             </div>
           </div>
+          <p>Course Title</p>
         </div>
       </section>
       {showNotification && (
