@@ -128,7 +128,7 @@
 
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 600px) and (max-width: 992px) {
     .dropdown-menu.show {
         border: none;
         background-color: transparent !important;
@@ -142,7 +142,7 @@
     }
 }
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1025px) and (min-width: 992px) {
     .navbar-brand {
         margin-right: 30px !important;
     }
