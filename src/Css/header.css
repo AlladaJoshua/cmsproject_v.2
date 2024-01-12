@@ -100,6 +100,8 @@
     font-style: normal;
     font-weight: 350;
     line-height: normal;
+    left: 50% !important;
+    transform: translateX(-50%);
 }
 
 @media only screen and (max-width: 600px) {
@@ -119,10 +121,28 @@
         font-style: normal;
         font-weight: 350;
         line-height: normal;
+        
+        left: 0 !important;
+        transform: none;
+    }
+
+}
+
+@media only screen and (max-width: 769px) {
+    .dropdown-menu.show {
+        border: none;
+        background-color: transparent !important;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 350;
+        line-height: normal;
+        
+        left: 0 !important;
+        transform: none;
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1025px) {
     .navbar-brand {
         margin-right: 30px !important;
     }
