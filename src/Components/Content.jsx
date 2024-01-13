@@ -52,6 +52,40 @@ const Content = ({ pdfPath }) => {
     fetchThumbnail();
   }, [pdfPath]);
 
+  useEffect(() => {
+    const handleOnline = () => {
+      setShowNotification({
+        type: "success",
+        message: "You are back online! You can now download certificates.",
+      });
+
+      // Close the online notification after 5 seconds
+      setTimeout(() => {
+        setShowNotification(null);
+      }, 5000);
+    };
+
+    const handleOffline = () => {
+      setShowNotification({
+        type: "danger",
+        message: "You are currently offline. Please connect to the internet.",
+      });
+
+      // Close the offline notification after 10 seconds
+      setTimeout(() => {
+        setShowNotification(null);
+      }, 10000);
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
   const handleDownloadClick = () => {
     if (disableDownloadButton) {
       return; // Do nothing if the button is disabled
@@ -64,6 +98,9 @@ const Content = ({ pdfPath }) => {
         message:
           "You are currently offline. Please connect to the internet and try again.",
       });
+      setTimeout(() => {
+        setShowNotification(null);
+      }, 10000);
       return;
     }
 
