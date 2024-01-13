@@ -71,10 +71,10 @@ const Content = ({ pdfPath }) => {
         message: "You are currently offline. Please connect to the internet.",
       });
 
-      // Close the offline notification after 10 seconds
+      // Close the offline notification after 5 seconds
       setTimeout(() => {
         setShowNotification(null);
-      }, 10000);
+      }, 5000);
     };
 
     window.addEventListener("online", handleOnline);
@@ -100,7 +100,7 @@ const Content = ({ pdfPath }) => {
       });
       setTimeout(() => {
         setShowNotification(null);
-      }, 10000);
+      }, 5000);
       return;
     }
 
@@ -136,7 +136,7 @@ const Content = ({ pdfPath }) => {
     setTimeout(() => {
       setDisableDownloadButton(false);
       setShowNotification(null);
-    }, 10000); // 10000 milliseconds (10 seconds)
+    }, 5000); // 5000 milliseconds (5 seconds)
   };
 
   return (

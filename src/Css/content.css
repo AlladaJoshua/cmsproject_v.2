@@ -14,11 +14,12 @@
     flex-direction: row;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
     gap: 500px;
 }
 
 .input-group {
-    width: 100% !important;
+    width: 35% !important;
     height: 30px;
 }
 
@@ -205,6 +206,11 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 25px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+        height: 25px;
     }
 }
 
