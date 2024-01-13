@@ -36,7 +36,7 @@ const Header = () => {
             <Nav.Link href="#myCourse" onClick={handleLinkClick}>My Course</Nav.Link>
             <Nav.Link href="#forum" onClick={handleLinkClick}>Forum</Nav.Link>
           </Nav>
-          <Button variant="primary" className="primary">
+          <Button variant="primary" className="primary" as={Link} to="landing">
             Logout
           </Button>
         </Navbar.Collapse>

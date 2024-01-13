@@ -9,6 +9,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { BiFileFind } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -54,6 +55,16 @@ const Content = ({ pdfPath }) => {
   const handleDownloadClick = () => {
     if (disableDownloadButton) {
       return; // Do nothing if the button is disabled
+    }
+
+    // Check if the user is online
+    if (!window.navigator.onLine) {
+      setShowNotification({
+        type: "danger",
+        message:
+          "You are currently offline. Please connect to the internet and try again.",
+      });
+      return;
     }
 
     // Trigger the download
@@ -120,9 +131,11 @@ const Content = ({ pdfPath }) => {
 
             <div className="overlay">
               <div className="buttons">
-                <button className="view">
-                  <BiFileFind className="icon view_icon" />
-                </button>
+                <Link to="../viewCert">
+                  <button className="view">
+                    <BiFileFind className="icon view_icon" />
+                  </button>
+                </Link>
                 <button
                   className="download"
                   onClick={handleDownloadClick}
