@@ -1,0 +1,57 @@
+.content {
+    display: flex;
+    padding: 0 75px;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 5px; */
+    background: #EBFFE5;
+    margin-top: 15px; 
+}
+
+.header {
+    width: 100%;
+}
+
+.certificates {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    flex-direction: column;
+    gap: 25px;
+    background-color: #BCE8B1;
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
+.react-pdf__Page__canvas {
+    width: 811px !important;
+    height: 565px !important;
+
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.control_top {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+.control_top button {
+    padding: 10px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #0e3b03;
+}

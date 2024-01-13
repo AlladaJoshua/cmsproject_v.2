@@ -7,16 +7,17 @@ import Certificate from "./pages/Certificate";
 import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing ";
 import CertificateView from "./pages/CertificateView";
+import View from "./Components/View";
+View
 function App() {
   
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="certificate" element={<Certificate/>}/>
-        <Route path="landing" element={<Landing/>} />
-        <Route path="viewCert" element={<CertificateView/>} />
+        <Route path="/certificate" element={<Content/>}/>
+        <Route path="/landing" element={<Landing/>} />
+        <Route path="/viewCert" element={<View />} />
       </Routes>
     </BrowserRouter>
   );

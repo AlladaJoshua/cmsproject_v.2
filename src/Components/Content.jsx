@@ -10,13 +10,16 @@ import { BiFileFind } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-const Content = ({ pdfPath }) => {
+const Content = () => {
+  const pdfPath = "/PDF/Sample.pdf";
+  const [data, setData] = useState({ id: "1", pdfName: "Sample.pdf", courseTitle:"HTML and CSS" });
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
@@ -141,6 +144,7 @@ const Content = ({ pdfPath }) => {
 
   return (
     <div>
+      <Header />
       <section className="content">
         <section className="withSearchBar">
           <h1>Certificate</h1>
@@ -168,7 +172,7 @@ const Content = ({ pdfPath }) => {
 
             <div className="overlay">
               <div className="buttons">
-                <Link to="../viewCert">
+                <Link to="/viewCert" state={{ data: data }}>
                   <button className="view">
                     <BiFileFind className="icon view_icon" />
                   </button>
@@ -195,9 +199,11 @@ const Content = ({ pdfPath }) => {
 
             <div className="overlay">
               <div className="buttons">
-                <button className="view">
-                  <BiFileFind className="icon view_icon" />
-                </button>
+                <Link to="/viewCert" state={{ data: data }}>
+                  <button className="view">
+                    <BiFileFind className="icon view_icon" />
+                  </button>
+                </Link>
                 <button
                   className="download"
                   onClick={handleDownloadClick}
@@ -220,9 +226,11 @@ const Content = ({ pdfPath }) => {
 
             <div className="overlay">
               <div className="buttons">
-                <button className="view">
-                  <BiFileFind className="icon view_icon" />
-                </button>
+                <Link to="/viewCert" state={{ data: data }}>
+                  <button className="view">
+                    <BiFileFind className="icon view_icon" />
+                  </button>
+                </Link>
                 <button
                   className="download"
                   onClick={handleDownloadClick}
@@ -245,9 +253,11 @@ const Content = ({ pdfPath }) => {
 
             <div className="overlay">
               <div className="buttons">
-                <button className="view">
-                  <BiFileFind className="icon view_icon" />
-                </button>
+                <Link to="/viewCert" state={{ data: data }}>
+                  <button className="view">
+                    <BiFileFind className="icon view_icon" />
+                  </button>
+                </Link>
                 <button
                   className="download"
                   onClick={handleDownloadClick}
