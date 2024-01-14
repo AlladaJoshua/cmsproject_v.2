@@ -58,7 +58,7 @@ const Content = () => {
   useEffect(() => {
     const handleOnline = () => {
       setShowNotification({
-        type: "success",
+        type: "info",
         message: "You are back online! You can now download certificates.",
       });
 

@@ -1,57 +1,117 @@
-.content {
+.contentViewPdf {
     display: flex;
     padding: 0 75px;
     flex-direction: column;
     align-items: center;
-    /* gap: 5px; */
-    background: #EBFFE5;
-    margin-top: 15px; 
+    background-color: #EBFFE5;
+    margin-top: 15px;
 }
 
-.header {
+.headerView {
     width: 100%;
-}
-
-.certificates {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
     flex-direction: column;
-    gap: 25px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.headerView h1 {
+    color: #5e665b;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 650;
+    line-height: normal;
+}
+
+.headerView .hr_view {
+    width: 100%;
+    height: 1.5px;
+    background-color: #5e665b;
+}
+
+.certificatesView {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background-color: #BCE8B1;
-    padding-top: 20px;
     border-radius: 15px;
-}
-
-.react-pdf__Page__canvas {
-    width: 811px !important;
-    height: 565px !important;
-
-}
-
-.control {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
-}
-
-.control_top {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-}
-.control_top button {
-    padding: 10px;
-    font-size: 25px;
-    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.certificatesView .control_top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 75%;
+    margin-top: 10px;
+}
+
+.certificatesView .control_top button {
     background-color: transparent;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 25px;
+    color: #EBFFE5;
+}
+
+.certificatesView .control_top button:hover {
     color: #0e3b03;
+}
+
+.certificatesView .control {
+    margin-bottom: 10px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.certificatesView .control .modalBTN {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 15px;
+    border: 1.5px solid #3498db;
+    text-align: center;
+}
+
+.certificatesView .control .modal_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.certificatesView .control .modal_btn .modalBTN:hover {
+    background-color: white;
+    color: #006384;
+    /* border: 2px solid #006384; */
+    outline: #006384 solid 2px;
+}
+
+.certificatesView .control .download_View .downloadBTN {
+    background-color: #2ecc71;
+    color: #fff;
+    border-radius: 15px;
+    border: 1.5px solid #2ecc71;
+    text-align: center;
+}
+
+.certificatesView .control .download_View .downloadBTN:hover {
+    background-color: white;
+    color: #16A765;
+    outline: #16A765 solid 2px;
+}
+
+
+.certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas{
+    width: 741px !important;
+    height: 495px !important;
 }
