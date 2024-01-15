@@ -120,12 +120,12 @@ const View = () => {
       <section className="contentViewPdf">
         <section className="headerView">
           <div className="goBack_title">
-          <Link to="/certificate">
-            <button className="goBack">
-              <IoIosArrowBack />
-            </button>
-          </Link>
-          <h1>{data.courseTitle}</h1>
+            <Link to="/certificate">
+              <button className="goBack">
+                <IoIosArrowBack />
+              </button>
+            </Link>
+            <h1>{data.courseTitle}</h1>
           </div>
           <div className="hr_view"></div>
         </section>
@@ -163,29 +163,43 @@ const View = () => {
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                <MdOutlineFileDownload/>
+                <MdOutlineFileDownload />
               </Button>
             </div>
 
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Certificate Criteria</Modal.Title>
+                <Modal.Title>
+                  <div className="modalTitle">
+                    <h4>Certificate Criteria</h4>
+                    <p>
+                      <b>Course:</b> HTML and CSS
+                      <br />
+                      <b>Instructor:</b> Joshua Allada
+                    </p>
+                  </div>
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <p>Title:</p>
-                <p>Instructor:</p>
-                <p>Course:</p>
-                <p>Quiz:</p>
-                <p>Quiz:</p>
+                <p>
+                  Start Date: <br />
+                  End Date: <br />
+                  Total of Hours:
+                </p>
+                <p>
+                  Quizzes: <br />
+                  Quiz 1: <br />
+                  Quiz 2:
+                </p>
               </Modal.Body>
-              <Modal.Footer>
+              {/* <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
                 <Button variant="primary" onClick={handleClose}>
                   Done
                 </Button>
-              </Modal.Footer>
+              </Modal.Footer> */}
             </Modal>
           </div>
         </section>

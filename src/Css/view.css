@@ -197,6 +197,21 @@
     }
 }
 
+.modalTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.modalTitle p {
+    font-size: 12px;
+}
+
+.modal-header {
+    align-items: flex-start !important;
+    height: 100px !important;
+}
+
 @media only screen and (max-width: 376px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
