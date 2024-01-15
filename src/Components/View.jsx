@@ -11,6 +11,8 @@ import Modal from "react-bootstrap/Modal";
 import { ImEnlarge } from "react-icons/im";
 import { Alert } from "react-bootstrap";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -117,17 +119,24 @@ const View = () => {
       <Header />
       <section className="contentViewPdf">
         <section className="headerView">
+          <div className="goBack_title">
+          <Link to="/certificate">
+            <button className="goBack">
+              <IoIosArrowBack />
+            </button>
+          </Link>
           <h1>{data.courseTitle}</h1>
+          </div>
           <div className="hr_view"></div>
         </section>
         <section className="certificatesView">
-          <div className="control_top">
+          {/* <div className="control_top">
             <Link to="/certificate">
               <button>
                 <IoMdCloseCircleOutline />
               </button>
             </Link>
-          </div>
+          </div> */}
           <div className="filePdfView">
             <Document file={pdfURL}>
               <Page
@@ -154,7 +163,7 @@ const View = () => {
                 onClick={handleDownloadClick}
                 disabled={disableDownloadButton}
               >
-                Download
+                <MdOutlineFileDownload/>
               </Button>
             </div>
 
