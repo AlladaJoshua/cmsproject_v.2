@@ -3,12 +3,14 @@ import { pdfjs } from "react-pdf";
 import { Document, Page } from "react-pdf";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../Css/view.css";
 import Header from "./Header";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { ImEnlarge } from "react-icons/im";
 import { Alert } from "react-bootstrap";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -120,9 +122,11 @@ const View = () => {
         </section>
         <section className="certificatesView">
           <div className="control_top">
-            <button>
-              <ImEnlarge />
-            </button>
+            <Link to="/certificate">
+              <button>
+                <IoMdCloseCircleOutline />
+              </button>
+            </Link>
           </div>
           <div className="filePdfView">
             <Document file={pdfURL}>
