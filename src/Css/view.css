@@ -177,9 +177,14 @@
     .certificatesView {
         background-color: transparent;
     }
+
+    
+    .contentViewPdf {
+        padding: 20px;
+    }
 }
 
-@media only screen and (max-width: 426px){
+@media only screen and (max-width: 426px) and (min-width: 375px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
     height: auto !important;
