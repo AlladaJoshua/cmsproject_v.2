@@ -9,10 +9,10 @@ import Header from "./Header";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { ImEnlarge } from "react-icons/im";
-import { Alert } from "react-bootstrap";
+import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-import { MdOutlineFileDownload } from "react-icons/md";
+import { MdOutlineFileDownload, MdOutlineTextSnippet } from "react-icons/md";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -114,6 +114,13 @@ const View = () => {
     };
   }, []);
 
+  const goBackTooltip = <Tooltip id="goBackTooltip">Go Back</Tooltip>;
+  const closeTooltip = <Tooltip id="closeTooltip">Close</Tooltip>;
+  const downloadTooltip = (
+    <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
+  );
+  const criteriaTooltip = <Tooltip id="criteriaTooltip">Certificate Criteria</Tooltip>;
+
   return (
     <div>
       <Header />
@@ -121,22 +128,17 @@ const View = () => {
         <section className="headerView">
           <div className="goBack_title">
             <Link to="/certificate">
-              <button className="goBack">
-                <IoIosArrowBack />
-              </button>
+              <OverlayTrigger placement="bottom" overlay={goBackTooltip}>
+                <button className="goBack">
+                  <IoIosArrowBack />
+                </button>
+              </OverlayTrigger>
             </Link>
             <h1>{data.courseTitle}</h1>
           </div>
           <div className="hr_view"></div>
         </section>
         <section className="certificatesView">
-          {/* <div className="control_top">
-            <Link to="/certificate">
-              <button>
-                <IoMdCloseCircleOutline />
-              </button>
-            </Link>
-          </div> */}
           <div className="filePdfView">
             <Document file={pdfURL}>
               <Page
@@ -148,23 +150,27 @@ const View = () => {
           </div>
           <div className="control">
             <div className="modal_btn">
-              <Button
-                variant="primary"
-                className="modalBTN"
-                onClick={handleShow}
-              >
-                Criteria
-              </Button>
+              <OverlayTrigger placement="top" overlay={criteriaTooltip}>
+                <Button
+                  variant="primary"
+                  className="modalBTN"
+                  onClick={handleShow}
+                >
+                  <MdOutlineTextSnippet />
+                </Button>
+              </OverlayTrigger>
             </div>
             <div className="download_View">
-              <Button
-                variant="success"
-                className="downloadBTN"
-                onClick={handleDownloadClick}
-                disabled={disableDownloadButton}
-              >
-                <MdOutlineFileDownload />
-              </Button>
+              <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                <Button
+                  variant="success"
+                  className="downloadBTN"
+                  onClick={handleDownloadClick}
+                  disabled={disableDownloadButton}
+                >
+                  <MdOutlineFileDownload />
+                </Button>
+              </OverlayTrigger>
             </div>
 
             <Modal show={show} onHide={handleClose}>
@@ -174,6 +180,8 @@ const View = () => {
                     <h4>Certificate Criteria</h4>
                     <p>
                       <b>Course:</b> HTML and CSS
+                      <br />
+                      <b>Course Code:</b> C01_HTML_AND_CSS
                       <br />
                       <b>Instructor:</b> Joshua Allada
                     </p>
@@ -192,14 +200,6 @@ const View = () => {
                   Quiz 2:
                 </p>
               </Modal.Body>
-              {/* <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Done
-                </Button>
-              </Modal.Footer> */}
             </Modal>
           </div>
         </section>

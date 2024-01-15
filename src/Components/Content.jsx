@@ -11,6 +11,8 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,7 +21,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const Content = () => {
   const pdfPath = "/PDF/Sample.pdf";
-  const [data, setData] = useState({ id: "1", pdfName: "Sample.pdf", courseTitle:"HTML and CSS" });
+  const [data, setData] = useState({
+    id: "1",
+    pdfName: "Sample.pdf",
+    courseTitle: "HTML and CSS",
+  });
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
@@ -142,6 +148,11 @@ const Content = () => {
     }, 5000); // 5000 milliseconds (5 seconds)
   };
 
+  const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
+  const downloadTooltip = (
+    <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
+  );
+
   return (
     <div>
       <Header />
@@ -173,17 +184,21 @@ const Content = () => {
             <div className="overlay">
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
-                  <button className="view">
-                    <BiFileFind className="icon view_icon" />
-                  </button>
+                  <OverlayTrigger placement="top" overlay={viewTooltip}>
+                    <button className="view">
+                      <BiFileFind className="icon view_icon" />
+                    </button>
+                  </OverlayTrigger>
                 </Link>
-                <button
-                  className="download"
-                  onClick={handleDownloadClick}
-                  disabled={disableDownloadButton}
-                >
-                  <MdOutlineFileDownload className="icon download_icon" />
-                </button>
+                <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                  <button
+                    className="download"
+                    onClick={handleDownloadClick}
+                    disabled={disableDownloadButton}
+                  >
+                    <MdOutlineFileDownload className="icon download_icon" />
+                  </button>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
@@ -200,17 +215,21 @@ const Content = () => {
             <div className="overlay">
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
-                  <button className="view">
-                    <BiFileFind className="icon view_icon" />
-                  </button>
+                  <OverlayTrigger placement="top" overlay={viewTooltip}>
+                    <button className="view">
+                      <BiFileFind className="icon view_icon" />
+                    </button>
+                  </OverlayTrigger>
                 </Link>
-                <button
-                  className="download"
-                  onClick={handleDownloadClick}
-                  disabled={disableDownloadButton}
-                >
-                  <MdOutlineFileDownload className="icon download_icon" />
-                </button>
+                <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                  <button
+                    className="download"
+                    onClick={handleDownloadClick}
+                    disabled={disableDownloadButton}
+                  >
+                    <MdOutlineFileDownload className="icon download_icon" />
+                  </button>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
@@ -227,17 +246,21 @@ const Content = () => {
             <div className="overlay">
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
-                  <button className="view">
-                    <BiFileFind className="icon view_icon" />
-                  </button>
+                  <OverlayTrigger placement="top" overlay={viewTooltip}>
+                    <button className="view">
+                      <BiFileFind className="icon view_icon" />
+                    </button>
+                  </OverlayTrigger>
                 </Link>
-                <button
-                  className="download"
-                  onClick={handleDownloadClick}
-                  disabled={disableDownloadButton}
-                >
-                  <MdOutlineFileDownload className="icon download_icon" />
-                </button>
+                <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                  <button
+                    className="download"
+                    onClick={handleDownloadClick}
+                    disabled={disableDownloadButton}
+                  >
+                    <MdOutlineFileDownload className="icon download_icon" />
+                  </button>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
@@ -254,17 +277,21 @@ const Content = () => {
             <div className="overlay">
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
-                  <button className="view">
-                    <BiFileFind className="icon view_icon" />
-                  </button>
+                  <OverlayTrigger placement="top" overlay={viewTooltip}>
+                    <button className="view">
+                      <BiFileFind className="icon view_icon" />
+                    </button>
+                  </OverlayTrigger>
                 </Link>
-                <button
-                  className="download"
-                  onClick={handleDownloadClick}
-                  disabled={disableDownloadButton}
-                >
-                  <MdOutlineFileDownload className="icon download_icon" />
-                </button>
+                <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                  <button
+                    className="download"
+                    onClick={handleDownloadClick}
+                    disabled={disableDownloadButton}
+                  >
+                    <MdOutlineFileDownload className="icon download_icon" />
+                  </button>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
