@@ -86,7 +86,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 5px;
 }
 
 .certificatesView .control .modal_btn .modalBTN:hover {
@@ -114,4 +113,54 @@
 .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas{
     width: 741px !important;
     height: 495px !important;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 425px){
+    .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
+        width: 441px !important;
+        height: 295px !important;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
+        width: 250px !important;
+        height: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 376px){
+    .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
+        width: 180px !important;
+        height: 150px !important;
+    }
+    .certificatesView .control_top button {
+        padding: 8px;
+        font-size: 20px;
+    }
+
+    .certificatesView .control button {
+        font-size: 12px;
+        
+    }
+}
+
+@media only screen and (max-width: 321px){
+    .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
+        width: 150px !important;
+        height: 120px !important;
+    }
+    .certificatesView .control_top button {
+        padding: 8px;
+        font-size: 20px;
+    }
+
+    .certificatesView .control {
+        align-items: center;
+        justify-content: center;
+    }
+    .certificatesView .control button {
+        font-size: 11px;
+        
+    }
 }
