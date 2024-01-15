@@ -258,11 +258,14 @@
 }
 
 @media only screen and (max-width: 321px){
+    .contentViewPdf {
+        padding: 20px;
+    }
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
     }
     .certificatesView .control_top button {
         padding: 8px;
