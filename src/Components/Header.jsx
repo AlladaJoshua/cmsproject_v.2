@@ -7,6 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/TsukidenLogo.png";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Verification from './Verification';
 
 
 const Header = () => {
@@ -32,6 +33,7 @@ const Header = () => {
             <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Dashboard</Nav.Link>
             <NavDropdown title="Profile" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/certificate" onClick={handleLinkClick}>Certificate</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/verification" onClick={handleLinkClick}>Verification</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#myCourse" onClick={handleLinkClick}>My Course</Nav.Link>
             <Nav.Link href="#forum" onClick={handleLinkClick}>Forum</Nav.Link>

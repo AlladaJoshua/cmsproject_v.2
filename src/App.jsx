@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing ";
 import CertificateView from "./pages/CertificateView";
 import View from "./Components/View";
+import Verification from "./Components/Verification";
 View
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route path="/certificate" element={<Content/>}/>
         <Route path="/landing" element={<Landing/>} />
         <Route path="/viewCert" element={<View />} />
+        <Route path="/verification" element={<Verification />} />
       </Routes>
     </BrowserRouter>
   );
