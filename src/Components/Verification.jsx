@@ -16,11 +16,11 @@ const Verification = () => {
         </div>
         <div className="verification_search">
           <div className="left">
-            <h2>Verify Course Ceritifcate</h2>
+            <h2>Verify Course Certificate</h2>
             <Form.Control
               size="sm"
               type="text"
-              placeholder="Type your Certificate Serial number"
+              placeholder="Enter Serial Number"
             />
             <Button variant="primary" className="verify">
               Verify
