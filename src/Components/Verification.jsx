@@ -16,35 +16,47 @@ const Verification = () => {
           <h1>Verify your Certificate</h1>
         </div>
         <div className="verification_search">
-          <h2>Verify Course Ceritifcate</h2>
-          <Form.Control
-            size="sm"
-            type="text"
-            placeholder="Type your Certificate Serial number"
-          />
-          <Button variant="primary" className="verify">
-            Verify
-          </Button>
+          <div className="left">
+            <h2>Verify Course Ceritifcate</h2>
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Type your Certificate Serial number"
+            />
+            <Button variant="primary" className="verify">
+              Verify
+            </Button>
+          </div>
+          <div className="right">
+            <div className="nameVerification">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                size="sm"
+                type="text"
+                placeholder="Joshua Allada"
+                readOnly
+              />
+            </div>
+            <div className="serialVerification">
+              <Form.Label>Certificate Serial No. <AiFillSafetyCertificate className="icon"/></Form.Label>
+              <Form.Control
+                  size="sm"
+                  type="text"
+                  placeholder="20190141470"
+                  readOnly
+                />
+            </div>
+            <div className="serialVerification">
+              <Form.Label>Course Certified</Form.Label>
+              <Form.Control
+                  size="sm"
+                  type="text"
+                  placeholder="Java Programming"
+                  readOnly
+                />
+            </div>
+          </div>
         </div>
-        <Table striped bordered className="verification_table">
-          <thead>
-            <tr>
-              <th>Certificate Serial No.</th>
-              <th>Full name</th>
-              <th>Course Certified</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>20190141470</td>
-                <td>Joshua Allada</td>
-                <td>Java Programming</td>
-            </tr>
-            <tr>
-                <td colSpan={3} className="result_verification"><b>Certified <AiFillSafetyCertificate /></b></td>
-            </tr>
-          </tbody>
-        </Table>
       </section>
     </div>
   );
