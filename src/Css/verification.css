@@ -92,13 +92,37 @@ section {
     color: #0E3B03;
   }
 
-  @media only screen and (max-width: 426px) and (min-width: 320px) {
+  @media only screen and (max-width: 425px) and (min-width: 320px) {
     .verification_search {
         bottom: -285px;
     }
 
     .verification_search h2 {
         font-size: 18px;
+        gap: 15px;
+    }
+
+    .verification_search .form-control {
+        width: 75%;
+        height: 38px;
+    } 
+
+    .verification_table {
+        bottom: -460px;
+      }
+    
+      .verification_table th, 
+      .verification_table td {
+        font-size: 12px;
+      }
+  }
+
+  @media only screen and (max-width: 768px) and (min-width: 425px) {
+    .verification_search {
+        bottom: -285px;
+    }
+
+    .verification_search h2 {
         gap: 15px;
     }
 
