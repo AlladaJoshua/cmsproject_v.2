@@ -4,7 +4,6 @@ import "../Css/verification.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const Verification = () => {
@@ -13,7 +12,7 @@ const Verification = () => {
       <Header />
       <section className="verification_container">
         <div className="verification_title">
-          <h1>Verify your Certificate</h1>
+            <span></span>
         </div>
         <div className="verification_search">
           <div className="left">
