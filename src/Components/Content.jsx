@@ -29,6 +29,7 @@ const Content = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
+  const [enableButtonClick, setEnableButtonClick] = useState(true);
 
   useEffect(() => {
     const fetchThumbnail = async () => {
@@ -96,6 +97,10 @@ const Content = () => {
   }, []);
 
   const handleDownloadClick = () => {
+    if (!enableButtonClick) {
+      return; // Do nothing if the button click is not enabled
+    }
+
     if (disableDownloadButton) {
       return; // Do nothing if the button is disabled
     }
@@ -146,6 +151,11 @@ const Content = () => {
       setDisableDownloadButton(false);
       setShowNotification(null);
     }, 5000); // 5000 milliseconds (5 seconds)
+    
+    setEnableButtonClick(false);
+    setTimeout(() => {
+      setEnableButtonClick(true);
+    }, 3000);
   };
 
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
@@ -182,6 +192,39 @@ const Content = () => {
             )}
 
             <div className="overlay">
+              {thumbnailUrl && (
+                <div className="buttons">
+                  <Link to="/viewCert" state={{ data: data }}>
+                    <OverlayTrigger placement="top" overlay={viewTooltip}>
+                      <button className="view">
+                        <BiFileFind className="icon view_icon" />
+                      </button>
+                    </OverlayTrigger>
+                  </Link>
+                  <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                    <button
+                      className="download"
+                      onClick={handleDownloadClick}
+                      disabled={!enableButtonClick || disableDownloadButton}
+                    >
+                      <MdOutlineFileDownload className="icon download_icon" />
+                    </button>
+                  </OverlayTrigger>
+                </div>
+              )}
+            </div>
+          </div>
+          <p>Course Title</p>
+        </div>
+        <div className="certificate_thumbnail">
+          <div className="cert">
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            <div className="overlay">
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -194,7 +237,7 @@ const Content = () => {
                   <button
                     className="download"
                     onClick={handleDownloadClick}
-                    disabled={disableDownloadButton}
+                    disabled={!enableButtonClick || disableDownloadButton}
                   >
                     <MdOutlineFileDownload className="icon download_icon" />
                   </button>
@@ -225,7 +268,7 @@ const Content = () => {
                   <button
                     className="download"
                     onClick={handleDownloadClick}
-                    disabled={disableDownloadButton}
+                    disabled={!enableButtonClick || disableDownloadButton}
                   >
                     <MdOutlineFileDownload className="icon download_icon" />
                   </button>
@@ -256,38 +299,7 @@ const Content = () => {
                   <button
                     className="download"
                     onClick={handleDownloadClick}
-                    disabled={disableDownloadButton}
-                  >
-                    <MdOutlineFileDownload className="icon download_icon" />
-                  </button>
-                </OverlayTrigger>
-              </div>
-            </div>
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div className="certificate_thumbnail">
-          <div className="cert">
-            {thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            <div className="overlay">
-              <div className="buttons">
-                <Link to="/viewCert" state={{ data: data }}>
-                  <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button className="view">
-                      <BiFileFind className="icon view_icon" />
-                    </button>
-                  </OverlayTrigger>
-                </Link>
-                <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                  <button
-                    className="download"
-                    onClick={handleDownloadClick}
-                    disabled={disableDownloadButton}
+                    disabled={!enableButtonClick || disableDownloadButton}
                   >
                     <MdOutlineFileDownload className="icon download_icon" />
                   </button>
