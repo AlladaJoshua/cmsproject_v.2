@@ -210,12 +210,17 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
+            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               {thumbnailUrl && (
                 <div className="buttons">
                   <Link to="/viewCert" state={{ data: data }}>
                     <OverlayTrigger placement="top" overlay={viewTooltip}>
-                      <button className="view">
+                      <button
+                        className="view"
+                        style={{
+                          pointerEvents: overlayVisible ? "auto" : "none",
+                        }}
+                      >
                         <BiFileFind className="icon view_icon" />
                       </button>
                     </OverlayTrigger>
@@ -223,7 +228,9 @@ const Content = () => {
                   <OverlayTrigger placement="top" overlay={downloadTooltip}>
                     <button
                       className="download"
-                      style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
+                      style={{
+                        pointerEvents: overlayVisible ? "auto" : "none",
+                      }}
                       onClick={handleDownloadClick}
                       disabled={!enableButtonClick || disableDownloadButton}
                     >
@@ -244,11 +251,16 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
+            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button className="view">
+                    <button
+                      className="view"
+                      style={{
+                        pointerEvents: overlayVisible ? "auto" : "none",
+                      }}
+                    >
                       <BiFileFind className="icon view_icon" />
                     </button>
                   </OverlayTrigger>
@@ -256,7 +268,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
-                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
+                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
@@ -276,11 +288,16 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
+            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button className="view">
+                    <button
+                      className="view"
+                      style={{
+                        pointerEvents: overlayVisible ? "auto" : "none",
+                      }}
+                    >
                       <BiFileFind className="icon view_icon" />
                     </button>
                   </OverlayTrigger>
@@ -288,7 +305,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
-                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
+                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
@@ -308,11 +325,16 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
+            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button className="view">
+                    <button
+                      className="view"
+                      style={{
+                        pointerEvents: overlayVisible ? "auto" : "none",
+                      }}
+                    >
                       <BiFileFind className="icon view_icon" />
                     </button>
                   </OverlayTrigger>
@@ -320,7 +342,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
-                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
+                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
