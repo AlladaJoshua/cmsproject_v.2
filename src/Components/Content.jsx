@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaArrowUp } from "react-icons/fa";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -173,10 +174,16 @@ const Content = () => {
     }, 500); // 3000 milliseconds (3 seconds)
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
   const downloadTooltip = (
     <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
   );
+
+  const shouldShowScrollToTop = window.scrollY > 200;
 
   return (
     <div>
@@ -366,6 +373,24 @@ const Content = () => {
           {showNotification.message}
         </Alert>
       )}
+      <div
+        className={`scroll-to-top${shouldShowScrollToTop ? " visible" : ""}`}
+        onClick={handleScrollToTop}
+        style={{
+          position: 'fixed',
+          bottom: shouldShowScrollToTop ? '20px' : '-40px',
+          right: '20px',
+          cursor: 'pointer',
+          opacity: shouldShowScrollToTop ? 1 : 0,
+          transition: 'opacity 0.2s ease-in-out, bottom 0.2s ease-in-out',
+          borderRadius: '100px',
+          border: '1px solid #ccc',
+          background: '#fff',
+          padding: '15px',
+        }}
+      >
+        <FaArrowUp />
+      </div>
     </div>
   );
 };
