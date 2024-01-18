@@ -30,6 +30,17 @@ const Content = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
   const [enableButtonClick, setEnableButtonClick] = useState(true);
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
+  useEffect(() => {
+    // Assuming you have a way to detect whether the overlay is visible or not
+    // For demonstration purposes, I'm toggling it every 5 seconds
+    const interval = setInterval(() => {
+      setOverlayVisible((prevVisible) => !prevVisible);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const fetchThumbnail = async () => {
@@ -97,6 +108,10 @@ const Content = () => {
   }, []);
 
   const handleDownloadClick = () => {
+    if (!overlayVisible) {
+      return; // Do nothing if the overlay is not visible
+    }
+
     if (!enableButtonClick) {
       return; // Do nothing if the button click is not enabled
     }
@@ -151,11 +166,15 @@ const Content = () => {
       setDisableDownloadButton(false);
       setShowNotification(null);
     }, 5000); // 5000 milliseconds (5 seconds)
-    
+
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
     }, 3000);
+
+    setTimeout(() => {
+      setOverlayVisible(false);
+    }, 3000); // 3000 milliseconds (3 seconds)
   };
 
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
@@ -191,7 +210,7 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className="overlay">
+            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
               {thumbnailUrl && (
                 <div className="buttons">
                   <Link to="/viewCert" state={{ data: data }}>
@@ -224,7 +243,7 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className="overlay">
+            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -255,7 +274,7 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className="overlay">
+            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -286,7 +305,7 @@ const Content = () => {
               <p>Loading thumbnail...</p>
             )}
 
-            <div className="overlay">
+            <div className={`overlay${overlayVisible ? ' visible' : ''}`}>
               <div className="buttons">
                 <Link to="/viewCert" state={{ data: data }}>
                   <OverlayTrigger placement="top" overlay={viewTooltip}>
