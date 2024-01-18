@@ -170,11 +170,11 @@ const Content = () => {
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 3000);
+    }, 2000);
 
     setTimeout(() => {
       setOverlayVisible(false);
-    }, 3000); // 3000 milliseconds (3 seconds)
+    }, 2000); // 3000 milliseconds (3 seconds)
   };
 
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
