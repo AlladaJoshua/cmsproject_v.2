@@ -112,12 +112,8 @@ const Content = () => {
       return; // Do nothing if the overlay is not visible
     }
 
-    if (!enableButtonClick) {
-      return; // Do nothing if the button click is not enabled
-    }
-
-    if (disableDownloadButton) {
-      return; // Do nothing if the button is disabled
+    if (disableDownloadButton || !enableButtonClick) {
+      return; // Do nothing if the button is disabled or the click is not enabled
     }
 
     // Check if the user is online
@@ -170,11 +166,11 @@ const Content = () => {
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 2000);
+    }, 500);
 
     setTimeout(() => {
       setOverlayVisible(false);
-    }, 2000); // 3000 milliseconds (3 seconds)
+    }, 500); // 3000 milliseconds (3 seconds)
   };
 
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
@@ -231,6 +227,8 @@ const Content = () => {
                       style={{
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
+                      onClick={handleDownloadClick}
+                      disabled={!enableButtonClick || disableDownloadButton}  
                     >
                       <MdOutlineFileDownload className="icon download_icon" />
                     </button>
