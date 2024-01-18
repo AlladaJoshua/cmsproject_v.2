@@ -220,8 +220,6 @@ const Content = () => {
                         style={{
                           pointerEvents: overlayVisible ? "auto" : "none",
                         }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
                       >
                         <BiFileFind className="icon view_icon" />
                       </button>
@@ -233,8 +231,6 @@ const Content = () => {
                       style={{
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
-                      onClick={handleDownloadClick}
-                      disabled={!enableButtonClick || disableDownloadButton}
                     >
                       <MdOutlineFileDownload className="icon download_icon" />
                     </button>
@@ -262,8 +258,6 @@ const Content = () => {
                       style={{
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
-                      onClick={handleDownloadClick}
-                      disabled={!enableButtonClick || disableDownloadButton}
                     >
                       <BiFileFind className="icon view_icon" />
                     </button>
@@ -301,8 +295,6 @@ const Content = () => {
                       style={{
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
-                      onClick={handleDownloadClick}
-                      disabled={!enableButtonClick || disableDownloadButton}
                     >
                       <BiFileFind className="icon view_icon" />
                     </button>
@@ -340,8 +332,6 @@ const Content = () => {
                       style={{
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
-                      onClick={handleDownloadClick}
-                      disabled={!enableButtonClick || disableDownloadButton}
                     >
                       <BiFileFind className="icon view_icon" />
                     </button>
