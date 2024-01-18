@@ -223,6 +223,7 @@ const Content = () => {
                   <OverlayTrigger placement="top" overlay={downloadTooltip}>
                     <button
                       className="download"
+                      style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
                       onClick={handleDownloadClick}
                       disabled={!enableButtonClick || disableDownloadButton}
                     >
@@ -255,6 +256,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
+                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
@@ -286,6 +288,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
+                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
@@ -317,6 +320,7 @@ const Content = () => {
                 <OverlayTrigger placement="top" overlay={downloadTooltip}>
                   <button
                     className="download"
+                    style={{ pointerEvents: overlayVisible ? 'auto' : 'none' }}
                     onClick={handleDownloadClick}
                     disabled={!enableButtonClick || disableDownloadButton}
                   >
