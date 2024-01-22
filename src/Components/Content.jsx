@@ -159,12 +159,20 @@ const Content = () => {
     // Do not setOverlayVisible(false) here to remove the duration
   };
 
-  const handleHover = () => {
-    setButtonsDisabled(true);
+  const handleClick = () => {
+    // Toggle the overlay visibility
+    setOverlayVisible((prevVisible) => !prevVisible);
+  };
 
-    setTimeout(() => {
-      setButtonsDisabled(false);
-    }, 2000);
+  const handleHover = () => {
+    if (overlayVisible) {
+      setButtonsDisabled(true);
+
+      // Delay enabling buttons by 2 seconds
+      setTimeout(() => {
+        setButtonsDisabled(false);
+      }, 2000);
+    }
   };
 
   const handleScrollToTop = () => {
@@ -177,32 +185,6 @@ const Content = () => {
   );
 
   const shouldShowScrollToTop = window.scrollY > 200;
-
-  const renderButtons = () => {
-    return (
-      <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-        <div className="buttons">
-          <Link to="/viewCert" state={{ data: data }}>
-            <OverlayTrigger placement="top" overlay={viewTooltip}>
-              <button className="view" disabled={isButtonsDisabled}>
-                <BiFileFind className="icon view_icon" />
-              </button>
-            </OverlayTrigger>
-          </Link>
-          <OverlayTrigger placement="top" overlay={downloadTooltip}>
-            <button
-              className="download"
-              onClick={handleDownloadClick}
-              disabled={isButtonsDisabled || !enableButtonClick || disableDownloadButton}
-            >
-              <MdOutlineFileDownload className="icon download_icon" />
-            </button>
-          </OverlayTrigger>
-        </div>
-      </div>
-    );
-  };
-  
 
   return (
     <div>
@@ -225,15 +207,51 @@ const Content = () => {
       </section>
       <section className="certificates">
         <div className="certificate_thumbnail">
-          <div className="cert">
-            {thumbnailUrl && (
-              <>
-                <img src={thumbnailUrl} alt="PDF Thumbnail" />
-                <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                  {renderButtons()}
-                </div>
-              </>
+          <div className="cert" onClick={handleClick}>
+            {thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
             )}
+
+            <div
+              className={`overlay${overlayVisible ? " visible" : ""}`}
+            >
+              {thumbnailUrl && (
+                <div className="buttons">
+                  <Link to="/viewCert" state={{ data: data }}>
+                    <OverlayTrigger placement="top" overlay={viewTooltip}>
+                      <button
+                        className="view"
+                        style={{
+                          pointerEvents: overlayVisible ? "auto" : "none",
+                        }}
+                        disabled={isButtonsDisabled}
+                        onClick={handleHover}
+                      >
+                        <BiFileFind className="icon view_icon" />
+                      </button>
+                    </OverlayTrigger>
+                  </Link>
+                  <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                    <button
+                      className="download"
+                      style={{
+                        pointerEvents: overlayVisible ? "auto" : "none",
+                      }}
+                      onClick={handleDownloadClick}
+                      disabled={
+                        isButtonsDisabled ||
+                        !enableButtonClick ||
+                        disableDownloadButton
+                      }
+                    >
+                      <MdOutlineFileDownload className="icon download_icon" />
+                    </button>
+                  </OverlayTrigger>
+                </div>
+              )}
+            </div>
           </div>
           <p>Course Title</p>
         </div>
