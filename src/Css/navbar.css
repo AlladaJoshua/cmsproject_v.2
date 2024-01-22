@@ -43,6 +43,10 @@ nav img {
     color: #126912;
 }
 
+#navbar li a.active {
+    color: #126912; /* Change this to the desired color for the active link */
+}
+
 #mobile {
     display: None;
     align-items: center;
@@ -82,12 +86,17 @@ nav img {
     font-style: normal;
     font-weight: 400 !important;
     line-height: normal;
-    left: 0 !important;
+    left: -30px !important;
     transform: translateX(-50%);
 }
 
 .dropdown-menu.show .dropdown-item {
     text-align: start;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-right: 50px;
 }
 
 .dropdown-menu.show .dropdown-item:last-child {
@@ -103,6 +112,13 @@ nav img {
     background-color: transparent;
     color: #126912 !important;
 }
+
+.dropdown-menu.show .dropdown-item.active {
+    background-color: transparent;
+    color: #126912 !important;
+}
+
+
 
 @media screen and (max-width: 769px) {
     nav {
@@ -134,6 +150,16 @@ nav img {
 
     #navbar li {
         margin-bottom: 25px;
+    }
+
+    #navbar li a:hover,
+    #navbar li a:active {
+        color: #126912;
+    }
+
+    #navbar li a.active {
+        text-decoration: underline; /* You can customize this based on your design */
+        color: #126912; /* Change this to the desired color for the active link */
     }
 
     #mobile {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom"; // Import NavLink
 import "../Css/navbar.css";
 import TsukidenLogo from "../assets/TsukidenLogo.png";
 import Profile from "../assets/profilepic.jpg";
-import { Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
@@ -13,6 +13,10 @@ const HeaderV2 = () => {
 
   const handleClick = () => {
     setClicked(!clicked);
+  };
+
+  const closeMobileNavbar = () => {
+    setClicked(false);
   };
 
   useEffect(() => {
@@ -31,22 +35,30 @@ const HeaderV2 = () => {
   return (
     <>
       <nav>
-        <Link to="/">
+        <NavLink to="/" onClick={closeMobileNavbar}>
           <img src={TsukidenLogo} alt="Logo" />
-        </Link>
+        </NavLink>
         <div>
           <ul id="navbar" className={clicked ? "active" : ""}>
             <li>
-              <Link to="/">Dashboard</Link>
+              <NavLink to="/" activeClassName="active" onClick={closeMobileNavbar}>
+                Dashboard
+              </NavLink>
             </li>
             <li>
-              <a href="">My Course</a>
+              <NavLink to="/my-course" activeClassName="active" onClick={closeMobileNavbar}>
+                My Course
+              </NavLink>
             </li>
             <li>
-              <a href="">Forums</a>
+              <NavLink to="/forums" activeClassName="active" onClick={closeMobileNavbar}>
+                Forums
+              </NavLink>
             </li>
             <li>
-              <Link to="/verification">Verification</Link>
+              <NavLink to="/verification" activeClassName="active" onClick={closeMobileNavbar}>
+                Verification
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -65,17 +77,17 @@ const HeaderV2 = () => {
               className="button_profile"
             >
               <img src={Profile} alt="" className="profile_img" />
-              NBADONG
+              Hi, JALLADA!
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
               <Dropdown.Item href="">
                 <FaRegUserCircle /> Profile
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/certificate">
+              <Dropdown.Item as={NavLink} to="/certificate" onClick={closeMobileNavbar}>
                 <TbCertificate /> My Certificate
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3">
+              <Dropdown.Item href="#/action-3" onClick={closeMobileNavbar}>
                 <FiLogOut /> Log Out
               </Dropdown.Item>
             </Dropdown.Menu>
