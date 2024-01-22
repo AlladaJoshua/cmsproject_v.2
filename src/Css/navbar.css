@@ -247,6 +247,6 @@ nav img {
       }
 
       .profile_link {
-        display: none;
+        display: block;
     }
 }
