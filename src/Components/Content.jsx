@@ -38,7 +38,7 @@ const Content = () => {
       setOverlayVisible(false);
       setButtonsDisabled(false);
     };
-  }, []);
+  }, [overlayVisible]);
 
   useEffect(() => {
     const fetchThumbnail = async () => {
