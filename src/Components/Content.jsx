@@ -171,7 +171,7 @@ const Content = () => {
       // Delay enabling buttons by 2 seconds
       setTimeout(() => {
         setButtonsDisabled(false);
-      }, 2000);
+      }, 3000);
     }
   };
 
