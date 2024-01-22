@@ -1,0 +1,9 @@
+{
+  "rewrites":  [
+    {"source": "/", "destination": "/"}
+    {"source": "/certificate", "destination": "/"}
+    {"source": "/landing", "destination": "/"}
+    {"source": "/viewCert", "destination": "/"}
+    {"source": "/verification", "destination": "/"}
+  ]
+}
