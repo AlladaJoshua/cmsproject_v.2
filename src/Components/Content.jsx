@@ -31,10 +31,12 @@ const Content = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setOverlayVisible(true);
-    }, 2000); // Adjust the delay in milliseconds as needed
+    }, 2000);
 
     return () => {
       clearTimeout(timeoutId);
+      setOverlayVisible(false);
+      setButtonsDisabled(false);
     };
   }, []);
 
@@ -153,16 +155,14 @@ const Content = () => {
   };
 
   const handleDownloadHover = (isHovering) => {
-    if (isHovering) {
+    if (isHovering && overlayVisible) {
       setButtonsDisabled(true);
 
       setTimeout(() => {
         setButtonsDisabled(false);
-        // console.log("enable");
       }, 2000);
-      // console.log("Hovering over download button");
     } else {
-      // console.log("Not hovering over download button");
+      setButtonsDisabled(false);
     }
   };
 
@@ -222,8 +222,8 @@ const Content = () => {
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
                       onClick={handleDownloadClick}
-                      onMouseEnter={() => handleDownloadHover(true)}
-                      onMouseLeave={() => handleDownloadHover(false)}
+                      onTouchStart={() => handleDownloadHover(true)}
+                      onTouchEnd={() => handleDownloadHover(false)}
                       disabled={
                         isButtonsDisabled ||
                         !enableButtonClick ||
