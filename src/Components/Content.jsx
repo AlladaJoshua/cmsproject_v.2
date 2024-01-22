@@ -154,7 +154,7 @@ const Content = () => {
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 500);
+    }, 2000);
 
     // Do not setOverlayVisible(false) here to remove the duration
   };
