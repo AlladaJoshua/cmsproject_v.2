@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Css/view.css";
-import Header from "./Header";
+// import Header from "./Header";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { ImEnlarge } from "react-icons/im";

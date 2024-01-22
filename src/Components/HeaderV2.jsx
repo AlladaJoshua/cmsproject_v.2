@@ -38,9 +38,9 @@ const HeaderV2 = () => {
                   <p className="profile_fName">Joshua Allada</p>
                   <p className="profile_email">jallada.@tgsi.com.ph</p>
                 </span>
-              </span> 
+              </span>
             </li>
-            <li>
+            <li className="profile_link">
               <NavLink
                 to="/profile"
                 activeClassName="active"
@@ -49,7 +49,7 @@ const HeaderV2 = () => {
                 Profile
               </NavLink>
             </li>
-            <li>
+            <li className="profile_link">
               <NavLink
                 to="/certificate"
                 activeClassName="active"

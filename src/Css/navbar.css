@@ -122,6 +122,10 @@ nav img {
     display: none;
 }
 
+.profile_link {
+    display: none;
+}
+
 @media screen and (max-width: 769px) {
     nav {
         justify-content: space-between;
@@ -241,4 +245,8 @@ nav img {
         margin-bottom: 20px;
         width: 80%;
       }
+
+      .profile_link {
+        display: none;
+    }
 }
