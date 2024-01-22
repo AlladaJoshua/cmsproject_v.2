@@ -162,6 +162,14 @@ const Content = () => {
   const handleClick = () => {
     // Toggle the overlay visibility
     setOverlayVisible((prevVisible) => !prevVisible);
+
+    // Disable buttons immediately
+    setButtonsDisabled(true);
+
+    // Delay enabling buttons by 2 seconds
+    setTimeout(() => {
+      setButtonsDisabled(false);
+    }, 2000);
   };
 
   const handleHover = () => {
