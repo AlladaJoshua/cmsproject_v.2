@@ -163,7 +163,7 @@ const Content = () => {
     // Toggle the overlay visibility
     setOverlayVisible((prevVisible) => !prevVisible);
 
-    // Disable buttons immediately
+    // Disable buttons immediately using CSS class
     setButtonsDisabled(true);
 
     // Delay enabling buttons by 2 seconds
@@ -183,6 +183,7 @@ const Content = () => {
     }
   };
 
+  
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
