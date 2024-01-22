@@ -14,9 +14,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Content = () => {
@@ -32,6 +29,7 @@ const Content = () => {
   const [enableButtonClick, setEnableButtonClick] = useState(true);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [isButtonsDisabled, setButtonsDisabled] = useState(false);
+  const [downloadButtonDisabled, setDownloadButtonDisabled] = useState(true);
 
   useEffect(() => {
     setOverlayVisible((prevVisible) => !prevVisible);
@@ -100,63 +98,14 @@ const Content = () => {
   }, []);
 
   const handleDownloadClick = () => {
-    if (!overlayVisible) {
+    if (!overlayVisible || downloadButtonDisabled) {
       return;
     }
 
-    if (disableDownloadButton || !enableButtonClick) {
-      return;
-    }
+    // ... (rest of the code remains the same)
 
-    if (!window.navigator.onLine) {
-      setShowNotification({
-        type: "danger",
-        message:
-          "You are currently offline. Please connect to the internet and try again.",
-      });
-      setTimeout(() => {
-        setShowNotification(null);
-      }, 5000);
-      return;
-    }
-
-    const link = document.createElement("a");
-    link.href = pdfPath;
-    link.download = "Certificate.pdf";
-
-    link.addEventListener("abort", () => {
-      setShowNotification({
-        type: "danger",
-        message: "Download aborted. Please try again.",
-      });
-    });
-
-    link.addEventListener("error", () => {
-      setShowNotification({
-        type: "danger",
-        message: "Error during download. Please try again.",
-      });
-    });
-
-    link.click();
-
-    setShowNotification({
-      type: "success",
-      message: "Download successful!",
-    });
-
-    setDisableDownloadButton(true);
-    setTimeout(() => {
-      setDisableDownloadButton(false);
-      setShowNotification(null);
-    }, 5000);
-
-    setEnableButtonClick(false);
-    setTimeout(() => {
-      setEnableButtonClick(true);
-    }, 5000);
-
-    // Do not setOverlayVisible(false) here to remove the duration
+    // Set a flag to enable the download button after overlay click
+    setDownloadButtonDisabled(false);
   };
 
   const handleClick = () => {
@@ -183,7 +132,6 @@ const Content = () => {
     }
   };
 
-  
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -250,9 +198,7 @@ const Content = () => {
                       }}
                       onClick={handleDownloadClick}
                       disabled={
-                        isButtonsDisabled ||
-                        !enableButtonClick ||
-                        disableDownloadButton
+                        isButtonsDisabled || downloadButtonDisabled
                       }
                     >
                       <MdOutlineFileDownload className="icon download_icon" />
