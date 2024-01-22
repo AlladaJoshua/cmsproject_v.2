@@ -13,6 +13,7 @@ import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineFileDownload, MdOutlineTextSnippet } from "react-icons/md";
+import HeaderV2 from "./HeaderV2";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -123,7 +124,8 @@ const View = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      <HeaderV2 />
       <section className="contentViewPdf">
         <section className="headerView">
           <div className="goBack_title">

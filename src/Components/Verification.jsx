@@ -5,11 +5,13 @@ import "../Css/verification.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
+import HeaderV2 from "./HeaderV2";
 
 const Verification = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      <HeaderV2 />
       <section className="verification_container">
         <div className="verification_title">
             <span></span>

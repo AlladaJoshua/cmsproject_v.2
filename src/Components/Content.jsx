@@ -14,6 +14,7 @@ import Header from "./Header";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
+import HeaderV2 from "./HeaderV2";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -187,7 +188,8 @@ const Content = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      <HeaderV2 />
       <section className="content">
         <section className="withSearchBar">
           <h1>Certificate</h1>
