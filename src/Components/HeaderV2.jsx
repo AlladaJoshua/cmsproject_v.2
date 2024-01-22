@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom"; // Import NavLink
+import { NavLink } from "react-router-dom";
 import "../Css/navbar.css";
 import TsukidenLogo from "../assets/TsukidenLogo.png";
 import Profile from "../assets/profilepic.jpg";
@@ -7,6 +7,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
@@ -17,20 +20,8 @@ const HeaderV2 = () => {
 
   const closeMobileNavbar = () => {
     setClicked(false);
+    setMyCourseActive(false);
   };
-
-  useEffect(() => {
-    const body = document.body;
-    if (clicked) {
-      body.style.overflow = "hidden"; // Disable scrolling
-    } else {
-      body.style.overflow = "auto"; // Enable scrolling
-    }
-
-    return () => {
-      body.style.overflow = "auto"; // Make sure to enable scrolling when component unmounts
-    };
-  }, [clicked]);
 
   return (
     <>
@@ -40,23 +31,73 @@ const HeaderV2 = () => {
         </NavLink>
         <div>
           <ul id="navbar" className={clicked ? "active" : ""}>
+            <li className="profile_info">
+              <span className="profile_info_con">
+                <img src={Profile} alt="Logo" />
+                <span className="profile_info_name">
+                  <p className="profile_fName">Joshua Allada</p>
+                  <p className="profile_email">jallada.@tgsi.com.ph</p>
+                </span>
+              </span> 
+            </li>
             <li>
-              <NavLink to="/" activeClassName="active" onClick={closeMobileNavbar}>
+              <NavLink
+                to="/profile"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
+                Profile
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/certificate"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
+                Certificate
+              </NavLink>
+            </li>
+            <li className="divider"></li>
+            <li>
+              <NavLink
+                to="/"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
                 Dashboard
               </NavLink>
             </li>
             <li>
-              <NavLink to="/my-course" activeClassName="active" onClick={closeMobileNavbar}>
-                My Course
-              </NavLink>
+              <NavDropdown
+                id="nav-dropdown-dark-example"
+                title="My Course"
+                menuVariant="dark"
+                className="mycourse_dd"
+              >
+                <NavDropdown.Item href="#action/3.1" activeClassName="active">
+                  Problem Overview
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2" activeClassName="active">
+                  Assessment
+                </NavDropdown.Item>
+              </NavDropdown>
             </li>
             <li>
-              <NavLink to="/forums" activeClassName="active" onClick={closeMobileNavbar}>
+              <NavLink
+                to="/forums"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
                 Forums
               </NavLink>
             </li>
             <li>
-              <NavLink to="/verification" activeClassName="active" onClick={closeMobileNavbar}>
+              <NavLink
+                to="/verification"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
                 Verification
               </NavLink>
             </li>
@@ -84,7 +125,11 @@ const HeaderV2 = () => {
               <Dropdown.Item href="">
                 <FaRegUserCircle /> Profile
               </Dropdown.Item>
-              <Dropdown.Item as={NavLink} to="/certificate" onClick={closeMobileNavbar}>
+              <Dropdown.Item
+                as={NavLink}
+                to="/certificate"
+                onClick={closeMobileNavbar}
+              >
                 <TbCertificate /> My Certificate
               </Dropdown.Item>
               <Dropdown.Item href="#/action-3" onClick={closeMobileNavbar}>

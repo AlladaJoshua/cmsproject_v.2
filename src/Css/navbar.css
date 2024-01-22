@@ -86,7 +86,7 @@ nav img {
     font-style: normal;
     font-weight: 400 !important;
     line-height: normal;
-    left: -30px !important;
+    left: 0 !important;
     transform: translateX(-50%);
 }
 
@@ -99,12 +99,12 @@ nav img {
     margin-right: 50px;
 }
 
-.dropdown-menu.show .dropdown-item:last-child {
+.profile_side .dropdown-menu.show .dropdown-item:last-child {
     color:#BF3131 !important;
 }
 
-.dropdown-menu.show .dropdown-item:last-child:hover,
-.dropdown-menu.show .dropdown-item:last-child:active {
+.profile_side  .dropdown-menu.show .dropdown-item:last-child:hover,
+.profile_side  .dropdown-menu.show .dropdown-item:last-child:active {
     color:#fd0f0f !important;
 }
 
@@ -118,7 +118,9 @@ nav img {
     color: #126912 !important;
 }
 
-
+.profile_info {
+    display: none;
+}
 
 @media screen and (max-width: 769px) {
     nav {
@@ -176,4 +178,67 @@ nav img {
     .profile_side {
         display: none;
     }
+
+    .mycourse_dd .dropdown-toggle.show {
+        margin-bottom: 50px;
+    }
+
+    .profile_info {
+        display: block;
+        width: 100%;
+        background-color: #BCE8B1;
+        padding: 10px !important;
+        border-radius: 25px;
+        margin-bottom: 10px !important;
+        text-shadow: transparent !important;
+    }
+    .profile_info img {
+        border: 2px solid #126912;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+   .profile_info_con {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile_info_name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        line-height: 5px;
+        gap: 10px;
+    }
+
+    .profile_info_name p {
+        margin: 5px;
+    }
+
+    .profile_info_name .profile_fName {
+        font-weight: 600;
+    }
+
+    .profile_info_name .profile_email {
+        font-size: 14px !important;
+    }
+
+    .profile_divider {
+        height: 20px; /* Set the height of the divider as needed */
+        width: 1px;   /* Set the width of the divider as needed */
+        background-color: #126912; /* Set the color of the divider */
+        margin: 0 10px; /* Adjust the margin as needed for spacing */
+      }
+
+      #navbar .divider {
+        height: 2px;
+        background-color: #0e3b03; /* Adjust the color of the divider as needed */
+        margin: 0 auto; /* Adjust the margin as needed for spacing */
+        margin-bottom: 20px;
+        width: 80%;
+      }
 }

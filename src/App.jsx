@@ -22,6 +22,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/viewCert" element={<View />} />
           <Route path="/verification" element={<Verification />} />
+          {/* <Route path="/profile" element={<Verification />} /> */}
         </Routes>
       </BrowserRouter>
     </>
