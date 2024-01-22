@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Css/content.css";
 import { pdfjs } from "react-pdf";
-import { Alert } from "react-bootstrap";
+import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -10,8 +10,6 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import HeaderV2 from "./HeaderV2";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -29,10 +27,15 @@ const Content = () => {
   const [enableButtonClick, setEnableButtonClick] = useState(true);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [isButtonsDisabled, setButtonsDisabled] = useState(false);
-  const [downloadButtonDisabled, setDownloadButtonDisabled] = useState(true);
 
   useEffect(() => {
-    setOverlayVisible((prevVisible) => !prevVisible);
+    const timeoutId = setTimeout(() => {
+      setOverlayVisible(true);
+    }, 2000); // Adjust the delay in milliseconds as needed
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {
@@ -98,48 +101,73 @@ const Content = () => {
   }, []);
 
   const handleDownloadClick = () => {
-    if (!overlayVisible || downloadButtonDisabled) {
+    if (!overlayVisible || disableDownloadButton || !enableButtonClick || !window.navigator.onLine) {
       return;
     }
 
-    // ... (rest of the code remains the same)
+    const link = document.createElement("a");
+    link.href = pdfPath;
+    link.download = "Certificate.pdf";
 
-    // Set a flag to enable the download button after overlay click
-    setDownloadButtonDisabled(false);
-  };
+    link.addEventListener("abort", () => {
+      setShowNotification({
+        type: "danger",
+        message: "Download aborted. Please try again.",
+      });
+    });
 
-  const handleClick = () => {
-    // Toggle the overlay visibility
-    setOverlayVisible((prevVisible) => !prevVisible);
+    link.addEventListener("error", () => {
+      setShowNotification({
+        type: "danger",
+        message: "Error during download. Please try again.",
+      });
+    });
 
-    // Disable buttons immediately using CSS class
-    setButtonsDisabled(true);
+    link.click();
 
-    // Delay enabling buttons by 2 seconds
+    setShowNotification({
+      type: "success",
+      message: "Download successful!",
+    });
+
+    setDisableDownloadButton(true);
+    setEnableButtonClick(false);
+
     setTimeout(() => {
-      setButtonsDisabled(false);
-    }, 2000);
+      setDisableDownloadButton(false);
+      setEnableButtonClick(true);
+      setShowNotification(null);
+    }, 5000);
   };
 
   const handleHover = () => {
-    if (overlayVisible) {
-      setButtonsDisabled(true);
+    setButtonsDisabled(true);
 
-      // Delay enabling buttons by 2 seconds
-      setTimeout(() => {
-        setButtonsDisabled(false);
-      }, 3000);
-    }
+    setTimeout(() => {
+      setButtonsDisabled(false);
+    }, 2000);
   };
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleDownloadHover = (isHovering) => {
+    if (isHovering) {
+      setButtonsDisabled(true);
+
+      setTimeout(() => {
+        setButtonsDisabled(false);
+        // console.log("enable");
+      }, 2000);
+      // console.log("Hovering over download button");
+    } else {
+      // console.log("Not hovering over download button");
+    }
+  };
+
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
-  const downloadTooltip = (
-    <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
-  );
+  const downloadTooltip = <Tooltip id="downloadTooltip">Download Certificate</Tooltip>;
 
   const shouldShowScrollToTop = window.scrollY > 200;
 
@@ -164,16 +192,14 @@ const Content = () => {
       </section>
       <section className="certificates">
         <div className="certificate_thumbnail">
-          <div className="cert" onClick={handleClick}>
+          <div className="cert">
             {thumbnailUrl ? (
               <img src={thumbnailUrl} alt="PDF Thumbnail" />
             ) : (
               <p>Loading thumbnail...</p>
             )}
 
-            <div
-              className={`overlay${overlayVisible ? " visible" : ""}`}
-            >
+            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               {thumbnailUrl && (
                 <div className="buttons">
                   <Link to="/viewCert" state={{ data: data }}>
@@ -184,7 +210,6 @@ const Content = () => {
                           pointerEvents: overlayVisible ? "auto" : "none",
                         }}
                         disabled={isButtonsDisabled}
-                        onClick={handleHover}
                       >
                         <BiFileFind className="icon view_icon" />
                       </button>
@@ -197,8 +222,12 @@ const Content = () => {
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
                       onClick={handleDownloadClick}
+                      onMouseEnter={() => handleDownloadHover(true)}
+                      onMouseLeave={() => handleDownloadHover(false)}
                       disabled={
-                        isButtonsDisabled || downloadButtonDisabled
+                        isButtonsDisabled ||
+                        !enableButtonClick ||
+                        disableDownloadButton
                       }
                     >
                       <MdOutlineFileDownload className="icon download_icon" />
