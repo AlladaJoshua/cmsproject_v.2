@@ -170,15 +170,48 @@ const Content = () => {
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 500);
+    }, 5000);
 
     setTimeout(() => {
       setOverlayVisible(false);
-    }, 500); // 3000 milliseconds (3 seconds)
+    }, 5000); // 3000 milliseconds (3 seconds)
+  };
+
+  const handleViewClick = () => {
+    if (!overlayVisible) {
+      // Reset button states if the overlay is not visible
+      setEnableButtonClick(true);
+      return; // Do nothing if the overlay is not visible
+    }
+
+    if (!enableButtonClick) {
+      return; // Do nothing if the click is not enabled
+    }
+
+    // Disable the link for a specified duration (e.g., 5 seconds)
+    const link = document.getElementById("viewLink");
+    if (link) {
+      link.style.pointerEvents = "none";
+    }
+
+    // Show the notification (adjust the type and message as needed)
+    setShowNotification({
+      type: "info",
+      message: "Viewing is disabled for 5 seconds.",
+    });
+
+    setTimeout(() => {
+      // Enable the link after the specified duration
+      if (link) {
+        link.style.pointerEvents = "auto";
+      }
+      // Close the notification after 5 seconds
+      setShowNotification(null);
+    }, 5000); // 5000 milliseconds (5 seconds)
   };
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
@@ -219,13 +252,15 @@ const Content = () => {
             <div className={`overlay${overlayVisible ? " visible" : ""}`}>
               {thumbnailUrl && (
                 <div className="buttons">
-                  <Link to="/viewCert" state={{ data: data }}>
+                  <Link id="viewLink" to="/viewCert" state={{ data: data }}>
                     <OverlayTrigger placement="top" overlay={viewTooltip}>
                       <button
                         className="view"
                         style={{
                           pointerEvents: overlayVisible ? "auto" : "none",
                         }}
+                        onClick={handleViewClick}
+                        disabled={!enableButtonClick}
                       >
                         <BiFileFind className="icon view_icon" />
                       </button>
@@ -238,7 +273,7 @@ const Content = () => {
                         pointerEvents: overlayVisible ? "auto" : "none",
                       }}
                       onClick={handleDownloadClick}
-                      disabled={!enableButtonClick || disableDownloadButton}  
+                      disabled={!enableButtonClick || disableDownloadButton}
                     >
                       <MdOutlineFileDownload className="icon download_icon" />
                     </button>
@@ -249,117 +284,7 @@ const Content = () => {
           </div>
           <p>Course Title</p>
         </div>
-        <div className="certificate_thumbnail">
-          <div className="cert">
-            {thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-              <div className="buttons">
-                <Link to="/viewCert" state={{ data: data }}>
-                  <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button
-                      className="view"
-                      style={{
-                        pointerEvents: overlayVisible ? "auto" : "none",
-                      }}
-                    >
-                      <BiFileFind className="icon view_icon" />
-                    </button>
-                  </OverlayTrigger>
-                </Link>
-                <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                  <button
-                    className="download"
-                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
-                    onClick={handleDownloadClick}
-                    disabled={!enableButtonClick || disableDownloadButton}
-                  >
-                    <MdOutlineFileDownload className="icon download_icon" />
-                  </button>
-                </OverlayTrigger>
-              </div>
-            </div>
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div className="certificate_thumbnail">
-          <div className="cert">
-            {thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-              <div className="buttons">
-                <Link to="/viewCert" state={{ data: data }}>
-                  <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button
-                      className="view"
-                      style={{
-                        pointerEvents: overlayVisible ? "auto" : "none",
-                      }}
-                    >
-                      <BiFileFind className="icon view_icon" />
-                    </button>
-                  </OverlayTrigger>
-                </Link>
-                <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                  <button
-                    className="download"
-                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
-                    onClick={handleDownloadClick}
-                    disabled={!enableButtonClick || disableDownloadButton}
-                  >
-                    <MdOutlineFileDownload className="icon download_icon" />
-                  </button>
-                </OverlayTrigger>
-              </div>
-            </div>
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div className="certificate_thumbnail">
-          <div className="cert">
-            {thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-              <div className="buttons">
-                <Link to="/viewCert" state={{ data: data }}>
-                  <OverlayTrigger placement="top" overlay={viewTooltip}>
-                    <button
-                      className="view"
-                      style={{
-                        pointerEvents: overlayVisible ? "auto" : "none",
-                      }}
-                    >
-                      <BiFileFind className="icon view_icon" />
-                    </button>
-                  </OverlayTrigger>
-                </Link>
-                <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                  <button
-                    className="download"
-                    style={{ pointerEvents: overlayVisible ? "auto" : "none" }}
-                    onClick={handleDownloadClick}
-                    disabled={!enableButtonClick || disableDownloadButton}
-                  >
-                    <MdOutlineFileDownload className="icon download_icon" />
-                  </button>
-                </OverlayTrigger>
-              </div>
-            </div>
-          </div>
-          <p>Course Title</p>
-        </div>
+        {/* Repeat the above structure for other certificate thumbnails */}
       </section>
       {showNotification && (
         <Alert
@@ -380,16 +305,16 @@ const Content = () => {
         className={`scroll-to-top${shouldShowScrollToTop ? " visible" : ""}`}
         onClick={handleScrollToTop}
         style={{
-          position: 'fixed',
-          bottom: shouldShowScrollToTop ? '20px' : '-40px',
-          right: '20px',
-          cursor: 'pointer',
+          position: "fixed",
+          bottom: shouldShowScrollToTop ? "20px" : "-40px",
+          right: "20px",
+          cursor: "pointer",
           opacity: shouldShowScrollToTop ? 1 : 0,
-          transition: 'opacity 0.2s ease-in-out, bottom 0.2s ease-in-out',
-          borderRadius: '100px',
-          border: '1px solid #ccc',
-          background: '#fff',
-          padding: '15px',
+          transition: "opacity 0.2s ease-in-out, bottom 0.2s ease-in-out",
+          borderRadius: "100px",
+          border: "1px solid #ccc",
+          background: "#fff",
+          padding: "15px",
         }}
       >
         <FaArrowUp />
