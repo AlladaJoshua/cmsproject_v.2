@@ -132,7 +132,7 @@ const HeaderV2 = () => {
               >
                 <TbCertificate /> My Certificate
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" onClick={closeMobileNavbar}>
+              <Dropdown.Item as={NavLink} to="/landing" onClick={closeMobileNavbar}>
                 <FiLogOut /> Log Out
               </Dropdown.Item>
             </Dropdown.Menu>

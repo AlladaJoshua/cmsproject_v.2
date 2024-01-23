@@ -1,13 +1,13 @@
 import React from 'react'
 import HeaderLanding from '../Components/HeaderLanding'
 
-const Landing  = () => {
+const About  = () => {
   return (
     <div>
       <HeaderLanding />
-        <h1>Logout</h1>
+        <h1>About</h1>
     </div>
   )
 }
 
-export default Landing 
+export default About; 

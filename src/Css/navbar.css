@@ -1,4 +1,35 @@
+.btns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
+.login_btn{
+    background-color: #126912;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    width: fixed;
+}
+
+.reg_btn{
+    background-color: #126912;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+}
+
+.login_btn:hover{
+  background-color:  #ffffff ;
+  color: #126912;
+  border-color: #126912;
+}
+
+.reg_btn:hover{
+    background-color:  #ffffff ;
+    color: #126912;
+    border-color: #126912;
+  }
 
 nav {
     display: flex;
