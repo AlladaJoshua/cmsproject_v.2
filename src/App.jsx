@@ -10,6 +10,8 @@ import CertificateView from "./pages/CertificateView";
 import View from "./Components/View";
 import Verification from "./Components/Verification";
 import HeaderV2 from "./Components/HeaderV2";
+import Verif_nonuser from "./Components/Verif_nonuser";
+import About from "./pages/about";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/viewCert" element={<View />} />
           <Route path="/verification" element={<Verification />} />
+          <Route path="/verif_nonuser" element={<Verif_nonuser />} />
+          <Route path="/about" element={<About />} />
           {/* <Route path="/profile" element={<Verification />} /> */}
         </Routes>
       </BrowserRouter>
