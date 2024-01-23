@@ -270,6 +270,62 @@ const Content = () => {
           <div className="cert">
             {isMobile && thumbnailUrl ? (
               <Link to="/viewCert" state={{ data: data }}>
+                <div className="overlay"></div>
+                <img src={thumbnailUrl} alt="PDF Thumbnail"/>
+              </Link>
+            ) : !isMobile && thumbnailUrl ? (
+              <img src={thumbnailUrl} alt="PDF Thumbnail" />
+            ) : (
+              <p>Loading thumbnail...</p>
+            )}
+
+            {!isMobile && (
+              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
+                {thumbnailUrl && (
+                  <div className="buttons">
+                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
+                      <OverlayTrigger placement="top" overlay={viewTooltip}>
+                        <button
+                          id="viewButton"
+                          className="view"
+                          style={{
+                            pointerEvents: overlayVisible ? "auto" : "none",
+                          }}
+                          onClick={handleViewClick}
+                          disabled={!enableButtonClick || disableViewButton}
+                        >
+                          <BiFileFind className="icon view_icon" />
+                        </button>
+                      </OverlayTrigger>
+                    </Link>
+                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
+                      <button
+                        className="download"
+                        style={{
+                          pointerEvents: overlayVisible ? "auto" : "none",
+                        }}
+                        onClick={handleDownloadClick}
+                        disabled={!enableButtonClick || disableDownloadButton}
+                      >
+                        <MdOutlineFileDownload className="icon download_icon" />
+                      </button>
+                    </OverlayTrigger>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <p>Course Title</p>
+        </div>
+        <div
+          className="certificate_thumbnail"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="cert">
+            {isMobile && thumbnailUrl ? (
+              <Link to="/viewCert" state={{ data: data }}>
+                <div className="overlay"></div>
                 <img src={thumbnailUrl} alt="PDF Thumbnail" />
               </Link>
             ) : !isMobile && thumbnailUrl ? (
@@ -324,6 +380,7 @@ const Content = () => {
           <div className="cert">
             {isMobile && thumbnailUrl ? (
               <Link to="/viewCert" state={{ data: data }}>
+                <div className="overlay"></div>
                 <img src={thumbnailUrl} alt="PDF Thumbnail" />
               </Link>
             ) : !isMobile && thumbnailUrl ? (
@@ -378,60 +435,7 @@ const Content = () => {
           <div className="cert">
             {isMobile && thumbnailUrl ? (
               <Link to="/viewCert" state={{ data: data }}>
-                <img src={thumbnailUrl} alt="PDF Thumbnail" />
-              </Link>
-            ) : !isMobile && thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            {!isMobile && (
-              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                {thumbnailUrl && (
-                  <div className="buttons">
-                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
-                      <OverlayTrigger placement="top" overlay={viewTooltip}>
-                        <button
-                          id="viewButton"
-                          className="view"
-                          style={{
-                            pointerEvents: overlayVisible ? "auto" : "none",
-                          }}
-                          onClick={handleViewClick}
-                          disabled={!enableButtonClick || disableViewButton}
-                        >
-                          <BiFileFind className="icon view_icon" />
-                        </button>
-                      </OverlayTrigger>
-                    </Link>
-                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                      <button
-                        className="download"
-                        style={{
-                          pointerEvents: overlayVisible ? "auto" : "none",
-                        }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
-                      >
-                        <MdOutlineFileDownload className="icon download_icon" />
-                      </button>
-                    </OverlayTrigger>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div
-          className="certificate_thumbnail"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cert">
-            {isMobile && thumbnailUrl ? (
-              <Link to="/viewCert" state={{ data: data }}>
+                <div className="overlay"></div>
                 <img src={thumbnailUrl} alt="PDF Thumbnail" />
               </Link>
             ) : !isMobile && thumbnailUrl ? (
