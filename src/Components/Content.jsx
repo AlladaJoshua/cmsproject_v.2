@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../Css/content.css";
-import cert from "../assets/cert.png";
 import { pdfjs } from "react-pdf";
 import { Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -32,25 +31,24 @@ const Content = () => {
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
   const [enableButtonClick, setEnableButtonClick] = useState(true);
   const [overlayVisible, setOverlayVisible] = useState(false);
+  const [disableViewButton, setDisableViewButton] = useState(false);
 
-  useEffect(() => {
-    // Assuming you have a way to detect whether the overlay is visible or not
-    // For demonstration purposes, I'm toggling it every 5 seconds
-    const interval = setInterval(() => {
-      setOverlayVisible((prevVisible) => !prevVisible);
-    }, 5000);
+  const handleMouseEnter = () => {
+    setOverlayVisible(true);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleMouseLeave = () => {
+    setOverlayVisible(false);
+  };
 
   useEffect(() => {
     const fetchThumbnail = async () => {
       try {
         const loadingTask = pdfjs.getDocument(pdfPath);
         const pdf = await loadingTask.promise;
-        const page = await pdf.getPage(1); // Fetch the first page
+        const page = await pdf.getPage(1);
 
-        const viewport = page.getViewport({ scale: 0.5 }); // Adjust scale as needed
+        const viewport = page.getViewport({ scale: 0.5 });
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         canvas.width = viewport.width;
@@ -63,7 +61,6 @@ const Content = () => {
 
         await page.render(renderContext).promise;
 
-        // Convert the canvas content to a data URL
         const dataUrl = canvas.toDataURL();
         setThumbnailUrl(dataUrl);
       } catch (error) {
@@ -81,7 +78,6 @@ const Content = () => {
         message: "You are back online! You can now download certificates.",
       });
 
-      // Close the online notification after 5 seconds
       setTimeout(() => {
         setShowNotification(null);
       }, 5000);
@@ -93,7 +89,6 @@ const Content = () => {
         message: "You are currently offline. Please connect to the internet.",
       });
 
-      // Close the offline notification after 5 seconds
       setTimeout(() => {
         setShowNotification(null);
       }, 5000);
@@ -110,17 +105,15 @@ const Content = () => {
 
   const handleDownloadClick = () => {
     if (!overlayVisible) {
-      // Reset button states if the overlay is not visible
       setDisableDownloadButton(false);
       setEnableButtonClick(true);
-      return; // Do nothing if the overlay is not visible
+      return;
     }
 
     if (disableDownloadButton || !enableButtonClick) {
-      return; // Do nothing if the button is disabled or the click is not enabled
+      return;
     }
 
-    // Check if the user is online
     if (!window.navigator.onLine) {
       setShowNotification({
         type: "danger",
@@ -133,7 +126,6 @@ const Content = () => {
       return;
     }
 
-    // Trigger the download
     const link = document.createElement("a");
     link.href = pdfPath;
     link.download = "Certificate.pdf";
@@ -154,60 +146,66 @@ const Content = () => {
 
     link.click();
 
-    // Show the notification
     setShowNotification({
       type: "success",
       message: "Download successful!",
     });
 
-    // Disable the button for a specified duration (e.g., 10 seconds)
     setDisableDownloadButton(true);
     setTimeout(() => {
       setDisableDownloadButton(false);
       setShowNotification(null);
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 5000);
 
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 5000);
+    }, 500);
 
     setTimeout(() => {
       setOverlayVisible(false);
-    }, 5000); // 3000 milliseconds (3 seconds)
+    }, 500);
   };
 
   const handleViewClick = () => {
     if (!overlayVisible) {
-      // Reset button states if the overlay is not visible
       setEnableButtonClick(true);
-      return; // Do nothing if the overlay is not visible
+      setDisableViewButton(false);
+      return;
     }
 
-    if (!enableButtonClick) {
-      return; // Do nothing if the click is not enabled
+    if (!enableButtonClick || disableViewButton) {
+      return;
     }
 
-    // Disable the link for a specified duration (e.g., 5 seconds)
     const link = document.getElementById("viewLink");
+    const viewButton = document.getElementById("viewButton");
+
     if (link) {
       link.style.pointerEvents = "none";
     }
 
-    // Show the notification (adjust the type and message as needed)
+    if (viewButton) {
+      viewButton.style.pointerEvents = "none";
+    }
+
     setShowNotification({
       type: "info",
       message: "Viewing is disabled for 5 seconds.",
     });
 
+    setDisableViewButton(true);
     setTimeout(() => {
-      // Enable the link after the specified duration
       if (link) {
         link.style.pointerEvents = "auto";
       }
-      // Close the notification after 5 seconds
+
+      if (viewButton) {
+        viewButton.style.pointerEvents = "auto";
+      }
+      setDisableViewButton(false);
       setShowNotification(null);
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 5000);
   };
 
   const handleScrollToTop = () => {
@@ -241,7 +239,11 @@ const Content = () => {
         <div className="hr"></div>
       </section>
       <section className="certificates">
-        <div className="certificate_thumbnail">
+        <div
+          className="certificate_thumbnail"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className="cert">
             {thumbnailUrl ? (
               <img src={thumbnailUrl} alt="PDF Thumbnail" />
@@ -255,12 +257,13 @@ const Content = () => {
                   <Link id="viewLink" to="/viewCert" state={{ data: data }}>
                     <OverlayTrigger placement="top" overlay={viewTooltip}>
                       <button
+                        id="viewButton"
                         className="view"
                         style={{
                           pointerEvents: overlayVisible ? "auto" : "none",
                         }}
                         onClick={handleViewClick}
-                        disabled={!enableButtonClick}
+                        disabled={!enableButtonClick || disableViewButton}
                       >
                         <BiFileFind className="icon view_icon" />
                       </button>
@@ -293,9 +296,9 @@ const Content = () => {
           dismissible
           style={{
             position: "fixed",
-            top: "10px", // Adjust the top position as needed
-            right: "10px", // Adjust the right position as needed
-            zIndex: 1000, // Ensure the alert appears above other elements
+            top: "10px",
+            right: "10px",
+            zIndex: 1000,
           }}
         >
           {showNotification.message}
