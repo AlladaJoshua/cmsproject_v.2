@@ -35,10 +35,14 @@ const Content = () => {
 
   const handleMouseEnter = () => {
     setOverlayVisible(true);
+    setDisableViewButton(true); // Disable the view button when overlay is visible
   };
-
+  
   const handleMouseLeave = () => {
     setOverlayVisible(false);
+    setTimeout(() => {
+      setDisableViewButton(false); // Enable the view button when overlay is not visible
+    }, 5000);
   };
 
   useEffect(() => {
@@ -166,6 +170,8 @@ const Content = () => {
       setOverlayVisible(false);
     }, 500);
   };
+
+  
 
   const handleViewClick = () => {
     if (!overlayVisible) {
