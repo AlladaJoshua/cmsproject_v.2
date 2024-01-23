@@ -60,7 +60,7 @@ const Content = () => {
       setOverlayVisible(false);
       setTimeout(() => {
         setDisableViewButton(false); // Enable the view button when overlay is not visible
-      }, 5000);
+      }, 500);
     }
   };
 
@@ -228,7 +228,7 @@ const Content = () => {
       }
       setDisableViewButton(false);
       setShowNotification(null);
-    }, 5000);
+    }, 500);
   };
 
   const handleScrollToTop = () => {
