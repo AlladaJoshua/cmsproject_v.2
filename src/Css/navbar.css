@@ -157,6 +157,7 @@ nav img {
     display: none;
 }
 
+
 @media screen and (max-width: 769px) {
     nav {
         justify-content: space-between;

@@ -7,8 +7,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Team_D_HeaderV2 = () => {
@@ -23,9 +21,22 @@ const Team_D_HeaderV2 = () => {
     setMyCourseActive(false);
   };
 
+  // Add or remove the 'no-scroll' class based on the 'clicked' state
+  useEffect(() => {
+    if (clicked) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = ''; // Cleanup on component unmount
+    };
+  }, [clicked]);
+
   return (
     <>
-      <nav>
+      <nav className="navbar_TeamD">
         <NavLink to="/" onClick={closeMobileNavbar}>
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
