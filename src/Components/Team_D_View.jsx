@@ -13,11 +13,11 @@ import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineFileDownload, MdOutlineTextSnippet } from "react-icons/md";
-import HeaderV2 from "./HeaderV2";
+import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-const View = () => {
+const Team_D_View = () => {
   const location = useLocation();
   const { data } = location.state;
   const pdfURL = `/PDF/${data.pdfName}`;
@@ -125,7 +125,7 @@ const View = () => {
   return (
     <div>
       {/* <Header /> */}
-      <HeaderV2 />
+      <Team_D_HeaderV2 />
       <section className="contentViewPdf">
         <section className="headerView">
           <div className="goBack_title">
@@ -226,4 +226,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default Team_D_View;

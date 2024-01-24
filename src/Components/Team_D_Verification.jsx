@@ -5,13 +5,13 @@ import "../Css/verification.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
-import HeaderV2 from "./HeaderV2";
+import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
-const Verification = () => {
+const Team_D_Verification = () => {
   return (
     <div>
       {/* <Header /> */}
-      <HeaderV2 />
+      <Team_D_HeaderV2 />
       <section className="verification_container">
         <div className="verification_title">
             <span></span>
@@ -63,4 +63,4 @@ const Verification = () => {
   );
 };
 
-export default Verification;
+export default Team_D_Verification;

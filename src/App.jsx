@@ -1,15 +1,12 @@
-import Content from "./Components/Content";
 // import Header from "./Components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //pages
-import Certificate from "./pages/Certificate";
+import Team_D_Content from "./Components/Team_D_Content";
 import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing ";
-import CertificateView from "./pages/CertificateView";
-import View from "./Components/View";
-import Verification from "./Components/Verification";
-import HeaderV2 from "./Components/HeaderV2";
+import Team_D_View from "./Components/Team_D_View";
+import Team_D_Verification from "./Components/Team_D_Verification";
 import Verif_nonuser from "./Components/Verif_nonuser";
 import About from "./pages/about";
 
@@ -20,10 +17,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Dashboard />} />
-          <Route path="/certificate" element={<Content />} />
+          <Route path="/certificate" element={<Team_D_Content />} />
           <Route path="/landing" element={<Landing />} />
-          <Route path="/viewCert" element={<View />} />
-          <Route path="/verification" element={<Verification />} />
+          <Route path="/viewCert" element={<Team_D_View />} />
+          <Route path="/verification" element={<Team_D_Verification />} />
           <Route path="/verif_nonuser" element={<Verif_nonuser />} />
           <Route path="/about" element={<About />} />
           {/* <Route path="/profile" element={<Verification />} /> */}

@@ -13,13 +13,11 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import HeaderV2 from "./HeaderV2";
+import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-const Content = () => {
+const Team_D_Content = () => {
   const pdfPath = "/PDF/Sample.pdf";
   const [data, setData] = useState({
     id: "1",
@@ -244,7 +242,7 @@ const Content = () => {
 
   return (
     <div>
-      <HeaderV2 />
+      <Team_D_HeaderV2 />
       <section className="content">
         <section className="withSearchBar">
           <h1>Certificate</h1>
@@ -520,4 +518,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default Team_D_Content;

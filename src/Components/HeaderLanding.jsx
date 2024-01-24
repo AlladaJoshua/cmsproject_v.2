@@ -10,7 +10,7 @@ import { FiLogOut } from "react-icons/fi";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Content from "./Content";
+import Content from "./Team_D_Content";
 
 const HeaderLanding = () => {
   const [clicked, setClicked] = useState(false);

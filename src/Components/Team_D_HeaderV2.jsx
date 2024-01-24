@@ -11,7 +11,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const HeaderV2 = () => {
+const Team_D_HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -143,4 +143,4 @@ const HeaderV2 = () => {
   );
 };
 
-export default HeaderV2;
+export default Team_D_HeaderV2;
