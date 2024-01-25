@@ -1,10 +1,10 @@
 import React from 'react'
-import HeaderLanding from '../Components/HeaderLanding'
+import Team_D_HeaderLanding from '../Components/Team_D_HeaderLanding'
 
 const About  = () => {
   return (
     <div>
-      <HeaderLanding />
+      <Team_D_HeaderLanding />
         <h1>About</h1>
     </div>
   )

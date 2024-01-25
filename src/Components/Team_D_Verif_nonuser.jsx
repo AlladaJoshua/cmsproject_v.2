@@ -5,12 +5,12 @@ import "../Css/verification.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
-import HeaderLanding from "./HeaderLanding";
+import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
 
-const Verif_nonuser = () => {
+const Team_D_Verif_nonuser = () => {
   return (
     <div>
-      <HeaderLanding />
+      <Team_D_HeaderLanding />
       <section className="verification_container">
         <div className="verification_title">
             <span></span>
@@ -62,4 +62,4 @@ const Verif_nonuser = () => {
   );
 };
 
-export default Verif_nonuser;
+export default Team_D_Verif_nonuser;

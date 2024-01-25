@@ -12,7 +12,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Content from "./Team_D_Content";
 
-const HeaderLanding = () => {
+const   Team_D_HeaderLanding = () => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -75,4 +75,4 @@ const HeaderLanding = () => {
   );
 };
 
-export default HeaderLanding;
+export default Team_D_HeaderLanding;

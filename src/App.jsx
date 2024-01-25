@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing ";
 import Team_D_View from "./Components/Team_D_View";
 import Team_D_Verification from "./Components/Team_D_Verification";
-import Verif_nonuser from "./Components/Verif_nonuser";
+import Team_D_Verif_nonuser from "./Components/Team_D_Verif_nonuser";
 import About from "./pages/about";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/viewCert" element={<Team_D_View />} />
           <Route path="/verification" element={<Team_D_Verification />} />
-          <Route path="/verif_nonuser" element={<Verif_nonuser />} />
+          <Route path="/verif_nonuser" element={<Team_D_Verif_nonuser />} />
           <Route path="/about" element={<About />} />
           {/* <Route path="/profile" element={<Verification />} /> */}
         </Routes>
