@@ -58,7 +58,7 @@ const Team_D_Content = () => {
       setOverlayVisible(false);
       setTimeout(() => {
         setDisableViewButton(false); // Enable the view button when overlay is not visible
-      }, 500);
+      }, 0);
     }
   };
 
@@ -181,11 +181,11 @@ const Team_D_Content = () => {
     setEnableButtonClick(false);
     setTimeout(() => {
       setEnableButtonClick(true);
-    }, 500);
+    }, 0);
 
     setTimeout(() => {
       setOverlayVisible(false);
-    }, 500);
+    }, 0);
   };
 
   const handleViewClick = () => {
@@ -226,7 +226,7 @@ const Team_D_Content = () => {
       }
       setDisableViewButton(false);
       setShowNotification(null);
-    }, 500);
+    }, 0);
   };
 
   const handleScrollToTop = () => {
@@ -290,7 +290,6 @@ const Team_D_Content = () => {
                             pointerEvents: overlayVisible ? "auto" : "none",
                           }}
                           onClick={handleViewClick}
-                          disabled={!enableButtonClick || disableViewButton}
                         >
                           <BiFileFind className="icon view_icon" />
                         </button>
@@ -345,7 +344,6 @@ const Team_D_Content = () => {
                             pointerEvents: overlayVisible ? "auto" : "none",
                           }}
                           onClick={handleViewClick}
-                          disabled={!enableButtonClick || disableViewButton}
                         >
                           <BiFileFind className="icon view_icon" />
                         </button>
@@ -400,7 +398,6 @@ const Team_D_Content = () => {
                             pointerEvents: overlayVisible ? "auto" : "none",
                           }}
                           onClick={handleViewClick}
-                          disabled={!enableButtonClick || disableViewButton}
                         >
                           <BiFileFind className="icon view_icon" />
                         </button>
@@ -455,7 +452,6 @@ const Team_D_Content = () => {
                             pointerEvents: overlayVisible ? "auto" : "none",
                           }}
                           onClick={handleViewClick}
-                          disabled={!enableButtonClick || disableViewButton}
                         >
                           <BiFileFind className="icon view_icon" />
                         </button>
