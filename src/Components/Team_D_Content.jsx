@@ -18,18 +18,13 @@ import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Team_D_Content = () => {
-  const pdfPath = "/PDF/Sample.pdf";
-  const [data, setData] = useState({
-    id: "1",
-    pdfName: "Sample.pdf",
-    courseTitle: "HTML and CSS",
-  });
-  const [thumbnailUrl, setThumbnailUrl] = useState(null);
+  const [pdfFileNames, setPdfFileNames] = useState([]); // State to store the array of PDF file names fetched from API
+  const [thumbnails, setThumbnails] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
-  const [disableDownloadButton, setDisableDownloadButton] = useState(false);
-  const [enableButtonClick, setEnableButtonClick] = useState(true);
-  const [overlayVisible, setOverlayVisible] = useState(false);
-  const [disableViewButton, setDisableViewButton] = useState(false);
+  const [disableDownloadButtons, setDisableDownloadButtons] = useState([]);
+  const [enableViewButtons, setEnableViewButtons] = useState([]);
+  const [overlayVisibilities, setOverlayVisibilities] = useState([]);
+  const [disableViewButtons, setDisableViewButtons] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
 
   const handleResize = () => {
@@ -37,6 +32,8 @@ const Team_D_Content = () => {
   };
 
   useEffect(() => {
+    // Fetch PDF file names from API
+    fetchPdfFileNamesFromApi();
     // Add event listener to track window resize
     window.addEventListener("resize", handleResize);
 
@@ -44,53 +41,70 @@ const Team_D_Content = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty dependency array ensures the effect runs only once during mount and unmount
+  }, []); // Empty dependency array ensures the effect runs only once during mount
 
-  const handleMouseEnter = () => {
-    if (!isMobile) {
-      setOverlayVisible(true);
-      setDisableViewButton(true); // Disable the view button when overlay is visible
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile) {
-      setOverlayVisible(false);
-      setTimeout(() => {
-        setDisableViewButton(false); // Enable the view button when overlay is not visible
-      }, 0);
-    }
-  };
-
-  useEffect(() => {
-    const fetchThumbnail = async () => {
-      try {
-        const loadingTask = pdfjs.getDocument(pdfPath);
-        const pdf = await loadingTask.promise;
-        const page = await pdf.getPage(1);
-
-        const viewport = page.getViewport({ scale: 0.5 });
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport,
-        };
-
-        await page.render(renderContext).promise;
-
-        const dataUrl = canvas.toDataURL();
-        setThumbnailUrl(dataUrl);
-      } catch (error) {
-        console.error("Error loading PDF:", error);
+  const fetchPdfFileNamesFromApi = async () => {
+    try {
+      // Replace 'apiEndpoint' with your actual API endpoint to fetch PDF file names
+      const response = await fetch("http://localhost:8080/api/certifications/myCertification/2");
+      const data = await response.json();
+      if (data) {
+        setPdfFileNames(data);
       }
+      console.log(pdfFileNames);
+    } catch (error) {
+      console.error("Error fetching PDF file names:", error);
+    }
+  };
+  console.log(pdfFileNames);
+  useEffect(() => {
+    const fetchThumbnails = async () => {
+      const newThumbnails = [];
+      const newDisableDownloadButtons = [];
+      const newEnableViewButtons = [];
+      const newOverlayVisibilities = [];
+      const newDisableViewButtons = [];
+
+      for (let i = 0; i < pdfFileNames.length; i++) {
+        const pdfPath = `/PDF/${pdfFileNames[i].certificate_file}`; // Assuming certificate_file contains the path to the PDF
+        try {
+          const loadingTask = pdfjs.getDocument(pdfPath);
+          const pdf = await loadingTask.promise;
+          const page = await pdf.getPage(1);
+
+          const viewport = page.getViewport({ scale: 0.5 });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+
+          await page.render(renderContext).promise;
+
+          const dataUrl = canvas.toDataURL();
+          newThumbnails.push(dataUrl);
+          newDisableDownloadButtons.push(false);
+          newEnableViewButtons.push(true);
+          newOverlayVisibilities.push(false);
+          newDisableViewButtons.push(false);
+        } catch (error) {
+          console.error("Error loading PDF:", error);
+        }
+      }
+
+      setThumbnails(newThumbnails);
+      setDisableDownloadButtons(newDisableDownloadButtons);
+      setEnableViewButtons(newEnableViewButtons);
+      setOverlayVisibilities(newOverlayVisibilities);
+      setDisableViewButtons(newDisableViewButtons);
     };
 
-    fetchThumbnail();
-  }, [pdfPath]);
+    fetchThumbnails();
+  }, [pdfFileNames]);
 
   useEffect(() => {
     const handleOnline = () => {
@@ -124,14 +138,18 @@ const Team_D_Content = () => {
     };
   }, []);
 
-  const handleDownloadClick = () => {
-    if (!overlayVisible) {
-      setDisableDownloadButton(false);
-      setEnableButtonClick(true);
+  const handleDownloadClick = (index) => () => {
+    if (!overlayVisibilities[index]) {
+      setDisableDownloadButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? false : button))
+      );
+      setEnableViewButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? true : button))
+      );
       return;
     }
 
-    if (disableDownloadButton || !enableButtonClick) {
+    if (disableDownloadButtons[index] || !enableViewButtons[index]) {
       return;
     }
 
@@ -147,6 +165,7 @@ const Team_D_Content = () => {
       return;
     }
 
+    const pdfPath = `/PDF/${pdfFileNames[index].certificate_file}`; // Assuming certificate_file contains the path to the PDF
     const link = document.createElement("a");
     link.href = pdfPath;
     link.download = "Certificate.pdf";
@@ -172,35 +191,51 @@ const Team_D_Content = () => {
       message: "Download successful!",
     });
 
-    setDisableDownloadButton(true);
+    setDisableDownloadButtons((prevButtons) =>
+      prevButtons.map((button, idx) => (idx === index ? true : button))
+    );
     setTimeout(() => {
-      setDisableDownloadButton(false);
+      setDisableDownloadButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? false : button))
+      );
       setShowNotification(null);
     }, 5000);
 
-    setEnableButtonClick(false);
+    setEnableViewButtons((prevButtons) =>
+      prevButtons.map((button, idx) => (idx === index ? false : button))
+    );
     setTimeout(() => {
-      setEnableButtonClick(true);
+      setEnableViewButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? true : button))
+      );
     }, 0);
 
     setTimeout(() => {
-      setOverlayVisible(false);
+      setOverlayVisibilities((prevVisibilities) =>
+        prevVisibilities.map((visibility, idx) =>
+          idx === index ? false : visibility
+        )
+      );
     }, 0);
   };
 
-  const handleViewClick = () => {
-    if (!overlayVisible) {
-      setEnableButtonClick(true);
-      setDisableViewButton(false);
+  const handleViewClick = (index) => () => {
+    if (!overlayVisibilities[index]) {
+      setEnableViewButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? true : button))
+      );
+      setDisableViewButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? false : button))
+      );
       return;
     }
 
-    if (!enableButtonClick || disableViewButton) {
+    if (!enableViewButtons[index] || disableViewButtons[index]) {
       return;
     }
 
-    const link = document.getElementById("viewLink");
-    const viewButton = document.getElementById("viewButton");
+    const link = document.getElementById(`viewLink_${index}`);
+    const viewButton = document.getElementById(`viewButton_${index}`);
 
     if (link) {
       link.style.pointerEvents = "none";
@@ -215,7 +250,9 @@ const Team_D_Content = () => {
       message: "Viewing is disabled for 5 seconds.",
     });
 
-    setDisableViewButton(true);
+    setDisableViewButtons((prevButtons) =>
+      prevButtons.map((button, idx) => (idx === index ? true : button))
+    );
     setTimeout(() => {
       if (link) {
         link.style.pointerEvents = "auto";
@@ -224,7 +261,9 @@ const Team_D_Content = () => {
       if (viewButton) {
         viewButton.style.pointerEvents = "auto";
       }
-      setDisableViewButton(false);
+      setDisableViewButtons((prevButtons) =>
+        prevButtons.map((button, idx) => (idx === index ? false : button))
+      );
       setShowNotification(null);
     }, 0);
   };
@@ -245,7 +284,7 @@ const Team_D_Content = () => {
       <Team_D_HeaderV2 />
       <section className="TeamD_content">
         <section className="withSearchBar">
-          <h1>Certificate</h1>
+          <h1>Certificates</h1>
           <InputGroup expand="lg" size="sm" className="float-right">
             <Form.Control
               placeholder="Search"
@@ -260,222 +299,97 @@ const Team_D_Content = () => {
         <div className="hr"></div>
       </section>
       <section className="certificates">
-        <div
-          className="certificate_thumbnail"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cert">
-            {isMobile && thumbnailUrl ? (
-              <Link to="/viewCert" state={{ data: data }}>
-                <div className="overlay"></div>
-                <img src={thumbnailUrl} alt="PDF Thumbnail"/>
-              </Link>
-            ) : !isMobile && thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
+        {pdfFileNames.map((pdfFile, index) => (
+          <div
+            className="certificate_thumbnail"
+            key={index}
+            onMouseEnter={() =>
+              setOverlayVisibilities((prevVisibilities) =>
+                prevVisibilities.map((visibility, idx) =>
+                  idx === index ? true : visibility
+                )
+              )
+            }
+            onMouseLeave={() =>
+              setOverlayVisibilities((prevVisibilities) =>
+                prevVisibilities.map((visibility, idx) =>
+                  idx === index ? false : visibility
+                )
+              )
+            }
+          >
+            <div className="cert">
+              {isMobile && thumbnails[index] ? (
+                <Link
+                  to="/viewCert"
+                  state={{ pdfName: pdfFile.certificate_file }} // Assuming certificate_file contains the path to the PDF
+                  id={`viewLink_${index}`}
+                >
+                  <div className="overlay"></div>
+                  <img src={thumbnails[index]} alt="PDF Thumbnail" />
+                </Link>
+              ) : !isMobile && thumbnails[index] ? (
+                <img src={thumbnails[index]} alt="PDF Thumbnail" />
+              ) : (
+                <p>Loading thumbnail...</p>
+              )}
 
-            {!isMobile && (
-              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                {thumbnailUrl && (
-                  <div className="buttons">
-                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
-                      <OverlayTrigger placement="top" overlay={viewTooltip}>
+              {!isMobile && (
+                <div
+                  className={`overlay${
+                    overlayVisibilities[index] ? " visible" : ""
+                  }`}
+                >
+                  {thumbnails[index] && (
+                    <div className="buttons">
+                      <Link
+                        id={`viewLink_${index}`}
+                        to="/viewCert"
+                        state={{ pdfName: pdfFile.certificate_file }} // Assuming certificate_file contains the path to the PDF
+                      >
+                        <OverlayTrigger placement="top" overlay={viewTooltip}>
+                          <button
+                            id={`viewButton_${index}`}
+                            className="view"
+                            style={{
+                              pointerEvents: overlayVisibilities[index]
+                                ? "auto"
+                                : "none",
+                            }}
+                            onClick={handleViewClick(index)}
+                          >
+                            <BiFileFind className="TeamD_icon view_icon" />
+                          </button>
+                        </OverlayTrigger>
+                      </Link>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={downloadTooltip}
+                      >
                         <button
-                          id="viewButton"
-                          className="view"
+                          className="download"
                           style={{
-                            pointerEvents: overlayVisible ? "auto" : "none",
+                            pointerEvents: overlayVisibilities[index]
+                              ? "auto"
+                              : "none",
                           }}
-                          onClick={handleViewClick}
+                          onClick={handleDownloadClick(index)}
+                          disabled={
+                            !enableViewButtons[index] ||
+                            disableDownloadButtons[index]
+                          }
                         >
-                          <BiFileFind className="TeamD_icon view_icon" />
+                          <MdOutlineFileDownload className="TeamD_icon download_icon" />
                         </button>
                       </OverlayTrigger>
-                    </Link>
-                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                      <button
-                        className="download"
-                        style={{
-                          pointerEvents: overlayVisible ? "auto" : "none",
-                        }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
-                      >
-                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
-                      </button>
-                    </OverlayTrigger>
-                  </div>
-                )}
-              </div>
-            )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <p>{pdfFile.quizTaken.quiz.course.title}</p> {/* Render other properties as needed */}
           </div>
-          <p>Course Title</p>
-        </div>
-        <div
-          className="certificate_thumbnail"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cert">
-            {isMobile && thumbnailUrl ? (
-              <Link to="/viewCert" state={{ data: data }}>
-                <div className="overlay"></div>
-                <img src={thumbnailUrl} alt="PDF Thumbnail" />
-              </Link>
-            ) : !isMobile && thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            {!isMobile && (
-              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                {thumbnailUrl && (
-                  <div className="buttons">
-                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
-                      <OverlayTrigger placement="top" overlay={viewTooltip}>
-                        <button
-                          id="viewButton"
-                          className="view"
-                          style={{
-                            pointerEvents: overlayVisible ? "auto" : "none",
-                          }}
-                          onClick={handleViewClick}
-                        >
-                          <BiFileFind className="TeamD_icon view_icon" />
-                        </button>
-                      </OverlayTrigger>
-                    </Link>
-                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                      <button
-                        className="download"
-                        style={{
-                          pointerEvents: overlayVisible ? "auto" : "none",
-                        }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
-                      >
-                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
-                      </button>
-                    </OverlayTrigger>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div
-          className="certificate_thumbnail"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cert">
-            {isMobile && thumbnailUrl ? (
-              <Link to="/viewCert" state={{ data: data }}>
-                <div className="overlay"></div>
-                <img src={thumbnailUrl} alt="PDF Thumbnail" />
-              </Link>
-            ) : !isMobile && thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            {!isMobile && (
-              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                {thumbnailUrl && (
-                  <div className="buttons">
-                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
-                      <OverlayTrigger placement="top" overlay={viewTooltip}>
-                        <button
-                          id="viewButton"
-                          className="view"
-                          style={{
-                            pointerEvents: overlayVisible ? "auto" : "none",
-                          }}
-                          onClick={handleViewClick}
-                        >
-                          <BiFileFind className="TeamD_icon view_icon" />
-                        </button>
-                      </OverlayTrigger>
-                    </Link>
-                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                      <button
-                        className="download"
-                        style={{
-                          pointerEvents: overlayVisible ? "auto" : "none",
-                        }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
-                      >
-                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
-                      </button>
-                    </OverlayTrigger>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          <p>Course Title</p>
-        </div>
-        <div
-          className="certificate_thumbnail"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="cert">
-            {isMobile && thumbnailUrl ? (
-              <Link to="/viewCert" state={{ data: data }}>
-                <div className="overlay"></div>
-                <img src={thumbnailUrl} alt="PDF Thumbnail" />
-              </Link>
-            ) : !isMobile && thumbnailUrl ? (
-              <img src={thumbnailUrl} alt="PDF Thumbnail" />
-            ) : (
-              <p>Loading thumbnail...</p>
-            )}
-
-            {!isMobile && (
-              <div className={`overlay${overlayVisible ? " visible" : ""}`}>
-                {thumbnailUrl && (
-                  <div className="buttons">
-                    <Link id="viewLink" to="/viewCert" state={{ data: data }}>
-                      <OverlayTrigger placement="top" overlay={viewTooltip}>
-                        <button
-                          id="viewButton"
-                          className="view"
-                          style={{
-                            pointerEvents: overlayVisible ? "auto" : "none",
-                          }}
-                          onClick={handleViewClick}
-                        >
-                          <BiFileFind className="TeamD_icon view_icon" />
-                        </button>
-                      </OverlayTrigger>
-                    </Link>
-                    <OverlayTrigger placement="top" overlay={downloadTooltip}>
-                      <button
-                        className="download"
-                        style={{
-                          pointerEvents: overlayVisible ? "auto" : "none",
-                        }}
-                        onClick={handleDownloadClick}
-                        disabled={!enableButtonClick || disableDownloadButton}
-                      >
-                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
-                      </button>
-                    </OverlayTrigger>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          <p>Course Title</p>
-        </div>
+        ))}
       </section>
       {showNotification && (
         <Alert
@@ -515,3 +429,4 @@ const Team_D_Content = () => {
 };
 
 export default Team_D_Content;
+
