@@ -1,0 +1,102 @@
+
+.navbar {
+    background-color: #D9FFCF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: +100;
+  }
+  
+  .navbar-brand img {
+    height: 50px; 
+  }
+  
+ 
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    margin-right: 20px;
+  }
+  
+  .nav-link:hover {
+    color: #126912; 
+  }
+  
+  .btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+.login_btn{
+    background-color: #126912;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+}
+
+.reg_btn{
+    background-color: #126912;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+}
+
+.login_btn:hover{
+  background-color:  #ffffff ;
+  color: #126912;
+  border-color: #126912;
+}
+
+.reg_btn:hover{
+    background-color:  #ffffff ;
+    color: #126912;
+    border-color: #126912;
+  }
+  
+  button {
+    margin-left: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+      
+    }
+    
+    .navbar-collapse {
+      background: rgba( 217, 255, 207, 0.65 );
+      box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 9px );
+      -webkit-backdrop-filter: blur( 9px );
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+  
+    .navbar-nav .nav-link {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .btns {
+      margin-top: 10px;
+      flex-direction: row;
+      font-size: 14px;
+    }
+
+
+    button {
+        margin-right: 10px;
+    }
+  
+  }
+  

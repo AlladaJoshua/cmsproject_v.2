@@ -1,77 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../Css/navbar.css";
-import TsukidenLogo from "../assets/TsukidenLogo.png";
-import Profile from "../assets/profilepic.jpg";
-import Dropdown from "react-bootstrap/Dropdown";
-import { FaRegUserCircle } from "react-icons/fa";
-import { TbCertificate } from "react-icons/tb";
-import { FiLogOut } from "react-icons/fi";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Content from "./Team_D_Content";
+import TsukidenLogo from "../assets/TsukidenLogo.png";
+import "../Css/hdrlndng.css";
 
-const   Team_D_HeaderLanding = () => {
-  const [clicked, setClicked] = useState(false);
+const Team_D_HeaderLanding = () => {
+  const [expanded, setExpanded] = useState(false);
 
-  const handleClick = () => {
-    setClicked(!clicked);
+  const handleToggle = () => {
+    setExpanded(!expanded);
   };
 
-  const closeMobileNavbar = () => {
-    setClicked(false);
-    setMyCourseActive(false);
+  const closeNavbar = () => {
+    setExpanded(false);
   };
-
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
-
 
   return (
-    <>
-      <nav>
-        <NavLink to="/" onClick={closeMobileNavbar}>
-          <img src={TsukidenLogo} alt="Logo" />
-        </NavLink>
-
-        <ul id="navbar" className={clicked ? "active" : ""}>
-          <li>
-              <NavLink
-                to="/about"
-                activeClassName="active"
-                onClick={closeMobileNavbar}
-              >
-                About
-              </NavLink>
-          </li>
-          <li>
-              <NavLink
-                to="/verif_nonuser"
-                activeClassName="active"
-                onClick={closeMobileNavbar}
-              >
-                Verification
-              </NavLink>
-          </li>
-        </ul>
-        <div className="btns">
-            <Link to="/certificate">
+    <Navbar expand="lg">
+      <Navbar.Brand as={Link} to="/" onClick={closeNavbar}>
+        <img src={TsukidenLogo} alt="Logo" />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggle} />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link as={NavLink} to="/about" activeClassName="active" onClick={closeNavbar}>
+            About
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/verif_nonuser" activeClassName="active" onClick={closeNavbar}>
+            Verification
+          </Nav.Link>
+        </Nav>
+        <Nav className="btns">
+          <Nav.Link as={Link} to="/certificate" onClick={closeNavbar}>
             <button className="login_btn">Log In</button>
-            </Link>
-            <Link to="/">
+          </Nav.Link>
+          <Nav.Link as={Link} to="/" onClick={closeNavbar}>
             <button className="reg_btn">Register</button>
-            </Link>
-        </div>
-      </nav>
-    </>
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
