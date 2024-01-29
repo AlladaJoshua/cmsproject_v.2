@@ -151,7 +151,7 @@ const Team_D_View = () => {
             </Document>
           </div>
           <div className="control">
-            <div className="modal_btn">
+            <div className="TeamD_modal_btn">
               <OverlayTrigger placement="top" overlay={criteriaTooltip}>
                 <Button
                   variant="primary"
@@ -176,7 +176,7 @@ const Team_D_View = () => {
             </div>
 
             <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
+              <Modal.Header closeButton className="TeamD_mdl_hdr">
                 <Modal.Title>
                   <div className="modalTitle">
                     <h4>Certificate Criteria</h4>

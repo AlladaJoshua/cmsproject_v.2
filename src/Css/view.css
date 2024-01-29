@@ -87,13 +87,13 @@
     text-align: center;
 }
 
-.certificatesView .control .modal_btn{
+.certificatesView .control .TeamD_modal_btn{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.certificatesView .control .modal_btn .modalBTN:hover {
+.certificatesView .control .TeamD_modal_btn .modalBTN:hover {
     background-color: white;
     color: #006384;
     /* border: 2px solid #006384; */
@@ -150,7 +150,7 @@
     font-size: 20px;
 }
 
-.modal_btn button {
+.TeamD_modal_btn button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,7 +223,7 @@
     font-size: 12px;
 }
 
-.modal-header {
+.TeamD_mdl_hdr {
     align-items: flex-start !important;
     height: 120px !important;
 }

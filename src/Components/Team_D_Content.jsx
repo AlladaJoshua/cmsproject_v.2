@@ -243,7 +243,7 @@ const Team_D_Content = () => {
   return (
     <div>
       <Team_D_HeaderV2 />
-      <section className="content">
+      <section className="TeamD_content">
         <section className="withSearchBar">
           <h1>Certificate</h1>
           <InputGroup expand="lg" size="sm" className="float-right">
@@ -253,7 +253,7 @@ const Team_D_Content = () => {
               aria-describedby="basic-addon2"
             />
             <Button variant="success" id="button-addon2">
-              <FiSearch className="icon search_icon" />
+              <FiSearch className="TeamD_icon search_icon" />
             </Button>
           </InputGroup>
         </section>
@@ -291,7 +291,7 @@ const Team_D_Content = () => {
                           }}
                           onClick={handleViewClick}
                         >
-                          <BiFileFind className="icon view_icon" />
+                          <BiFileFind className="TeamD_icon view_icon" />
                         </button>
                       </OverlayTrigger>
                     </Link>
@@ -304,7 +304,7 @@ const Team_D_Content = () => {
                         onClick={handleDownloadClick}
                         disabled={!enableButtonClick || disableDownloadButton}
                       >
-                        <MdOutlineFileDownload className="icon download_icon" />
+                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
                       </button>
                     </OverlayTrigger>
                   </div>
@@ -345,7 +345,7 @@ const Team_D_Content = () => {
                           }}
                           onClick={handleViewClick}
                         >
-                          <BiFileFind className="icon view_icon" />
+                          <BiFileFind className="TeamD_icon view_icon" />
                         </button>
                       </OverlayTrigger>
                     </Link>
@@ -358,7 +358,7 @@ const Team_D_Content = () => {
                         onClick={handleDownloadClick}
                         disabled={!enableButtonClick || disableDownloadButton}
                       >
-                        <MdOutlineFileDownload className="icon download_icon" />
+                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
                       </button>
                     </OverlayTrigger>
                   </div>
@@ -399,7 +399,7 @@ const Team_D_Content = () => {
                           }}
                           onClick={handleViewClick}
                         >
-                          <BiFileFind className="icon view_icon" />
+                          <BiFileFind className="TeamD_icon view_icon" />
                         </button>
                       </OverlayTrigger>
                     </Link>
@@ -412,7 +412,7 @@ const Team_D_Content = () => {
                         onClick={handleDownloadClick}
                         disabled={!enableButtonClick || disableDownloadButton}
                       >
-                        <MdOutlineFileDownload className="icon download_icon" />
+                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
                       </button>
                     </OverlayTrigger>
                   </div>
@@ -453,7 +453,7 @@ const Team_D_Content = () => {
                           }}
                           onClick={handleViewClick}
                         >
-                          <BiFileFind className="icon view_icon" />
+                          <BiFileFind className="TeamD_icon view_icon" />
                         </button>
                       </OverlayTrigger>
                     </Link>
@@ -466,7 +466,7 @@ const Team_D_Content = () => {
                         onClick={handleDownloadClick}
                         disabled={!enableButtonClick || disableDownloadButton}
                       >
-                        <MdOutlineFileDownload className="icon download_icon" />
+                        <MdOutlineFileDownload className="TeamD_icon download_icon" />
                       </button>
                     </OverlayTrigger>
                   </div>

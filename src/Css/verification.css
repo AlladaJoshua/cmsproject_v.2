@@ -7,7 +7,7 @@
     gap: 60px;
 }
 
-section {
+.verification_container {
     position: relative;
   }
   
@@ -84,11 +84,11 @@ section {
     width: 75%;
 }
 
-.left h2 {
+.verification_search .left h2 {
     color: #0E3B03;
 }
 
-.left .form-control {
+.verification_search .left .form-control {
     width: 75%;
     height: 45px;
 } 
