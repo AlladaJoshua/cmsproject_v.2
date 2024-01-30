@@ -204,6 +204,19 @@
 
   }
 
+  .verification_container .right .error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .verification_container .right .error-message img {
+    width: 20%;
+  }
+
   @media only screen and (max-width: 1024px) and (min-width: 769px) {
     .verification_search .left h2 {
         font-size: 23px;
