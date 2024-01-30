@@ -13,7 +13,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const Team_D_View = () => {
   const location = useLocation();
-  const { pdfName } = location.state; // Destructure pdfName from location.state
+  const { pdfName, courseTitle } = location.state; // Destructure pdfName from location.state
   const pdfURL = `/PDF/${pdfName}`;
 
   const [showModal, setShowModal] = useState(false);
@@ -114,7 +114,7 @@ const Team_D_View = () => {
               </OverlayTrigger>
             </Link>
             {/* Replace data.courseTitle with the appropriate title */}
-            <h1>{/* data.courseTitle */}</h1>
+            <h1>{courseTitle}</h1>
           </div>
           <div className="hr_view"></div>
         </section>

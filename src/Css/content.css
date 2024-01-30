@@ -164,6 +164,19 @@
     align-items: center;
 }
 
+.no-certificates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.no-certificates img {
+    width: 80%;
+}
+
 
 @media only screen and (max-width: 1024px){
     .withSearchBar{
@@ -176,6 +189,10 @@
         flex-direction: column;
         gap: 0;
         margin-bottom: 25px;
+    }
+    
+    .no-certificates img {
+        width: 80%;
     }
 }
 
