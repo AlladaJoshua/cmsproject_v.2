@@ -67,7 +67,7 @@ const Team_D_Verification = () => {
                   <Form.Control
                     size="sm"
                     type="text"
-                    placeholder={verificationResult[0].quizTaken.users.full_name}
+                    placeholder={verificationResult[0].full_name}
                     readOnly
                   />
                 </div>
@@ -85,7 +85,7 @@ const Team_D_Verification = () => {
                   <Form.Control
                       size="sm"
                       type="text"
-                      placeholder={verificationResult[0].quizTaken.quiz.course.title}
+                      placeholder={verificationResult[0].course_title}
                       readOnly
                     />
                 </div>
