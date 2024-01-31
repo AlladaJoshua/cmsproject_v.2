@@ -24,13 +24,13 @@ const Team_D_HeaderV2 = () => {
   // Add or remove the 'no-scroll' class based on the 'clicked' state
   useEffect(() => {
     if (clicked) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = ''; // Cleanup on component unmount
+      document.body.style.overflow = ""; // Cleanup on component unmount
     };
   }, [clicked]);
 
@@ -89,7 +89,7 @@ const Team_D_HeaderV2 = () => {
                 <NavDropdown.Item href="#action/3.1" activeClassName="active">
                   Problem Overview
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2" activeClassName="active">
+                <NavDropdown.Item href="/certGen" activeClassName="active">
                   Assessment
                 </NavDropdown.Item>
               </NavDropdown>
@@ -143,7 +143,11 @@ const Team_D_HeaderV2 = () => {
               >
                 <TbCertificate /> My Certificate
               </Dropdown.Item>
-              <Dropdown.Item as={NavLink} to="/landing" onClick={closeMobileNavbar}>
+              <Dropdown.Item
+                as={NavLink}
+                to="/landing"
+                onClick={closeMobileNavbar}
+              >
                 <FiLogOut /> Log Out
               </Dropdown.Item>
             </Dropdown.Menu>

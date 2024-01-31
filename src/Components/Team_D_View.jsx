@@ -114,7 +114,7 @@ const Team_D_View = () => {
               </OverlayTrigger>
             </Link>
             {/* Replace data.courseTitle with the appropriate title */}
-            <h1>{courseTitle}</h1>
+            <h1 style={{textTransform: 'capitalize'}}>{courseTitle}</h1>
           </div>
           <div className="hr_view"></div>
         </section>

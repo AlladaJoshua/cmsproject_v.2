@@ -9,6 +9,7 @@ import Team_D_View from "./Components/Team_D_View";
 import Team_D_Verification from "./Components/Team_D_Verification";
 import Team_D_Verif_nonuser from "./Components/Team_D_Verif_nonuser";
 import About from "./pages/about";
+import CertificateGenerator from "./pages/CertificateGenerator";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/verification" element={<Team_D_Verification />} />
           <Route path="/verif_nonuser" element={<Team_D_Verif_nonuser />} />
           <Route path="/about" element={<About />} />
+          <Route path="/certGen" element={<CertificateGenerator />}/>
           {/* <Route path="/profile" element={<Verification />} /> */}
         </Routes>
       </BrowserRouter>

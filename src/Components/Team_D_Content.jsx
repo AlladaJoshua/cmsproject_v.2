@@ -395,7 +395,7 @@ const Team_D_Content = () => {
                   </div>
                 )}
               </div>
-              <p>{pdfFile.quizTaken.quiz.course.title}</p>
+              <p style={{textTransform: 'capitalize'}}>{pdfFile.quizTaken.quiz.course.title}</p>
             </div>
           ))
         ) : (
