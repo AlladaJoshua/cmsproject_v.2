@@ -55,7 +55,7 @@ const CertificateGenerator = () => {
     // Check if the percentage is at least 80%
     const percentage = (courseQuizScore / courseTargetScore) * 100;
 
-    if (percentage >= 80) { 
+    if (percentage >= 80) {
       const doc = new jsPDF({
         orientation: "landscape",
         unit: "mm",
@@ -150,10 +150,13 @@ const CertificateGenerator = () => {
       const SerialformattedDate = SerialcurrentDate.toISOString()
         .split("T")[0]
         .replace(/-/g, ""); // Formats as "YYYYMMDD"
-      
-      
+
       const currentDateTime = new Date();
-      const formattedTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const formattedTime = currentDateTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
       console.log(SerialformattedDate); // Add this line to log the formatted date
       console.log(formattedTime); // Add this line to log the formatted date
 
@@ -161,14 +164,9 @@ const CertificateGenerator = () => {
       const serialNumber = Math.floor(Math.random() * 1000000);
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
-      doc.text(
-        `B55-${SerialformattedDate}${serialNumber}`,
-        85,
-        158,
-        {
-          align: "left"
-        }
-      );
+      doc.text(`B55-${SerialformattedDate}${serialNumber}`, 85, 158, {
+        align: "left"
+      });
 
       const startDate = new Date(creditHours);
 
@@ -197,10 +195,11 @@ const CertificateGenerator = () => {
       const formDataToSend = new FormData();
       formDataToSend.append(
         "serial_no",
-        `B55-${SerialformattedDate}${userId}${courseCode}${serialNumber}`
+        `B55-${SerialformattedDate}${serialNumber}`
       );
       formDataToSend.append("file", pdfFile);
       formDataToSend.append("date_issued", formattedDate);
+      formDataToSend.append("time_issued", formattedTime);
       formDataToSend.append("criteria", "test");
       formDataToSend.append("quiztkn_ID", quiztknId);
 

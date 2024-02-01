@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,6 @@ import com.example.sandboxv2.sandboxv2.services.QuizTakenService;
 
 @RestController
 @RequestMapping("/api/certifications")
-// @CrossOrigin("http://localhost:5174/")
 @CrossOrigin("http://localhost:5173/")
 public class CertificationController {
     @Autowired
@@ -52,21 +53,11 @@ public class CertificationController {
         return certificationService.getCertificationByUserId(user_ID);
     }
 
-    @GetMapping("/verifyCertificate/{serial_no}")
-    public ResponseEntity<List<VerificationResponse>> verifyCertification(@PathVariable String serial_no) {
-        List<VerificationResponse> certificationDetails = certificationService.getCertificationDetailsBySerialNumber(serial_no);
-    
-        if (!certificationDetails.isEmpty()) {
-            return new ResponseEntity<>(certificationDetails, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     @PostMapping
     public ResponseEntity<String> saveCertification(@RequestParam("serial_no") String serial_no, 
                                                      @RequestParam("file") MultipartFile certificate_file, 
-                                                     @RequestParam("date_issued") Date date_issued, 
+                                                     @RequestParam("date_issued") Date date_issued,
+                                                     @RequestParam("time_issued") String time_issued,
                                                      @RequestParam("criteria") String criteria, 
                                                      @RequestParam("quiztkn_ID") Long quiztkn_ID) {
         if (certificate_file.isEmpty()) {
@@ -88,6 +79,7 @@ public class CertificationController {
             Certification certification = new Certification();
             certification.setSerial_no(serial_no);
             certification.setDate_issued(date_issued);
+            certification.setTime_issued(time_issued);
             certification.setCertificate_file(filenameWithoutPrefix);
             certification.setCriteria(criteria);
             certification.setQuizTaken(quizTaken); // Set QuizTaken in Certification
@@ -103,5 +95,18 @@ public class CertificationController {
     public void deleteCertification(@PathVariable Long certificateID) {
         certificationService.deleteCertification(certificateID);
     }
+
+@GetMapping("/verify/{serial_no}")
+public ResponseEntity<List<VerificationResponse>> verifyCertification(@PathVariable String serial_no) {
+    List<VerificationResponse> certificationDetails = certificationService.getCertificationDetailsBySerialNumber(serial_no);
+
+    if (!certificationDetails.isEmpty()) {
+        return new ResponseEntity<>(certificationDetails, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
+
+
 }
 

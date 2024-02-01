@@ -1,6 +1,10 @@
 package com.example.sandboxv2.sandboxv2.entity;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +19,10 @@ public class Certification{
     private Long certificateID;
     private String serial_no;
     private Date date_issued;
+
+    @Column(name = "time_issued")
+    private String time_issued;
+
     private String certificate_file;
     private String criteria;
 
@@ -55,6 +63,14 @@ public class Certification{
         this.date_issued = date_issued;
     }
 
+    public String getTime_issued() {
+        return time_issued;
+    }
+
+    public void setTime_issued(String time_issued) {
+        this.time_issued = time_issued;
+    }
+
     public String getCertificate_file() {
         return this.certificate_file;
     }
@@ -79,5 +95,6 @@ public class Certification{
     public void setQuizTaken(QuizTaken quizTaken) {
         this.quizTaken = quizTaken;
     }
+
 
 }
