@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.sandboxv2.sandboxv2.dto.QuizDetailsDTO;
 import com.example.sandboxv2.sandboxv2.entity.QuizTaken;
 import com.example.sandboxv2.sandboxv2.repository.QuizTakenRepository;
 
@@ -31,5 +32,9 @@ public class QuizTakenService {
 
     public void deleteQuizTaken(Long quiztknID) {
         quizTakenRepository.deleteById(quiztknID);
+    }
+    
+    public List<QuizDetailsDTO> getQuizDetailsByQuizTakenId(Long quiztknID) {
+        return quizTakenRepository.findQuizDetailsByQuizTakenId(quiztknID);
     }
 }

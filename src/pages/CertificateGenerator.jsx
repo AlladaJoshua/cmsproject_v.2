@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/byUserId/2"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -33,26 +33,27 @@ const CertificateGenerator = () => {
       return;
     }
 
-    const name = quiz[0].users.full_name;
-    const userId = quiz[0].users.userID;
+    const name = quiz[0].userFullName;
+    const userId = quiz[0].userID;
     console.log(userId);
-    const instructor = quiz[0].quiz.course.instructor.full_name;
-    const course = quiz[0].quiz.course.title;
-    const courseCode = quiz[0].quiz.course.courseID;
+    console.log(quiz[0].userFullName);
+    const instructor = quiz[0].instructorFullName;
+    const course = quiz[0].courseTitle;
+    const courseCode = quiz[0].courseID;
     //console.log(courseCode);
     const quiztknId = quiz[0].quiztknID;
 
-    const creditHours = quiz[0].quiz.course.start_date;
+    const creditHours = quiz[0].courseStartDate;
     console.log(creditHours);
 
     // Calculate the percentage
-    const quizScore = quiz[0].quiz_score;
-    console.log(quiz[0].quiz_score);
-    const targetScore = quiz[0].quiz.target_score;
-    console.log(quiz[0].quiz.target_score);
+    const courseQuizScore = quiz[0].quizScore;
+    console.log(quiz[0].quizScore);
+    const courseTargetScore = quiz[0].targetScore;
+    console.log(quiz[0].targetScore);
 
     // Check if the percentage is at least 80%
-    const percentage = (quizScore / targetScore) * 100;
+    const percentage = (courseQuizScore / courseTargetScore) * 100;
 
     if (percentage >= 80) {
       const doc = new jsPDF({
@@ -98,7 +99,12 @@ const CertificateGenerator = () => {
 
       doc.setFontSize(17);
       doc.setTextColor(162, 123, 66);
-      doc.text(`${formattedNewDate}`, coursePosition - 60, 128, {
+
+      // Use a fixed position instead of coursePosition
+      const datePositionX = 101; // Adjust this value as needed
+      const datePositionY = 128;
+
+      doc.text(`${formattedNewDate}`, datePositionX, datePositionY, {
         align: "left"
       });
 
@@ -126,12 +132,6 @@ const CertificateGenerator = () => {
         signatureHeight
       );
 
-      // Serial number display PDF
-      const serialNumber = Math.floor(Math.random() * 1000000);
-      doc.setFontSize(11);
-      doc.setTextColor(162, 123, 66);
-      doc.text(`B55-${serialNumber}`, 85, 158, { align: "left" });
-        
       // Coursecode display PDF
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
@@ -143,6 +143,28 @@ const CertificateGenerator = () => {
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
       doc.text(`${formattedDate}`, 90, 154, { align: "right" });
+
+      console.log(formattedDate);
+
+      const SerialcurrentDate = new Date();
+      const SerialformattedDate = SerialcurrentDate.toISOString()
+        .split("T")[0]
+        .replace(/-/g, ""); // Formats as "YYYYMMDD"
+
+      console.log(SerialformattedDate); // Add this line to log the formatted date
+
+      // Serial number display PDF
+      const serialNumber = Math.floor(Math.random() * 1000000);
+      doc.setFontSize(11);
+      doc.setTextColor(162, 123, 66);
+      doc.text(
+        `B55-${SerialformattedDate}${serialNumber}`,
+        85,
+        158,
+        {
+          align: "left"
+        }
+      );
 
       const startDate = new Date(creditHours);
 
@@ -156,13 +178,11 @@ const CertificateGenerator = () => {
       const calculatedCreditHours = daysDifference * 3;
 
       console.log(`Calculated Credit Hours: ${calculatedCreditHours}`);
-      
 
       // Credit Hours display PDF
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
       doc.text(`${calculatedCreditHours} hrs`, 72, 167.2, { align: "left" });
-
 
       // Save the PDF file to send to the backend
       const pdfFile = new File([doc.output("blob")], `${name}-${course}.pdf`, {
@@ -171,7 +191,10 @@ const CertificateGenerator = () => {
 
       // Create form data to send the file to the backend
       const formDataToSend = new FormData();
-      formDataToSend.append("serial_no", `B55-${serialNumber}`);
+      formDataToSend.append(
+        "serial_no",
+        `B55-${SerialformattedDate}${userId}${courseCode}${serialNumber}`
+      );
       formDataToSend.append("file", pdfFile);
       formDataToSend.append("date_issued", formattedDate);
       formDataToSend.append("criteria", "test");
@@ -222,24 +245,20 @@ const CertificateGenerator = () => {
 
   return (
     <>
-    <div>
+      <div>
+        <Team_D_HeaderV2 />
 
-      <Team_D_HeaderV2 />
-        
         {/* Button to generate certificate */}
         <h1>COURSE ASSESMENT</h1>
         <div>
           <p>
-            Click sumbit button to finish the assessment and get Certified on this
-            Course
+            Click sumbit button to finish the assessment and get Certified on
+            this Course
           </p>
         </div>
         <button onClick={generateCertificate}>Sumbit</button>
-
       </div>
-
     </>
-
   );
 };
 
