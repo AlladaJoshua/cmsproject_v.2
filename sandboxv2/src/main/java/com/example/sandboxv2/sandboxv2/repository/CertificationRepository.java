@@ -15,7 +15,7 @@ public interface CertificationRepository extends JpaRepository<Certification, Lo
 
     Optional<Certification> findById(Long certificateID);
 
-    @Query("SELECT cr FROM Certification cr WHERE cr.quizTaken.users.userID = :user_ID")
+    @Query("SELECT cr.certificate_file FROM Certification cr WHERE cr.quizTaken.users.userID = :user_ID")
     List<Certification> findByUserId(@Param("user_ID") Long user_ID);
 
     @Query("SELECT new com.example.sandboxv2.sandboxv2.dto.VerificationResponse(cr.serial_no, cr.quizTaken.quiz.course.title, cr.quizTaken.users.full_name) FROM Certification cr WHERE cr.serial_no = :serial_no")
