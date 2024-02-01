@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/18"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -55,7 +55,7 @@ const CertificateGenerator = () => {
     // Check if the percentage is at least 80%
     const percentage = (courseQuizScore / courseTargetScore) * 100;
 
-    if (percentage >= 80) {
+    if (percentage >= 80) { 
       const doc = new jsPDF({
         orientation: "landscape",
         unit: "mm",
@@ -150,8 +150,12 @@ const CertificateGenerator = () => {
       const SerialformattedDate = SerialcurrentDate.toISOString()
         .split("T")[0]
         .replace(/-/g, ""); // Formats as "YYYYMMDD"
-
+      
+      
+      const currentDateTime = new Date();
+      const formattedTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       console.log(SerialformattedDate); // Add this line to log the formatted date
+      console.log(formattedTime); // Add this line to log the formatted date
 
       // Serial number display PDF
       const serialNumber = Math.floor(Math.random() * 1000000);

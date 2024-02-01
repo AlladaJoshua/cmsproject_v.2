@@ -12,6 +12,8 @@ const Team_D_Verification = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const isValidSerial = !errorMessage;
+
   const handleVerify = async () => {
     setLoading(true);
     try {
@@ -68,6 +70,7 @@ const Team_D_Verification = () => {
               placeholder="Enter Serial Number"
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
+              style={{ borderColor: errorMessage ? '#ff0000' : '#ced4da' }} // Set border color dynamically
             />
             <Button
               variant="primary"
