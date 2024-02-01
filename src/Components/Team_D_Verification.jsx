@@ -11,8 +11,7 @@ const Team_D_Verification = () => {
   const [verificationResult, setVerificationResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const isValidSerial = !errorMessage;
+  const [isValidSerial, setIsValidSerial] = useState(false);
 
   const handleVerify = async () => {
     setLoading(true);
@@ -27,9 +26,11 @@ const Team_D_Verification = () => {
           setErrorMessage(
             "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
           );
+          setIsValidSerial(false);
         } else {
           setVerificationResult(data);
           setErrorMessage(""); // Clear previous error message if any
+          setIsValidSerial(true);
         }
       } else {
         // Handle non-200 status codes
@@ -38,6 +39,7 @@ const Team_D_Verification = () => {
           setErrorMessage(
             "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
           );
+          setIsValidSerial(false);
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -49,11 +51,11 @@ const Team_D_Verification = () => {
       setErrorMessage(
         "An error occurred while verifying the certificate. Please try again."
       );
+      setIsValidSerial(false);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div>
       <Team_D_HeaderV2 />
@@ -63,21 +65,34 @@ const Team_D_Verification = () => {
         </div>
         <div className="verification_search">
           <div className="left">
-            <h2>Verify Course Certificate</h2>
-            <Form.Control
-              size="sm"
-              type="text"
-              placeholder="Enter Serial Number"
-              value={code}
-              onChange={(e) => setCode(e.target.value.toUpperCase())}
-              style={{ borderColor: errorMessage ? '#ff0000' : '#ced4da' }} // Set border color dynamically
-            />
-            <Button
-              variant="primary"
-              className="verify"
-              onClick={handleVerify}
-              disabled={loading}
-            >
+          <h2>Verify Course Certificate</h2>
+          <Form.Control
+  size="sm"
+  type="text"
+  placeholder="Enter Serial Number"
+  value={code}
+  onChange={(e) => {
+    setCode(e.target.value.toUpperCase());
+    setIsValidSerial(false); // Reset isValidSerial on input change
+  }}
+  onKeyPress={(e) => {
+    if (e.key === "Enter") {
+      // Handle the "Enter" key press, e.g., trigger the verification function
+      handleVerify();
+    }
+  }}
+  style={{
+    borderColor: isValidSerial ? "#28a745" : errorMessage ? "#ff0000" : "#ced4da",
+    borderWidth: '1.5px', // Adjust the border width as needed
+    color: isValidSerial ? "#28a745" : "inherit", // Set font color to green when certified
+        }}
+        />
+        <Button
+          variant="primary"
+          className="verify"
+          onClick={handleVerify}
+          disabled={loading}
+        >
               {loading ? "Verifying..." : "Verify"}
             </Button>
           </div>
