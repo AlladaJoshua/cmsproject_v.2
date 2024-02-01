@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.sandboxv2.sandboxv2.dto.QuizDetailsDTO;
 import com.example.sandboxv2.sandboxv2.entity.QuizTaken;
 import com.example.sandboxv2.sandboxv2.services.QuizTakenService;
 
@@ -46,5 +47,10 @@ public class QuizTakenController {
     @DeleteMapping("/{quiztknID}") 
     public void deleteQuizTaken(@PathVariable Long quiztknID) {
         quizTakenService.deleteQuizTaken(quiztknID);
+    }
+
+        @GetMapping("/userQuizTkn/{quiztknID}")
+    public List<QuizDetailsDTO> getQuizDetailsByQuizTakenId(@PathVariable Long quiztknID) {
+        return quizTakenService.getQuizDetailsByQuizTakenId(quiztknID);
     }
 }
