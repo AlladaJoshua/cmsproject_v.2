@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/9"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -158,7 +158,7 @@ const CertificateGenerator = () => {
         second: "2-digit"
       });
       console.log(SerialformattedDate); // Add this line to log the formatted date
-      console.log(formattedTime); // Add this line to log the formatted date
+      console.log(formattedTime); // Add this line to log the formatted time
 
       // Serial number display PDF
       const serialNumber = Math.floor(Math.random() * 1000000);
