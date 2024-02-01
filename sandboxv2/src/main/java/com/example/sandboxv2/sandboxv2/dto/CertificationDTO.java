@@ -1,11 +1,14 @@
 package com.example.sandboxv2.sandboxv2.dto;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 
 public class CertificationDTO {
     private Long certificateID;
     private String serial_no;
     private Date date_issued;
+    private String time_issued;
     private String certificate_file;
     private String criteria;
     private Long quiztken_ID;
@@ -36,6 +39,14 @@ public class CertificationDTO {
     public void setDate_issued(Date date_issued) {
         this.date_issued = date_issued;
     }
+
+    public String getTime_issued() {
+        return this.time_issued;
+    }
+    public void setTime_issued(String time_issued) {
+        this.time_issued = time_issued;
+    }
+
 
     public String getCertificate_file() {
         return this.certificate_file;
