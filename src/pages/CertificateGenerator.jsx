@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/9"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -161,7 +161,16 @@ const CertificateGenerator = () => {
       console.log(formattedTime); // Add this line to log the formatted time
 
       // Serial number display PDF
-      const serialNumber = Math.floor(Math.random() * 1000000);
+      const generateSerialNumber = () => {
+        const min = 100000;
+        const max = 999999;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+
+      // Example usage
+      const serialNumber = generateSerialNumber();
+      console.log(serialNumber);
+
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
       doc.text(`B55-${SerialformattedDate}${serialNumber}`, 85, 158, {
