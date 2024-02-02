@@ -65,34 +65,50 @@ const Team_D_Verification = () => {
         </div>
         <div className="verification_search">
           <div className="left">
-          <h2>Verify Course Certificate</h2>
-          <Form.Control
-  size="sm"
-  type="text"
-  placeholder="Enter Serial Number"
-  value={code}
-  onChange={(e) => {
-    setCode(e.target.value.toUpperCase());
-    setIsValidSerial(false); // Reset isValidSerial on input change
-  }}
-  onKeyPress={(e) => {
-    if (e.key === "Enter") {
-      // Handle the "Enter" key press, e.g., trigger the verification function
-      handleVerify();
-    }
-  }}
-  style={{
-    borderColor: isValidSerial ? "#28a745" : errorMessage ? "#ff0000" : "#ced4da",
-    borderWidth: '1.5px', // Adjust the border width as needed
-    color: isValidSerial ? "#28a745" : "inherit", // Set font color to green when certified
-        }}
-        />
-        <Button
-          variant="primary"
-          className="verify"
-          onClick={handleVerify}
-          disabled={loading}
-        >
+            <h2>Verify Course Certificate</h2>
+            <Form.Control
+              size="sm"
+              type="text"
+              placeholder="Enter Serial Number"
+              value={code}
+              onClick={() => {
+                // Append "B55-" when the input field is clicked
+                setCode("B55-");
+                setIsValidSerial(false); // Reset isValidSerial on input click
+              }}
+              onChange={(e) => {
+                const inputValue = e.target.value
+                  .toUpperCase()
+                  .substring(0, 18); // Limit to 18 characters
+                setCode(inputValue);
+                setIsValidSerial(false); // Reset isValidSerial on input change
+              }}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  // Handle the "Enter" key press, e.g., trigger the verification function
+                  handleVerify();
+                }
+              }}
+              style={{
+                borderColor: isValidSerial
+                  ? "#28a745"
+                  : errorMessage
+                  ? "#ff0000"
+                  : "#ced4da",
+                borderWidth: "1.5px", // Adjust the border width as needed
+                color: isValidSerial
+                  ? "#28a745"
+                  : errorMessage
+                  ? "#ff0000"
+                  : "inherit" // Set font color to green when certified
+              }}
+            />
+            <Button
+              variant="primary"
+              className="verify"
+              onClick={handleVerify}
+              disabled={loading}
+            >
               {loading ? "Verifying..." : "Verify"}
             </Button>
           </div>
@@ -104,30 +120,18 @@ const Team_D_Verification = () => {
                   <>
                     <div className="nameVerification">
                       <Form.Label>Name</Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        readOnly
-                      />
+                      <Form.Control size="sm" type="text" readOnly />
                     </div>
                     <div className="serialVerification">
                       <Form.Label>
                         Certificate Serial No.{" "}
                         <AiFillSafetyCertificate className="icon" />
                       </Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        readOnly
-                      />
+                      <Form.Control size="sm" type="text" readOnly />
                     </div>
                     <div className="serialVerification">
                       <Form.Label>Course Certified</Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        readOnly
-                      />
+                      <Form.Control size="sm" type="text" readOnly />
                     </div>
                   </>
                 )}
