@@ -1,8 +1,6 @@
 package com.example.sandboxv2.sandboxv2.entity;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
