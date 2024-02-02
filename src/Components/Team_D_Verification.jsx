@@ -72,9 +72,11 @@ const Team_D_Verification = () => {
               placeholder="Enter Serial Number"
               value={code}
               onClick={() => {
-                // Append "B55-" when the input field is clicked
-                setCode("B55-");
-                setIsValidSerial(false); // Reset isValidSerial on input click
+                // Append "B55-" only if the input is empty
+                if (!code) {
+                  setCode("B55-");
+                  setIsValidSerial(false); // Reset isValidSerial on input click
+                }
               }}
               onChange={(e) => {
                 const inputValue = e.target.value
