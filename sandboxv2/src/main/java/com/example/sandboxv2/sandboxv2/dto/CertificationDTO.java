@@ -1,8 +1,6 @@
 package com.example.sandboxv2.sandboxv2.dto;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalTime;
 
 public class CertificationDTO {
     private Long certificateID;
