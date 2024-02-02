@@ -4,15 +4,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import warningErr from "../assets/icons8-warning-96.png";
-import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
+import Team_D_HeaderLanding from './Team_D_HeaderLanding';
 
 const Team_D_Verification = () => {
   const [code, setCode] = useState("");
   const [verificationResult, setVerificationResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const isValidSerial = !errorMessage;
+  const [isValidSerial, setIsValidSerial] = useState(false);
 
   const handleVerify = async () => {
     setLoading(true);
@@ -27,9 +26,11 @@ const Team_D_Verification = () => {
           setErrorMessage(
             "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
           );
+          setIsValidSerial(false);
         } else {
           setVerificationResult(data);
           setErrorMessage(""); // Clear previous error message if any
+          setIsValidSerial(true);
         }
       } else {
         // Handle non-200 status codes
@@ -38,6 +39,7 @@ const Team_D_Verification = () => {
           setErrorMessage(
             "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
           );
+          setIsValidSerial(false);
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -49,11 +51,11 @@ const Team_D_Verification = () => {
       setErrorMessage(
         "An error occurred while verifying the certificate. Please try again."
       );
+      setIsValidSerial(false);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div>
       <Team_D_HeaderLanding />
