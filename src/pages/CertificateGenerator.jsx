@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/1"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -109,7 +109,9 @@ const CertificateGenerator = () => {
       });
 
       // Date display small on bottom left
-      const formattedDate = newDate.toISOString("en-US", { timeZone: "Asia/Manila" }).split("T")[0]; // Formats as "YYYY-MM-DD"
+      const formattedDate = newDate
+        .toISOString("en-US", { timeZone: "Asia/Manila" })
+        .split("T")[0]; // Formats as "YYYY-MM-DD"
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
       doc.text(`${formattedDate}`, 90, 154, { align: "right" });
@@ -196,11 +198,30 @@ const CertificateGenerator = () => {
       doc.setTextColor(162, 123, 66);
       doc.text(`${calculatedCreditHours} hrs`, 72, 167.2, { align: "left" });
 
+      // Function to replace spaces with underscores and capitalize next word
+      const formatCourseName = (course) => {
+        const words = course.split(" ");
+
+        // Replace spaces with underscores and capitalize the next word
+        const formattedCourse = words
+          .map((word, index) =>
+            index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+          )
+          .join("-");
+
+        return formattedCourse;
+      };
+
       // Save the PDF file to send to the backend
-      const nameWithoutSpaces = name.replace(/\s+/g, '');
-      const pdfFile = new File([doc.output("blob")], `${nameWithoutSpaces}_${course}.pdf`, {
-        type: "application/pdf"
-      });
+      const formattedCourse = formatCourseName(course);
+      const nameWithoutSpaces = name.replace(/\s+/g, "");
+      const pdfFile = new File(
+        [doc.output("blob")],
+        `${nameWithoutSpaces}_${formattedCourse}.pdf`,
+        {
+          type: "application/pdf"
+        }
+      );
 
       // Create form data to send the file to the backend
       const formDataToSend = new FormData();
