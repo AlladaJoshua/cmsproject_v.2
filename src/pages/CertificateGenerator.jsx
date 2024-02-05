@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/6"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -92,34 +92,31 @@ const CertificateGenerator = () => {
       const coursePosition = 140 + (245 - 140) / 2 - courseTextWidth / 2;
       doc.text(course, coursePosition, 117, { align: "left" });
 
-      // Date "Month/Day/Year" display PDF
       const newDate = new Date();
-      const options = { year: "numeric", month: "long", day: "numeric" };
+      const options = { year: "numeric", month: "long", day: "2-digit" };
+
+      // Formatted date for display
       const formattedNewDate = newDate.toLocaleDateString(undefined, options);
 
       doc.setFontSize(17);
       doc.setTextColor(162, 123, 66);
 
-      // Use a fixed position instead of coursePosition
-      const datePositionX = 101; // Adjust this value as needed
+      const datePositionX = 101;
       const datePositionY = 128;
 
       doc.text(`${formattedNewDate}`, datePositionX, datePositionY, {
         align: "left"
       });
 
-      // Date display small on bottom left
-      const formattedDate = newDate
-        .toISOString("en-US", { timeZone: "Asia/Manila" })
-        .split("T")[0]; // Formats as "YYYY-MM-DD"
+      // Formatted date for small display
+      const formattedDate = newDate.toLocaleDateString("en-CA"); // Formats as "YYYY-MM-DD"
+
       doc.setFontSize(11);
       doc.setTextColor(162, 123, 66);
       doc.text(`${formattedDate}`, 90, 154, { align: "right" });
 
-      const SerialformattedDate = newDate
-        .toISOString()
-        .split("T")[0]
-        .replace(/-/g, ""); // Formats as "YYYYMMDD"
+      // Formatted date for serializing
+      const SerialformattedDate = formattedDate.replace(/-/g, ""); // Formats as "YYYYMMDD"
 
       console.log(formattedNewDate);
       console.log(formattedDate);
@@ -207,7 +204,7 @@ const CertificateGenerator = () => {
           .map((word, index) =>
             index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
           )
-          .join("-");
+          .join("_");
 
         return formattedCourse;
       };
