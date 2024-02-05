@@ -108,6 +108,21 @@ const CertificateGenerator = () => {
         align: "left"
       });
 
+      // Date display small on bottom left
+      const formattedDate = newDate.toISOString("en-US", { timeZone: "Asia/Manila" }).split("T")[0]; // Formats as "YYYY-MM-DD"
+      doc.setFontSize(11);
+      doc.setTextColor(162, 123, 66);
+      doc.text(`${formattedDate}`, 90, 154, { align: "right" });
+
+      const SerialformattedDate = newDate
+        .toISOString()
+        .split("T")[0]
+        .replace(/-/g, ""); // Formats as "YYYYMMDD"
+
+      console.log(formattedNewDate);
+      console.log(formattedDate);
+      console.log(SerialformattedDate);
+
       // Instructor name display PDF
       doc.setFontSize(14);
       doc.setTextColor(0, 0, 0);
@@ -137,27 +152,13 @@ const CertificateGenerator = () => {
       doc.setTextColor(162, 123, 66);
       doc.text(`B55-00${courseCode}`, 73, 163, { align: "left" });
 
-      // Date display small on bottom left
-      const currentDate = new Date();
-      const formattedDate = currentDate.toISOString().split("T")[0]; // Formats as "YYYY-MM-DD"
-      doc.setFontSize(11);
-      doc.setTextColor(162, 123, 66);
-      doc.text(`${formattedDate}`, 90, 154, { align: "right" });
-
-      console.log(formattedDate);
-
-      const SerialcurrentDate = new Date();
-      const SerialformattedDate = SerialcurrentDate.toISOString()
-        .split("T")[0]
-        .replace(/-/g, ""); // Formats as "YYYYMMDD"
-
       const currentDateTime = new Date();
       const formattedTime = currentDateTime.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit"
       });
-      console.log(SerialformattedDate); // Add this line to log the formatted date
+
       console.log(formattedTime); // Add this line to log the formatted time
 
       // Serial number display PDF
@@ -180,7 +181,7 @@ const CertificateGenerator = () => {
       const startDate = new Date(creditHours);
 
       // Calculate the time difference in milliseconds
-      const timeDifference = currentDate.getTime() - startDate.getTime();
+      const timeDifference = newDate.getTime() - startDate.getTime();
 
       // Calculate the number of days
       const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
