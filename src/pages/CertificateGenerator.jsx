@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/15"
+          "http://localhost:8080/api/quizTkn/userQuizTkn/1"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -197,7 +197,8 @@ const CertificateGenerator = () => {
       doc.text(`${calculatedCreditHours} hrs`, 72, 167.2, { align: "left" });
 
       // Save the PDF file to send to the backend
-      const pdfFile = new File([doc.output("blob")], `${name}-${course}.pdf`, {
+      const nameWithoutSpaces = name.replace(/\s+/g, '');
+      const pdfFile = new File([doc.output("blob")], `${nameWithoutSpaces}_${course}.pdf`, {
         type: "application/pdf"
       });
 
