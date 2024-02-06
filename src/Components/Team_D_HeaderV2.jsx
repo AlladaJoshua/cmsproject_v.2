@@ -34,6 +34,8 @@ const Team_D_HeaderV2 = () => {
     };
   }, [clicked]);
 
+
+  
   return (
     <>
       <nav className="navbar_TeamD">
@@ -110,6 +112,15 @@ const Team_D_HeaderV2 = () => {
                 onClick={closeMobileNavbar}
               >
                 Verification
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/landing"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
+                <FiLogOut />Log Out
               </NavLink>
             </li>
           </ul>

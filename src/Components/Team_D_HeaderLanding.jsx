@@ -22,13 +22,26 @@ const Team_D_HeaderLanding = () => {
       <Navbar.Brand as={Link} to="/" onClick={closeNavbar}>
         <img src={TsukidenLogo} alt="Logo" />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggle} />
+      <Navbar.Toggle
+        aria-controls="responsive-navbar-nav"
+        onClick={handleToggle}
+      />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link as={NavLink} to="/about" activeClassName="active" onClick={closeNavbar}>
+          <Nav.Link
+            as={NavLink}
+            to="/about"
+            activeClassName="active"
+            onClick={closeNavbar}
+          >
             About
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/verif_nonuser" activeClassName="active" onClick={closeNavbar}>
+          <Nav.Link
+            as={NavLink}
+            to="/verif_nonuser"
+            activeClassName="active"
+            onClick={closeNavbar}
+          >
             Verification
           </Nav.Link>
         </Nav>
