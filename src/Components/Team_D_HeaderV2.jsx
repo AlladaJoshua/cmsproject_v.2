@@ -114,7 +114,7 @@ const Team_D_HeaderV2 = () => {
                 Verification
               </NavLink>
             </li>
-            <li>
+            <li className="d-md-none">
               <NavLink
                 to="/landing"
                 activeClassName="active"
