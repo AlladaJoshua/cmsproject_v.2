@@ -56,6 +56,8 @@ const Team_D_Verification = () => {
       setLoading(false);
     }
   };
+
+  
   return (
     <div>
       <Team_D_HeaderV2 />

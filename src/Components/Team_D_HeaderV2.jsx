@@ -34,6 +34,8 @@ const Team_D_HeaderV2 = () => {
     };
   }, [clicked]);
 
+
+  
   return (
     <>
       <nav className="navbar_TeamD">

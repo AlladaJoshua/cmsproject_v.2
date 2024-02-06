@@ -81,7 +81,7 @@ const Team_D_Content = () => {
 
           const renderContext = {
             canvasContext: context,
-            viewport: viewport,
+            viewport: viewport
           };
 
           await page.render(renderContext).promise;
@@ -111,7 +111,7 @@ const Team_D_Content = () => {
     const handleOnline = () => {
       setShowNotification({
         type: "info",
-        message: "You are back online! You can now download certificates.",
+        message: "You are back online! You can now download certificates."
       });
 
       setTimeout(() => {
@@ -122,7 +122,7 @@ const Team_D_Content = () => {
     const handleOffline = () => {
       setShowNotification({
         type: "danger",
-        message: "You are currently offline. Please connect to the internet.",
+        message: "You are currently offline. Please connect to the internet."
       });
 
       setTimeout(() => {
@@ -158,7 +158,7 @@ const Team_D_Content = () => {
       setShowNotification({
         type: "danger",
         message:
-          "You are currently offline. Please connect to the internet and try again.",
+          "You are currently offline. Please connect to the internet and try again."
       });
       setTimeout(() => {
         setShowNotification(null);
@@ -174,14 +174,14 @@ const Team_D_Content = () => {
     link.addEventListener("abort", () => {
       setShowNotification({
         type: "danger",
-        message: "Download aborted. Please try again.",
+        message: "Download aborted. Please try again."
       });
     });
 
     link.addEventListener("error", () => {
       setShowNotification({
         type: "danger",
-        message: "Error during download. Please try again.",
+        message: "Error during download. Please try again."
       });
     });
 
@@ -189,7 +189,7 @@ const Team_D_Content = () => {
 
     setShowNotification({
       type: "success",
-      message: "Download successful!",
+      message: "Download successful!"
     });
 
     setDisableDownloadButtons((prevButtons) =>
@@ -248,7 +248,7 @@ const Team_D_Content = () => {
 
     setShowNotification({
       type: "info",
-      message: "Viewing is disabled for 5 seconds.",
+      message: "Viewing is disabled for 5 seconds."
     });
 
     setDisableViewButtons((prevButtons) =>
@@ -326,7 +326,7 @@ const Team_D_Content = () => {
                     to="/viewCert"
                     state={{
                       pdfName: pdfFile.certificate_file,
-                      courseTitle: pdfFile.quizTaken.quiz.course.title,
+                      courseTitle: pdfFile.quizTaken.quiz.course.title
                     }}
                     id={`viewLink_${index}`}
                   >
@@ -352,7 +352,7 @@ const Team_D_Content = () => {
                           to="/viewCert"
                           state={{
                             pdfName: pdfFile.certificate_file,
-                            courseTitle: pdfFile.quizTaken.quiz.course.title,
+                            courseTitle: pdfFile.quizTaken.quiz.course.title
                           }}
                         >
                           <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -362,7 +362,7 @@ const Team_D_Content = () => {
                               style={{
                                 pointerEvents: overlayVisibilities[index]
                                   ? "auto"
-                                  : "none",
+                                  : "none"
                               }}
                               onClick={handleViewClick(index)}
                             >
@@ -379,7 +379,7 @@ const Team_D_Content = () => {
                             style={{
                               pointerEvents: overlayVisibilities[index]
                                 ? "auto"
-                                : "none",
+                                : "none"
                             }}
                             onClick={handleDownloadClick(index)}
                             disabled={
@@ -395,12 +395,15 @@ const Team_D_Content = () => {
                   </div>
                 )}
               </div>
-              <p style={{textTransform: 'capitalize'}}>{pdfFile.quizTaken.quiz.course.title}</p>
+              <p style={{ textTransform: "capitalize" }}>
+                {pdfFile.quizTaken.quiz.course.title}
+              </p>
             </div>
           ))
         ) : (
           <div className="no-certificates">
-            <img src={NoCert} alt="No certificatin yet" /> No certificate available.
+            <img src={NoCert} alt="No certificatin yet" /> No certificate
+            available.
           </div>
         )}
       </section>
@@ -413,7 +416,7 @@ const Team_D_Content = () => {
             position: "fixed",
             top: "10px",
             right: "10px",
-            zIndex: 1000,
+            zIndex: 1000
           }}
         >
           {showNotification.message}
@@ -432,7 +435,7 @@ const Team_D_Content = () => {
           borderRadius: "100px",
           border: "1px solid #ccc",
           background: "#fff",
-          padding: "15px",
+          padding: "15px"
         }}
       >
         <FaArrowUp />

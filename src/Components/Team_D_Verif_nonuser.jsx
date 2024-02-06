@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import warningErr from "../assets/icons8-warning-96.png";
-import Team_D_HeaderLanding from './Team_D_HeaderLanding';
+import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
 
 const Team_D_Verification = () => {
   const [code, setCode] = useState("");
@@ -72,9 +72,11 @@ const Team_D_Verification = () => {
               placeholder="Enter Serial Number"
               value={code}
               onClick={() => {
-                // Append "B55-" when the input field is clicked
-                setCode("B55-");
-                setIsValidSerial(false); // Reset isValidSerial on input click
+                // Append "B55-" only if the input is empty
+                if (!code) {
+                  setCode("B55-");
+                  setIsValidSerial(false); // Reset isValidSerial on input click
+                }
               }}
               onChange={(e) => {
                 const inputValue = e.target.value
