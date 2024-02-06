@@ -114,6 +114,15 @@ const Team_D_HeaderV2 = () => {
                 Verification
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/landing"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
+                <FiLogOut />Log Out
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div id="mobile" onClick={handleClick}>
