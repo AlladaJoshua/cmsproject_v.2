@@ -131,7 +131,7 @@
 }
 
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1025px) {
     .navbar_TeamD {
         justify-content: space-between;
     }
@@ -253,5 +253,13 @@
 
       .profile_link {
         display: block;
+    }
+    .profile_link .teamD_LogOut_Btn {
+        color: #BF3131;
+    }
+
+    .profile_link .teamD_LogOut_Btn:hover,
+    .profile_link .teamD_LogOut_Btn:active {
+        color: #fd0f0f;
     }
 }
