@@ -68,7 +68,7 @@ const Team_D_HeaderV2 = () => {
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
-                Certificate
+                My Certificate
               </NavLink>
             </li>
             <li className="divider"></li>
