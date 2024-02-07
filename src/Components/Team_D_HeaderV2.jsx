@@ -89,7 +89,7 @@ const Team_D_HeaderV2 = () => {
                 className="mycourse_dd"
               >
                 <NavDropdown.Item href="#action/3.1" activeClassName="active">
-                  Problem Overview
+                  Program Overview
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/certGen" activeClassName="active">
                   Assessment
@@ -114,13 +114,14 @@ const Team_D_HeaderV2 = () => {
                 Verification
               </NavLink>
             </li>
-            <li className="d-md-none">
+            <li className="profile_link">
               <NavLink
                 to="/landing"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
+                
               >
-                <FiLogOut />Log Out
+              <span className="teamD_LogOut_Btn">Log Out</span>
               </NavLink>
             </li>
           </ul>
