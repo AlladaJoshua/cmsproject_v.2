@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/14"    
+          "http://localhost:8080/api/quizTkn/userQuizTkn/16"    
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
