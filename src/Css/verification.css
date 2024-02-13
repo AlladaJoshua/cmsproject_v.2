@@ -1,230 +1,260 @@
+/* Styles for verification container */
 .verification_container {
-    padding: 15px 75px 0 75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 60px;
+    padding: 15px 75px 0 75px; /* Padding */
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    flex-direction: column; /* Column layout */
+    gap: 60px; /* Gap between elements */
 }
 
+/* Positioning styles for verification container and its children */
 .verification_container {
-    position: relative;
-  }
+    position: relative; /* Relative positioning */
+}
   
-  .verification_title,
-  .verification_search,
-  .verification_table {
-    position: absolute;
-    width: 100%;
-  }
-  
-  .verification_title {
-    top: 0;
-    background-color: #BCE8B1; /* Set your desired background color */
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 15px;
-    height: 191px;
-  }
+.verification_title,
+.verification_search,
+.verification_table {
+    position: absolute; /* Absolute positioning */
+    width: 100%; /* Full width */
+}
 
+/* Styles for verification title */
+.verification_title {
+    top: 0; /* Align to the top */
+    background-color: #BCE8B1; /* Background color */
+    display: flex; /* Display as flex */
+    align-items: flex-start; /* Align items */
+    justify-content: center; /* Justify content */
+    padding-top: 15px; /* Padding */
+    height: 191px; /* Height */
+}
+
+/* Styles for verification search container */
 .verification_search {
-    bottom: -360px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 75%;
-    height: 285px;
-    border-radius: 15px;
+    bottom: -360px; /* Align to the bottom */
+    display: flex; /* Display as flex */
+    flex-direction: row; /* Row layout */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    width: 75%; /* 75% width */
+    height: 285px; /* Height */
+    border-radius: 15px; /* Border radius */
 }
 
+/* Styles for left section of verification search */
 .left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 30px;
-    width: 50%;
-    height: 100%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    display: flex; /* Display as flex */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
+    gap: 30px; /* Gap between elements */
+    flex-direction: column; /* Column layout */
+    background-color: #fff; /* Background color */
+    padding: 30px; /* Padding */
+    width: 50%; /* 50% width */
+    height: 100%; /* Height */
+    border-top-left-radius: 15px; /* Border radius */
+    border-bottom-left-radius: 15px; /* Border radius */
 }
 
+/* Styles for right section of verification search */
 .right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;
-    background-color: #0E3B03;
-    padding: 30px;
-    width: 50%;
-    height: 100%;
-    color: #fff;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    display: flex; /* Display as flex */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
+    gap: 20px; /* Gap between elements */
+    flex-direction: column; /* Column layout */
+    background-color: #0E3B03; /* Background color */
+    padding: 30px; /* Padding */
+    width: 50%; /* 50% width */
+    height: 100%; /* Height */
+    color: #fff; /* Text color */
+    border-top-right-radius: 15px; /* Border radius */
+    border-bottom-right-radius: 15px; /* Border radius */
 }
 
+/* Styles for name verification section */
 .nameVerification {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 75%;
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Column layout */
+    justify-content: center; /* Justify content */
+    align-items: flex-start; /* Align items */
+    width: 75%; /* 75% width */
 }
 
+/* Styles for serial verification section */
 .serialVerification {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 75%;
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Column layout */
+    justify-content: center; /* Justify content */
+    align-items: flex-start; /* Align items */
+    width: 75%; /* 75% width */
 }
 
+/* Additional styles for search section */
 .verification_search .left h2 {
-    color: #0E3B03;
+    color: #0E3B03; /* Text color */
 }
 
+/* Styles for form control in search section */
 .verification_search .left .form-control {
-    width: 75%;
-    height: 45px;
+    width: 75%; /* 75% width */
+    height: 45px; /* Height */
 } 
 
+/* Styles for verify button in search section */
 .verification_search .verify {
-    background-color: #2ecc71;
-    color: #fff;
-    border-radius: 15px;
-    border: 1.5px solid #2ecc71;
-    text-align: center;
-    width: 95px;
+    background-color: #2ecc71; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 15px; /* Border radius */
+    border: 1.5px solid #2ecc71; /* Border */
+    text-align: center; /* Text alignment */
+    width: 95px; /* Width */
 }
 
+/* Hover styles for verify button */
 .verification_search .verify:hover {
-    background-color: white;
-    color: #16A765;
-    /* outline: #16A765 solid 2px; */
-    border: #16A765 solid 1.5px;
+    background-color: white; /* Background color on hover */
+    color: #16A765; /* Text color on hover */
+    border: #16A765 solid 1.5px; /* Border on hover */
 }
 
+/* Active styles for verify button */
 .verification_search .verify:active {
-    background-color: #2ecc71 !important;
-    color: #fff;
-    border: 1.5px solid #2ecc71 !important;
+    background-color: #2ecc71 !important; /* Background color on active */
+    color: #fff; /* Text color on active */
+    border: 1.5px solid #2ecc71 !important; /* Border on active */
 }
 
+/* Styles for icon in serial verification */
 .serialVerification .icon {
-    color: #2ecc71;
-    width: 20px;
-    height: 20px;
+    color: #2ecc71; /* Icon color */
+    width: 20px; /* Width */
+    height: 20px; /* Height */
 }
 
-  @media only screen and (max-width: 425px) and (min-width: 320px) {
+/* Media query for small screens */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    /* Adjustments for search section on small screens */
     .verification_search {
-        bottom: -400px ;
-        flex-direction: column;
-        width: 100%;
+        bottom: -400px ; /* Positioning */
+        flex-direction: column; /* Column layout */
+        width: 100%; /* Full width */
     }
 
+    /* Adjustments for left section on small screens */
     .verification_search .left {
-        width: 75%;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 15px;
-        gap: 10px;
+        width: 75%; /* 75% width */
+        border-bottom-left-radius: 0; /* Border radius */
+        border-top-right-radius: 15px; /* Border radius */
+        gap: 10px; /* Gap between elements */
     }
 
+    /* Adjustments for right section on small screens */
     .verification_search .right {
-        width: 75%;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 15px;
-        justify-content: center;
-        align-items: center;
+        width: 75%; /* 75% width */
+        border-top-right-radius: 0; /* Border radius */
+        border-bottom-left-radius: 15px; /* Border radius */
+        justify-content: center; /* Justify content */
+        align-items: center; /* Align items */
     }
 
+    /* Font size adjustments for small screens */
     .verification_search .right .form-label {
-        font-size: 12px;
+        font-size: 12px; /* Font size */
     }
 
     .verification_search .left h2 {
-        font-size: 12px;
+        font-size: 12px; /* Font size */
     }
 
     .verification_search h2 {
-        font-size: 18px;
-        gap: 15px;
+        font-size: 18px; /* Font size */
+        gap: 15px; /* Gap between elements */
     }
 
+    /* Width adjustments for form control on small screens */
     .verification_search .left .form-control {
-        width: 100%;
-        height: 20px;
+        width: 100%; /* Full width */
+        height: 20px; /* Height */
     } 
-  }
+}
 
-  @media only screen and (max-width: 768px) and (min-width: 425px) {
+/* Media query for medium screens */
+@media only screen and (max-width: 768px) and (min-width: 425px) {
+    /* Adjustments for search section on medium screens */
     .verification_search {
-        bottom: -405px;
-        flex-direction: column;
-        width: 100%;
+        bottom: -405px; /* Positioning */
+        flex-direction: column; /* Column layout */
+        width: 100%; /* Full width */
     }
 
+    /* Adjustments for left section on medium screens */
     .verification_search .left {
-        width: 75%;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 15px;
-        gap: 10px;
+        width: 75%; /* 75% width */
+        border-bottom-left-radius: 0; /* Border radius */
+        border-top-right-radius: 15px; /* Border radius */
+        gap: 10px; /* Gap between elements */
     }
 
+    /* Adjustments for right section on medium screens */
     .verification_search .right {
-        width: 75%;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 15px;
-        justify-content: center;
-        align-items: center;
+        width: 75%; /* 75% width */
+        border-top-right-radius: 0; /* Border radius */
+        border-bottom-left-radius: 15px; /* Border radius */
+        justify-content: center; /* Justify content */
+        align-items: center; /* Align items */
     }
 
+    /* Font size adjustments for medium screens */
     .verification_search .right .form-label {
-        font-size: 12px;
+        font-size: 12px; /* Font size */
     }
 
     .verification_search .left h2 {
-        font-size: 16px;
+        font-size: 16px; /* Font size */
     }
 
     .verification_search h2 {
-        font-size: 18px;
-        gap: 15px;
+        font-size: 18px; /* Font size */
+        gap: 15px; /* Gap between elements */
     }
 
+    /* Width adjustments for form control on medium screens */
     .verification_search .left .form-control {
-        width: 100%;
-        height: 20px;
+        width: 100%; /* Full width */
+        height: 20px; /* Height */
     }
+}
 
-  }
+/* Additional styles for error message in right section */
+.verification_container .right .error-message {
+    display: flex; /* Display as flex */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
+    flex-direction: column; /* Column layout */
+    gap: 20px; /* Gap between elements */
+    text-align: center; /* Text alignment */
+}
 
-  .verification_container .right .error-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
+/* Styles for error message image */
+.verification_container .right .error-message img {
+    width: 20%; /* Width */
+}
 
-  .verification_container .right .error-message img {
-    width: 20%;
-  }
-
-  @media only screen and (max-width: 1024px) and (min-width: 769px) {
+/* Media query for large screens */
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    /* Font size adjustments for large screens */
     .verification_search .left h2 {
-        font-size: 23px;
+        font-size: 23px; /* Font size */
     }
-  }
+}
 
-  @media only screen and (max-width: 1439px) and (min-width: 1025px) {
+/* Media query for extra-large screens */
+@media only screen and (max-width: 1439px) and (min-width: 1025px) {
+    /* Font size adjustments for extra-large screens */
     .verification_search .left h2 {
-        font-size: 28px;
+        font-size: 28px; /* Font size */
     }
-  }
+}

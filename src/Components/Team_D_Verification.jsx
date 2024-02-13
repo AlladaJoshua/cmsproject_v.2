@@ -57,9 +57,9 @@ const Team_D_Verification = () => {
     }
   };
 
-  
   return (
     <div>
+      {/* Team D header component */}
       <Team_D_HeaderV2 />
       <section className="verification_container">
         <div className="verification_title">
@@ -68,6 +68,7 @@ const Team_D_Verification = () => {
         <div className="verification_search">
           <div className="left">
             <h2>Verify Course Certificate</h2>
+            {/* Serial number input field */}
             <Form.Control
               size="sm"
               type="text"
@@ -107,6 +108,7 @@ const Team_D_Verification = () => {
                   : "inherit" // Set font color to green when certified
               }}
             />
+            {/* Verify button */}
             <Button
               variant="primary"
               className="verify"
@@ -119,9 +121,10 @@ const Team_D_Verification = () => {
           <div className="right">
             {!loading && (
               <>
-                {/* Only render the first set of input boxes if verificationResult doesn't exist */}
+                {/* Render certificate information */}
                 {!verificationResult && !errorMessage && (
                   <>
+                    {/* Render input boxes if verificationResult doesn't exist */}
                     <div className="nameVerification">
                       <Form.Label>Name</Form.Label>
                       <Form.Control size="sm" type="text" readOnly />
@@ -139,7 +142,7 @@ const Team_D_Verification = () => {
                     </div>
                   </>
                 )}
-                {/* Render the second set of input boxes if verificationResult exists */}
+                {/* Render certificate information if verificationResult exists */}
                 {verificationResult && verificationResult.length > 0 && (
                   <>
                     <div className="nameVerification">
@@ -174,6 +177,7 @@ const Team_D_Verification = () => {
                     </div>
                   </>
                 )}
+                {/* Render error message if any */}
                 {errorMessage && (
                   <div className="error-message">
                     <img src={warningErr} alt="warningErr" />

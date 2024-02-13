@@ -1,102 +1,113 @@
-
+/* Styles for the navbar */
 .navbar {
-    background-color: #D9FFCF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: +100;
-  }
-  
-  .navbar-brand img {
-    height: 50px; 
-  }
-  
- 
-  .navbar-nav {
-    margin-left: auto;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    color: #333333;
-    font-weight: 500;
-    margin-right: 20px;
-  }
-  
-  .nav-link:hover {
-    color: #126912; 
-  }
-  
-  .btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-  }
+  background-color: #D9FFCF; /* Background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  z-index: +100; /* Z-index */
+}
 
+/* Styles for the navbar brand image */
+.navbar-brand img {
+  height: 50px; /* Height of the image */
+}
+
+/* Styles for the navbar navigation */
+.navbar-nav {
+  margin-left: auto; /* Align to the right */
+}
+
+/* Styles for nav links */
+.nav-link {
+  text-decoration: none; /* Remove underline */
+  color: #333333; /* Text color */
+  font-weight: 500; /* Font weight */
+  margin-right: 20px; /* Margin between links */
+}
+
+/* Hover styles for nav links */
+.nav-link:hover {
+  color: #126912; /* Text color on hover */
+}
+
+/* Styles for buttons container */
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px; /* Gap between buttons */
+}
+
+/* Styles for login button */
 .login_btn{
-    background-color: #126912;
-    padding: 5px;
-    color: white;
-    border-radius: 10px;
+  background-color: #126912; /* Background color */
+  padding: 5px; /* Padding */
+  color: white; /* Text color */
+  border-radius: 10px; /* Border radius */
 }
 
+/* Styles for registration button */
 .reg_btn{
-    background-color: #126912;
-    padding: 5px;
-    color: white;
-    border-radius: 10px;
+  background-color: #126912; /* Background color */
+  padding: 5px; /* Padding */
+  color: white; /* Text color */
+  border-radius: 10px; /* Border radius */
 }
 
+/* Hover styles for login button */
 .login_btn:hover{
-  background-color:  #ffffff ;
-  color: #126912;
-  border-color: #126912;
+  background-color:  #ffffff ; /* Background color on hover */
+  color: #126912; /* Text color on hover */
+  border-color: #126912; /* Border color on hover */
 }
 
+/* Hover styles for registration button */
 .reg_btn:hover{
-    background-color:  #ffffff ;
-    color: #126912;
-    border-color: #126912;
-  }
-  
-  button {
-    margin-left: 20px;
-    padding: 8px 15px;
-    font-size: 14px;
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-nav {
+  background-color:  #ffffff ; /* Background color on hover */
+  color: #126912; /* Text color on hover */
+  border-color: #126912; /* Border color on hover */
+}
+
+/* General styles for buttons */
+button {
+  margin-left: 20px; /* Margin between buttons */
+  padding: 8px 15px; /* Padding */
+  font-size: 14px; /* Font size */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  /* Styles for navbar navigation on smaller screens */
+  .navbar-nav {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-      
-    }
-    
-    .navbar-collapse {
-      background: rgba( 217, 255, 207, 0.65 );
-      box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 );
-      backdrop-filter: blur( 9px );
-      -webkit-backdrop-filter: blur( 9px );
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-    }
-  
-    .navbar-nav .nav-link {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    .btns {
-      margin-top: 10px;
-      flex-direction: row;
-      font-size: 14px;
-    }
-
-
-    button {
-        margin-right: 10px;
-    }
-  
+      align-items: center; /* Center alignment */
+      margin-top: 10px; /* Margin from the top */
   }
   
+  /* Styles for navbar collapse */
+  .navbar-collapse {
+      background: rgba( 217, 255, 207, 0.65 ); /* Background color */
+      box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 ); /* Box shadow */
+      backdrop-filter: blur( 9px ); /* Backdrop filter */
+      -webkit-backdrop-filter: blur( 9px ); /* Webkit backdrop filter */
+      border-bottom-left-radius: 25px; /* Border radius */
+      border-bottom-right-radius: 25px; /* Border radius */
+  }
+
+  /* Styles for nav links on smaller screens */
+  .navbar-nav .nav-link {
+      margin-right: 0; /* No margin on the right */
+      margin-bottom: 10px; /* Margin at the bottom */
+  }
+
+  /* Styles for buttons container on smaller screens */
+  .btns {
+      margin-top: 10px; /* Margin from the top */
+      flex-direction: row; /* Row layout */
+      font-size: 14px; /* Font size */
+  }
+
+  /* Additional styles for buttons on smaller screens */
+  button {
+      margin-right: 10px; /* Margin on the right */
+  }
+}
