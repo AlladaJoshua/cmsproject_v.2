@@ -26,10 +26,6 @@ public class CertificationService {
         return certificationRepository.findByUserId(user_ID);
     }
 
-    public List<VerificationResponse> getCertificationDetailsBySerialNumber(String serial_no) {
-        return certificationRepository.findBySerialNumberWithDetails(serial_no);
-    }
-
     public Certification savCertification(Certification certification) {
         return certificationRepository.save(certification);
     }

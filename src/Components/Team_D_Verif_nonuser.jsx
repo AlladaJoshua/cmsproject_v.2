@@ -17,7 +17,7 @@ const Team_D_Verification = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:8080/api/certifications/verifyCertificate/${code}`
+        `http://localhost:8080/api/verifications/verifyCertificate/${code}`
       );
       if (response.ok) {
         const data = await response.json();

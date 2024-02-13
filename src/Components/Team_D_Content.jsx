@@ -48,7 +48,7 @@ const Team_D_Content = () => {
     try {
       // Replace 'apiEndpoint' with your actual API endpoint to fetch PDF file names
       const response = await fetch(
-        "http://localhost:8080/api/certifications/myCertification/4"
+        "http://localhost:8080/api/certifications/myCertification/3"
       );
       const data = await response.json();
       if (data) {
