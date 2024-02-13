@@ -1,36 +1,42 @@
 package com.example.sandboxv2.sandboxv2.services;
 
+// Importing necessary classes/interfaces for the CertificationService
+import com.example.sandboxv2.sandboxv2.entity.Certification;
+import com.example.sandboxv2.sandboxv2.repository.CertificationRepository;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.sandboxv2.sandboxv2.dto.VerificationResponse;
-import com.example.sandboxv2.sandboxv2.entity.Certification;
-import com.example.sandboxv2.sandboxv2.repository.CertificationRepository;
-
+// Service class for handling Certification-related business logic
 @Service
 public class CertificationService {
-    @Autowired
-    private CertificationRepository certificationRepository;
 
-    public List<Certification> getAllCertification() {
-        return certificationRepository.findAll();
-    }
+  // Autowiring CertificationRepository for data access
+  @Autowired
+  private CertificationRepository certificationRepository;
 
-    public Certification getCertificationId(Long certificateID) {
-        return certificationRepository.findById(certificateID).orElse(null);
-    }
+  // Method to retrieve all certifications
+  public List<Certification> getAllCertification() {
+    return certificationRepository.findAll();
+  }
 
-    public List<Certification> getCertificationByUserId(Long user_ID) {
-        return certificationRepository.findByUserId(user_ID);
-    }
+  // Method to retrieve a certification by its ID
+  public Certification getCertificationId(Long certificateID) {
+    return certificationRepository.findById(certificateID).orElse(null);
+  }
 
-    public Certification savCertification(Certification certification) {
-        return certificationRepository.save(certification);
-    }
+  // Method to retrieve certifications for a specific user
+  public List<Certification> getCertificationByUserId(Long user_ID) {
+    return certificationRepository.findByUserId(user_ID);
+  }
 
-    public void deleteCertification(Long certificateID) {
-        certificationRepository.deleteById(certificateID);
-    }
+  // Method to save a new certification
+  public Certification savCertification(Certification certification) {
+    return certificationRepository.save(certification);
+  }
+
+  // Method to delete a certification by its ID
+  public void deleteCertification(Long certificateID) {
+    certificationRepository.deleteById(certificateID);
+  }
 }
