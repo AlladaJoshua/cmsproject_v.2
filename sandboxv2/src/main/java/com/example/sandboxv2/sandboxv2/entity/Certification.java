@@ -1,98 +1,105 @@
 package com.example.sandboxv2.sandboxv2.entity;
 
-import java.sql.Date;
-
+// Annotations for JPA (Java Persistence API) mapping
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne; 
+import jakarta.persistence.ManyToOne;
+import java.sql.Date;
 
+// Entity class representing Certification details
 @Entity
-public class Certification{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long certificateID;
-    private String serial_no;
-    private Date date_issued;
+public class Certification {
 
-    @Column(name = "time_issued")
-    private String time_issued;
+  // Primary Key
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long certificateID;
 
-    private String certificate_file;
-    private String criteria;
+  // Unique serial number for the certification
+  private String serial_no;
 
-    @ManyToOne
-    @JoinColumn(name = "quiztkn_id")
-    private QuizTaken quizTaken;
+  // Date when the certification was issued
+  private Date date_issued;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_ID")
-    // private Users users;
+  // Time when the certification was issued
+  @Column(name = "time_issued")
+  private String time_issued;
 
-    // @ManyToOne
-    // @JoinColumn(name = "support_ID")
-    // private Support support;
+  // File path or identifier for the certificate file
+  private String certificate_file;
 
+  // Criteria or details associated with the certification
+  private String criteria;
 
-    public Long getCertificateID() {
-        return this.certificateID;
-    }
+  // Many-to-One relationship with QuizTaken entity
+  @ManyToOne
+  @JoinColumn(name = "quiztkn_id")
+  private QuizTaken quizTaken;
 
-    public void setCertificateID(Long certificateID) {
-        this.certificateID = certificateID;
-    }
+  // Getter and Setter methods for certificateID
+  public Long getCertificateID() {
+    return this.certificateID;
+  }
 
-    public String getSerial_no() {
-        return this.serial_no;
-    }
+  public void setCertificateID(Long certificateID) {
+    this.certificateID = certificateID;
+  }
 
-    public void setSerial_no(String serial_no) {
-        this.serial_no = serial_no;
-    }
+  // Getter and Setter methods for serial_no
+  public String getSerial_no() {
+    return this.serial_no;
+  }
 
-    public Date getDate_issued() {
-        return this.date_issued;
-    }
+  public void setSerial_no(String serial_no) {
+    this.serial_no = serial_no;
+  }
 
-    public void setDate_issued(Date date_issued) {
-        this.date_issued = date_issued;
-    }
+  // Getter and Setter methods for date_issued
+  public Date getDate_issued() {
+    return this.date_issued;
+  }
 
-    public String getTime_issued() {
-        return time_issued;
-    }
+  public void setDate_issued(Date date_issued) {
+    this.date_issued = date_issued;
+  }
 
-    public void setTime_issued(String time_issued) {
-        this.time_issued = time_issued;
-    }
+  // Getter and Setter methods for time_issued
+  public String getTime_issued() {
+    return time_issued;
+  }
 
-    public String getCertificate_file() {
-        return this.certificate_file;
-    }
+  public void setTime_issued(String time_issued) {
+    this.time_issued = time_issued;
+  }
 
-    public void setCertificate_file(String certificate_file) {
-        this.certificate_file = certificate_file;
-    }
+  // Getter and Setter methods for certificate_file
+  public String getCertificate_file() {
+    return this.certificate_file;
+  }
 
-    public String getCriteria() {
-        return this.criteria;
-    }
+  public void setCertificate_file(String certificate_file) {
+    this.certificate_file = certificate_file;
+  }
 
-    public void setCriteria(String criteria) {
-        this.criteria = criteria;
-    }
-    
+  // Getter and Setter methods for criteria
+  public String getCriteria() {
+    return this.criteria;
+  }
 
-    public QuizTaken getQuizTaken() {
-        return this.quizTaken;
-    }
+  public void setCriteria(String criteria) {
+    this.criteria = criteria;
+  }
 
-    public void setQuizTaken(QuizTaken quizTaken) {
-        this.quizTaken = quizTaken;
-    }
+  // Getter and Setter methods for quizTaken
+  public QuizTaken getQuizTaken() {
+    return this.quizTaken;
+  }
 
-
+  public void setQuizTaken(QuizTaken quizTaken) {
+    this.quizTaken = quizTaken;
+  }
 }

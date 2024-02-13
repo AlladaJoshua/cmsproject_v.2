@@ -1,100 +1,91 @@
 package com.example.sandboxv2.sandboxv2.dto;
 
+// Data Transfer Object (DTO) representing certification details
 import java.sql.Date;
 
 public class CertificationDTO {
-    private Long certificateID;
-    private String serial_no;
-    private Date date_issued;
-    private String time_issued;
-    private String certificate_file;
-    private String criteria;
-    private Long quiztken_ID;
-    // private Long user_ID;
-    // private Long support_ID;
 
+  // Unique identifier for the certification
+  private Long certificateID;
 
-    public Long getCertificateID() {
-        return this.certificateID;
-    }
+  // Unique serial number for the certification
+  private String serial_no;
 
-    public void setCertificateID(Long certificateID) {
-        this.certificateID = certificateID;
-    }
+  // Date when the certification was issued
+  private Date date_issued;
 
-    public String getSerial_no() {
-        return this.serial_no;
-    }
+  // Time when the certification was issued
+  private String time_issued;
 
-    public void setSerial_no(String serial_no) {
-        this.serial_no = serial_no;
-    }
+  // File path or identifier for the certificate file
+  private String certificate_file;
 
-    public Date getDate_issued() {
-        return this.date_issued;
-    }
+  // Criteria or details associated with the certification
+  private String criteria;
 
-    public void setDate_issued(Date date_issued) {
-        this.date_issued = date_issued;
-    }
+  // ID of the associated QuizTaken entity
+  private Long quiztken_ID;
 
-    public String getTime_issued() {
-        return this.time_issued;
-    }
-    public void setTime_issued(String time_issued) {
-        this.time_issued = time_issued;
-    }
+  // Getter and Setter methods for certificateID
+  public Long getCertificateID() {
+    return this.certificateID;
+  }
 
+  public void setCertificateID(Long certificateID) {
+    this.certificateID = certificateID;
+  }
 
-    public String getCertificate_file() {
-        return this.certificate_file;
-    }
+  // Getter and Setter methods for serial_no
+  public String getSerial_no() {
+    return this.serial_no;
+  }
 
-    public void setCertificate_file(String certificate_file) {
-        this.certificate_file = certificate_file;
-    }
+  public void setSerial_no(String serial_no) {
+    this.serial_no = serial_no;
+  }
 
-    public String getCriteria() {
-        return this.criteria;
-    }
+  // Getter and Setter methods for date_issued
+  public Date getDate_issued() {
+    return this.date_issued;
+  }
 
-    public void setCriteria(String criteria) {
-        this.criteria = criteria;
-    }
+  public void setDate_issued(Date date_issued) {
+    this.date_issued = date_issued;
+  }
 
+  // Getter and Setter methods for time_issued
+  public String getTime_issued() {
+    return this.time_issued;
+  }
 
+  public void setTime_issued(String time_issued) {
+    this.time_issued = time_issued;
+  }
 
-    // public Long getCourse_ID() {
-    //     return this.course_ID;
-    // }
+  // Getter and Setter methods for certificate_file
+  public String getCertificate_file() {
+    return this.certificate_file;
+  }
 
-    // public void setCourse_ID(Long course_ID) {
-    //     this.course_ID = course_ID;
-    // }
+  public void setCertificate_file(String certificate_file) {
+    this.certificate_file = certificate_file;
+  }
 
-    // public Long getUser_ID() {
-    //     return this.user_ID;
-    // }
+  // Getter and Setter methods for criteria
+  public String getCriteria() {
+    return this.criteria;
+  }
 
-    // public void setUser_ID(Long user_ID) {
-    //     this.user_ID = user_ID;
-    // }
+  public void setCriteria(String criteria) {
+    this.criteria = criteria;
+  }
 
-    // public Long getSupport_ID() {
-    //     return this.support_ID;
-    // }
+  // Getter and Setter methods for quiztken_ID
+  public Long getQuiztken_ID() {
+    return this.quiztken_ID;
+  }
 
-    // public void setSupport_ID(Long support_ID) {
-    //     this.support_ID = support_ID;
-    // }
-    
-
-    public Long getQuiztken_ID() {
-        return this.quiztken_ID;
-    }
-
-    public void setQuiztken_ID(Long quiztken_ID) {
-        this.quiztken_ID = quiztken_ID;
-    }
-
+  public void setQuiztken_ID(Long quiztken_ID) {
+    this.quiztken_ID = quiztken_ID;
+  }
 }
