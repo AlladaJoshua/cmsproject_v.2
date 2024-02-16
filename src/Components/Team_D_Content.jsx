@@ -29,7 +29,8 @@ const Team_D_Content = () => {
   const [enableViewButtons, setEnableViewButtons] = useState([]);
   const [overlayVisibilities, setOverlayVisibilities] = useState([]);
   const [disableViewButtons, setDisableViewButtons] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 769); // Check if the viewport width is less than 769
+  
   // State to store the search term
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem("searchTerm") || ""
@@ -102,6 +103,8 @@ const Team_D_Content = () => {
     setFilteredCertificates(filtered);
   }, [searchTerm, pdfFileNames]);
 
+
+  // Effect to load thumbnails for PDF files
   useEffect(() => {
     const fetchThumbnails = async () => {
       const newThumbnails = [];
@@ -379,6 +382,7 @@ const Team_D_Content = () => {
       </section>
       {/* Section for displaying certificates */}
       <section className="certificates">
+        {/* Conditionally render certificates or no certificates message */}
         {filteredCertificates.length > 0 ? (
           filteredCertificates.map((pdfFile, index) => (
             <div
@@ -486,6 +490,7 @@ const Team_D_Content = () => {
           ))
         ) : (
           <div className="no-certificates">
+            {/* Render no certificates message */}
             <img src={NoCert} alt="No certification yet" /> No certificate
             available.
           </div>
