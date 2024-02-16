@@ -53,21 +53,19 @@ public class CertificationController {
   // Endpoint to retrieve certifications for a specific user
   @GetMapping("/myCertification/{user_ID}")
   public List<Certification> getCertificationByUserId(
-    @PathVariable Long user_ID
-  ) {
+      @PathVariable Long user_ID) {
     return certificationService.getCertificationByUserId(user_ID);
   }
 
   // Endpoint to save a new certification
   @PostMapping
   public ResponseEntity<String> saveCertification(
-    @RequestParam("serial_no") String serial_no,
-    @RequestParam("file") MultipartFile certificate_file,
-    @RequestParam("date_issued") Date date_issued,
-    @RequestParam("time_issued") String time_issued,
-    @RequestParam("criteria") String criteria,
-    @RequestParam("quiztkn_ID") Long quiztkn_ID
-  ) {
+      @RequestParam("serial_no") String serial_no,
+      @RequestParam("file") MultipartFile certificate_file,
+      @RequestParam("date_issued") Date date_issued,
+      @RequestParam("time_issued") String time_issued,
+      @RequestParam("criteria") String criteria,
+      @RequestParam("quiztkn_ID") Long quiztkn_ID) {
     if (certificate_file.isEmpty()) {
       return ResponseEntity.badRequest().body("File is empty");
     }
@@ -77,20 +75,19 @@ public class CertificationController {
       byte[] bytes = certificate_file.getBytes();
       String originalFilename = certificate_file.getOriginalFilename();
       String filenameWithoutPrefix = originalFilename.startsWith("PDF")
-        ? originalFilename.substring(3)
-        : originalFilename;
+          ? originalFilename.substring(3)
+          : originalFilename;
       Path path = Paths.get(
-        "C:\\Users\\vsbu\\Desktop\\CMSPROJECT_V.2\\cmsproject_v.2\\public\\PDF\\" +
-        filenameWithoutPrefix
-      );
+          "C:\\Users\\vsbu\\Desktop\\CMSPROJECT_V.2\\cmsproject_v.2\\public\\PDF\\" +
+              filenameWithoutPrefix);
       Files.write(path, bytes);
 
       // Retrieve the associated QuizTaken entity
       QuizTaken quizTaken = quizTakenService.getQuizTakenId(quiztkn_ID);
       if (quizTaken == null) {
         return ResponseEntity
-          .badRequest()
-          .body("QuizTaken not found with ID: " + quiztkn_ID);
+            .badRequest()
+            .body("QuizTaken not found with ID: " + quiztkn_ID);
       }
 
       // Create a new Certification entity and set its properties
@@ -106,8 +103,8 @@ public class CertificationController {
       return ResponseEntity.ok("Certificate saved successfully");
     } catch (IOException e) {
       return ResponseEntity
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body("Failed to save certificate: " + e.getMessage());
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Failed to save certificate: " + e.getMessage());
     }
   }
 
@@ -115,5 +112,11 @@ public class CertificationController {
   @DeleteMapping("/{certificateID}")
   public void deleteCertification(@PathVariable Long certificateID) {
     certificationService.deleteCertification(certificateID);
+  }
+
+  // Endpoint to retrieve the most recent certificate for a specific user
+  @GetMapping("/myRecentCertification/{user_ID}")
+  public Certification getMostRecentCertificationForUser(@PathVariable Long user_ID) {
+    return certificationService.getMostRecentCertificationForUser(user_ID);
   }
 }

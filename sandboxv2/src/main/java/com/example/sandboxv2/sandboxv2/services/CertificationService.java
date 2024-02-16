@@ -39,4 +39,8 @@ public class CertificationService {
   public void deleteCertification(Long certificateID) {
     certificationRepository.deleteById(certificateID);
   }
+
+  public Certification getMostRecentCertificationForUser(Long userID) {
+    return certificationRepository.findMostRecentCertificateByUser(userID);
+  }
 }
