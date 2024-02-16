@@ -181,20 +181,17 @@ const Team_D_View = () => {
               </Modal.Header>
               <Modal.Body>
                 <p>
-                  {/* Replace data properties with appropriate values */}
-                  Start Date: {/* data.startDate */}
-                  <br />
-                  End Date: {/* data.endDate */}
-                  <br />
-                  Total of Hours: {/* data.totalHours */}
+                  Passing Score: Minimum score of 80% or higher is required.
                 </p>
                 <p>
                   {/* Replace data properties with appropriate values */}
-                  Quizzes: {/* data.quizzes */}
+                  Quizzes Scores {/* data.quizzes */}
                   <br />
                   Quiz 1: {/* data.quiz1 */}
                   <br />
                   Quiz 2: {/* data.quiz2 */}
+                  <br />
+                  Assesment Score:
                 </p>
               </Modal.Body>
             </Modal>
