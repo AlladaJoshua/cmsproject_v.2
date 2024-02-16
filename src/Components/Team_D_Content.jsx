@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Css/content.css";
 import { pdfjs } from "react-pdf";
-import { Alert } from "react-bootstrap";
+import { Alert, Dropdown } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -30,6 +30,14 @@ const Team_D_Content = () => {
   const [overlayVisibilities, setOverlayVisibilities] = useState([]);
   const [disableViewButtons, setDisableViewButtons] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769); // Check if the viewport width is less than 769
+  
+  // State to store the search term
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem("searchTerm") || ""
+  );
+
+  // State to store the filtered certificates based on the search term
+  const [filteredCertificates, setFilteredCertificates] = useState([]);
 
   // Handle window resize
   const handleResize = () => {
@@ -64,6 +72,37 @@ const Team_D_Content = () => {
       console.error("Error fetching PDF file names:", error);
     }
   };
+
+  // Function to handle the search based on the current search term
+  const handleSearch = () => {
+    // Convert the search term to lowercase for case-insensitive comparison
+    const searchTermLower = searchTerm.toLowerCase();
+
+    // Filter certificates based on the search term
+    const filtered = pdfFileNames.filter((cert) =>
+      cert.quizTaken.quiz.course.title.toLowerCase().includes(searchTermLower)
+    );
+
+    // Set the filtered certificates in the state
+    setFilteredCertificates(filtered);
+  };
+
+  // Effect hook to update the filtered certificates when the search term changes
+  useEffect(() => {
+    // Filter certificates based on the search term
+    const filtered =
+      searchTerm.trim() === ""
+        ? pdfFileNames // If search term is empty, display all certificates
+        : pdfFileNames.filter((pdfFile) =>
+            pdfFile.quizTaken.quiz.course.title
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())
+          );
+
+    // Set the filtered certificates in the state
+    setFilteredCertificates(filtered);
+  }, [searchTerm, pdfFileNames]);
+
 
   // Effect to load thumbnails for PDF files
   useEffect(() => {
@@ -318,13 +357,23 @@ const Team_D_Content = () => {
         {/* Section containing search bar */}
         <section className="withSearchBar">
           <h1>Certificates</h1>
+
           <InputGroup expand="lg" size="sm" className="float-right">
+            {/* Search input form */}
             <Form.Control
-              placeholder="Search"
+              placeholder="Search..."
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  // Handle the "Enter" key press, e.g., trigger the verification function
+                  handleSearch();
+                }
+              }}
             />
-            <Button variant="success" id="button-addon2">
+            <Button variant="success" id="button-addon2" onClick={handleSearch}>
               <FiSearch className="TeamD_icon search_icon" />
             </Button>
           </InputGroup>
@@ -334,8 +383,8 @@ const Team_D_Content = () => {
       {/* Section for displaying certificates */}
       <section className="certificates">
         {/* Conditionally render certificates or no certificates message */}
-        {pdfFileNames.length > 0 ? (
-          pdfFileNames.map((pdfFile, index) => (
+        {filteredCertificates.length > 0 ? (
+          filteredCertificates.map((pdfFile, index) => (
             <div
               className="certificate_thumbnail"
               key={index}
@@ -442,7 +491,7 @@ const Team_D_Content = () => {
         ) : (
           <div className="no-certificates">
             {/* Render no certificates message */}
-            <img src={NoCert} alt="No certificate yet" /> No certificate
+            <img src={NoCert} alt="No certification yet" /> No certificate
             available.
           </div>
         )}
