@@ -1,265 +1,305 @@
+/* Styles for buttons container */
 .btns{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 10px; /* Gap between buttons */
 }
 
+/* Styles for the TeamD navbar */
 .navbar_TeamD {
     display: flex;
     align-items: center;
     padding: 0 18.33px 0 18.33px;
-    background-color: #D9FFCF;
-    height: 69px !important;
-    justify-content: space-between;
+    background-color: #D9FFCF; /* Background color */
+    height: 69px !important; /* Height */
+    justify-content: space-between; /* Space between items */
 }
 
-/* nav img {
-    width: 171.667px;
-    height: 50px; 
-} */
-
+/* Styles for the navbar items */
 #navbar {
-    margin-bottom: 0;
+    margin-bottom: 0; /* Remove margin at the bottom */
 }
 
+/* Styles for the navbar container */
 #navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Center alignment */
 }
 
+/* Styles for the list items in the navbar */
 #navbar li {
-    list-style: none;
-    padding: 0 20px;
-    position: relative;
+    list-style: none; /* Remove default list style */
+    padding: 0 20px; /* Padding */
+    position: relative; /* Position relative */
 }
 
+/* Styles for the navbar links */
 #navbar li a {
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    color: black;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size */
+    font-weight: 600; /* Font weight */
+    color: black; /* Text color */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Text shadow */
 }
 
+/* Hover and active styles for navbar links */
 #navbar li a:hover,
 #navbar li a:active {
-    color: #126912;
+    color: #126912; /* Text color on hover and active */
 }
 
+/* Active link style */
 #navbar li a.active {
-    color: #126912; /* Change this to the desired color for the active link */
+    color: #126912; /* Active link text color */
 }
 
+/* Styles for mobile navbar */
 #mobile {
-    display: None;
-    align-items: center;
+    display: None; /* Hide by default */
+    align-items: center; /* Align items */
 }
 
+/* Styles for profile images */
 .profile_img {
-    border: 1.5px solid #126912;
-    border-radius: 50px;
-    width: 23px;
-    height: 23px;
+    border: 1.5px solid #126912; /* Border */
+    border-radius: 50px; /* Border radius */
+    width: 23px; /* Width */
+    height: 23px; /* Height */
 }
 
+/* Styles for mobile profile */
 .mobile_profile {
-    border: 2px solid #126912;
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
+    border: 2px solid #126912; /* Border */
+    border-radius: 50px; /* Border radius */
+    width: 40px; /* Width */
+    height: 40px; /* Height */
 }
 
+/* Styles for profile button */
 .button_profile {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: white !important;
-    color: #126912 !important;
-    font-weight: 600 !important;
+    display: flex !important; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    gap: 10px; /* Gap between items */
+    background-color: white !important; /* Background color */
+    color: #126912 !important; /* Text color */
+    font-weight: 600 !important; /* Font weight */
 }
 
+/* Styles for dropdown menu */
 .dropdown-menu.show {
-    background-color: #D9FFCF;
+    background-color: #D9FFCF; /* Background color */
 }
 
-
+/* Additional styles for dropdown menu */
 .dropdown-menu.show {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400 !important;
-    line-height: normal;
-    left: 0 !important;
-    transform: translateX(-50%);
+    font-size: 18px; /* Font size */
+    font-style: normal; /* Font style */
+    font-weight: 400 !important; /* Font weight */
+    line-height: normal; /* Line height */
+    left: 0 !important; /* Left position */
+    transform: translateX(-50%); /* Translate position */
 }
 
+/* Styles for dropdown items */
 .dropdown-menu.show .dropdown-item {
-    text-align: start;
-    display: flex !important;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    margin-right: 50px;
+    text-align: start; /* Text alignment */
+    display: flex !important; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: flex-start; /* Justify content */
+    gap: 5px; /* Gap between items */
+    margin-right: 50px; /* Margin */
 }
 
+/* Styles for last dropdown item in profile */
 .profile_side .dropdown-menu.show .dropdown-item:last-child {
-    color:#BF3131 !important;
+    color:#BF3131 !important; /* Text color */
 }
 
+/* Hover and active styles for last dropdown item */
 .profile_side  .dropdown-menu.show .dropdown-item:last-child:hover,
 .profile_side  .dropdown-menu.show .dropdown-item:last-child:active {
-    color:#fd0f0f !important;
+    color:#fd0f0f !important; /* Text color on hover and active */
 }
 
+/* Hover styles for dropdown items */
 .dropdown-menu.show .dropdown-item:hover {
-    background-color: transparent;
-    color: #126912 !important;
+    background-color: transparent; /* Transparent background on hover */
+    color: #126912 !important; /* Text color on hover */
 }
 
+/* Active styles for dropdown items */
 .dropdown-menu.show .dropdown-item.active {
-    background-color: transparent;
-    color: #126912 !important;
+    background-color: transparent; /* Transparent background for active item */
+    color: #126912 !important; /* Text color for active item */
 }
 
+/* Styles for profile info container */
 .profile_info {
-    display: none;
+    display: none; /* Hide by default */
 }
 
+/* Styles for profile link */
 .profile_link {
-    display: none;
+    display: none; /* Hide by default */
 }
 
-
+/* Media query for smaller screens */
 @media screen and (max-width: 1025px) {
+    /* Styles for navbar on smaller screens */
     .navbar_TeamD {
-        justify-content: space-between;
+        justify-content: space-between; /* Space between items */
     }
+    
+    /* Styles for navbar container on smaller screens */
     #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        position: fixed;
-        top: 70px;
-        right: -350px;
-        width: 330px;
-        height: 100vh;
-        padding: 40px 0  0 10px;
-        background: rgba( 217, 255, 207, 0.65 );
-        box-shadow: 0 8px 32px -8px rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 9px );
-        -webkit-backdrop-filter: blur( 9px );
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-        border: 1px solid rgba( 255, 255, 255, 0.18 );
-        z-index: 1000;
+        flex-direction: column; /* Column layout */
+        align-items: flex-start; /* Align items */
+        justify-content: flex-start; /* Justify content */
+        position: fixed; /* Fixed position */
+        top: 70px; /* Top position */
+        right: -350px; /* Right position */
+        width: 330px; /* Width */
+        height: 100vh; /* Height */
+        padding: 40px 0  0 10px; /* Padding */
+        background: rgba( 217, 255, 207, 0.65 ); /* Background color */
+        box-shadow: 0 8px 32px -8px rgba( 31, 38, 135, 0.37 ); /* Box shadow */
+        backdrop-filter: blur( 9px ); /* Backdrop filter */
+        -webkit-backdrop-filter: blur( 9px ); /* Webkit backdrop filter */
+        border-bottom-left-radius: 25px; /* Border radius */
+        border-bottom-right-radius: 25px; /* Border radius */
+        border: 1px solid rgba( 255, 255, 255, 0.18 ); /* Border */
+        z-index: 1000; /* Z-index */
     }
 
+    /* Show navbar on active */
     #navbar.active {
-        right: 0;
+        right: 0; /* Right position */
     }
 
+    /* Margin for list items */
     #navbar li {
-        margin-bottom: 25px;
+        margin-bottom: 25px; /* Margin at the bottom */
     }
 
+    /* Hover and active styles for navbar links */
     #navbar li a:hover,
     #navbar li a:active {
-        color: #126912;
+        color: #126912; /* Text color on hover and active */
     }
 
+    /* Active link style */
     #navbar li a.active {
-        text-decoration: underline; /* You can customize this based on your design */
-        color: #126912; /* Change this to the desired color for the active link */
+        text-decoration: underline; /* Underline active link */
+        color: #126912; /* Active link text color */
     }
 
+    /* Show mobile navbar */
     #mobile {
-        display: block;
-        color: white;
+        display: block; /* Show on smaller screens */
+        color: white; /* Text color */
     }
 
+    /* Styles for mobile icon */
     #mobile i {
-        font-size: 24px;
-        cursor: pointer;
-        color: #126912;
+        font-size: 24px; /* Font size */
+        cursor: pointer; /* Cursor style */
+        color: #126912; /* Icon color */
     }
 
+    /* Hide profile side on smaller screens */
     .profile_side {
-        display: none;
+        display: none; /* Hide on smaller screens */
     }
 
+    /* Adjust margin for dropdown toggle */
     .mycourse_dd .dropdown-toggle.show {
-        margin-bottom: 50px;
+        margin-bottom: 50px; /* Margin at the bottom */
     }
 
+    /* Show profile info on smaller screens */
     .profile_info {
-        display: block;
-        width: 100%;
-        background-color: #BCE8B1;
-        padding: 10px !important;
-        border-radius: 25px;
-        margin-bottom: 10px !important;
-        text-shadow: transparent !important;
+        display: block; /* Show on smaller screens */
+        width: 100%; /* Width */
+        background-color: #BCE8B1; /* Background color */
+        padding: 10px !important; /* Padding */
+        border-radius: 25px; /* Border radius */
+        margin-bottom: 10px !important; /* Margin at the bottom */
+        text-shadow: transparent !important; /* Text shadow */
     }
+
+    /* Styles for profile image */
     .profile_info img {
-        border: 2px solid #126912;
-        border-radius: 50px;
-        width: 50px;
-        height: 50px;
+        border: 2px solid #126912; /* Border */
+        border-radius: 50px; /* Border radius */
+        width: 50px; /* Width */
+        height: 50px; /* Height */
     }
 
+    /* Styles for profile info container */
    .profile_info_con {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+        display: flex; /* Display as flex */
+        justify-content: center; /* Justify content */
+        align-items: center; /* Align items */
+        gap: 20px; /* Gap between items */
     }
 
+    /* Styles for profile name */
     .profile_info_name {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        line-height: 5px;
-        gap: 10px;
+        display: flex; /* Display as flex */
+        flex-direction: column; /* Column layout */
+        justify-content: center; /* Justify content */
+        align-items: flex-start; /* Align items */
+        line-height: 5px; /* Line height */
+        gap: 10px; /* Gap between items */
     }
 
+    /* Styles for profile name paragraph */
     .profile_info_name p {
-        margin: 5px;
+        margin: 5px; /* Margin */
     }
 
+    /* Styles for profile first name */
     .profile_info_name .profile_fName {
-        font-weight: 600;
+        font-weight: 600; /* Font weight */
     }
 
+    /* Styles for profile email */
     .profile_info_name .profile_email {
-        font-size: 14px !important;
+        font-size: 14px !important; /* Font size */
     }
 
+    /* Styles for profile divider */
     .profile_divider {
-        height: 20px; /* Set the height of the divider as needed */
-        width: 1px;   /* Set the width of the divider as needed */
-        background-color: #126912; /* Set the color of the divider */
-        margin: 0 10px; /* Adjust the margin as needed for spacing */
+        height: 20px; /* Height */
+        width: 1px;   /* Width */
+        background-color: #126912; /* Background color */
+        margin: 0 10px; /* Margin */
       }
 
+      /* Styles for navbar divider */
       #navbar .divider {
-        height: 2px;
-        background-color: #0e3b03; /* Adjust the color of the divider as needed */
-        margin: 0 auto; /* Adjust the margin as needed for spacing */
-        margin-bottom: 20px;
-        width: 80%;
+        height: 2px; /* Height */
+        background-color: #0e3b03; /* Background color */
+        margin: 0 auto; /* Margin */
+        margin-bottom: 20px; /* Margin at the bottom */
+        width: 80%; /* Width */
       }
 
+      /* Show profile link */
       .profile_link {
-        display: block;
-    }
-    .profile_link .teamD_LogOut_Btn {
-        color: #BF3131;
+        display: block; /* Show */
     }
 
+    /* Styles for logout button */
+    .profile_link .teamD_LogOut_Btn {
+        color: #BF3131; /* Text color */
+    }
+
+    /* Hover and active styles for logout button */
     .profile_link .teamD_LogOut_Btn:hover,
     .profile_link .teamD_LogOut_Btn:active {
-        color: #fd0f0f;
+        color: #fd0f0f; /* Text color on hover and active */
     }
 }

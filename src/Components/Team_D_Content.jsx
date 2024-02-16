@@ -16,9 +16,12 @@ import NoCert from "../assets/undraw_learning_re_32qv.svg";
 
 import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
+// Set up PDF.js worker source
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
+// Team_D_Content functional component
 const Team_D_Content = () => {
+  // State declarations
   const [pdfFileNames, setPdfFileNames] = useState([]); // State to store the array of PDF file names fetched from API
   const [thumbnails, setThumbnails] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
@@ -35,10 +38,12 @@ const Team_D_Content = () => {
   // State to store the filtered certificates based on the search term
   const [filteredCertificates, setFilteredCertificates] = useState([]);
 
+  // Handle window resize
   const handleResize = () => {
     setIsMobile(window.innerWidth < 769);
   };
 
+  // Effect to fetch PDF file names from API and handle window resize
   useEffect(() => {
     // Fetch PDF file names from API
     fetchPdfFileNamesFromApi();
@@ -51,6 +56,7 @@ const Team_D_Content = () => {
     };
   }, []); // Empty dependency array ensures the effect runs only once during mount
 
+  // Fetch PDF file names from API
   const fetchPdfFileNamesFromApi = async () => {
     try {
       // Replace 'apiEndpoint' with your actual API endpoint to fetch PDF file names
@@ -145,6 +151,7 @@ const Team_D_Content = () => {
     fetchThumbnails();
   }, [pdfFileNames]);
 
+  // Effect to handle online/offline status
   useEffect(() => {
     const handleOnline = () => {
       setShowNotification({
@@ -177,7 +184,9 @@ const Team_D_Content = () => {
     };
   }, []);
 
+  // Handle download button click
   const handleDownloadClick = (index) => () => {
+    // If overlay is not visible, toggle overlay visibility and return
     if (!overlayVisibilities[index]) {
       setDisableDownloadButtons((prevButtons) =>
         prevButtons.map((button, idx) => (idx === index ? false : button))
@@ -188,10 +197,12 @@ const Team_D_Content = () => {
       return;
     }
 
+    // If download button is disabled or view button is not enabled, return
     if (disableDownloadButtons[index] || !enableViewButtons[index]) {
       return;
     }
 
+    // If user is offline, show notification and return
     if (!window.navigator.onLine) {
       setShowNotification({
         type: "danger",
@@ -204,11 +215,13 @@ const Team_D_Content = () => {
       return;
     }
 
+    // Construct PDF path
     const pdfPath = `/PDF/${pdfFileNames[index].certificate_file}`; // Assuming certificate_file contains the path to the PDF
     const link = document.createElement("a");
     link.href = pdfPath;
     link.download = "Certificate.pdf";
 
+    // Event listeners for download events
     link.addEventListener("abort", () => {
       setShowNotification({
         type: "danger",
@@ -223,13 +236,16 @@ const Team_D_Content = () => {
       });
     });
 
+    // Trigger download
     link.click();
 
+    // Show download success notification
     setShowNotification({
       type: "success",
       message: "Download successful!"
     });
 
+    // Disable download button temporarily and reset state after 5 seconds
     setDisableDownloadButtons((prevButtons) =>
       prevButtons.map((button, idx) => (idx === index ? true : button))
     );
@@ -240,6 +256,7 @@ const Team_D_Content = () => {
       setShowNotification(null);
     }, 5000);
 
+    // Disable view button temporarily
     setEnableViewButtons((prevButtons) =>
       prevButtons.map((button, idx) => (idx === index ? false : button))
     );
@@ -249,6 +266,7 @@ const Team_D_Content = () => {
       );
     }, 0);
 
+    // Hide overlay after download
     setTimeout(() => {
       setOverlayVisibilities((prevVisibilities) =>
         prevVisibilities.map((visibility, idx) =>
@@ -258,7 +276,9 @@ const Team_D_Content = () => {
     }, 0);
   };
 
+  // Handle view button click
   const handleViewClick = (index) => () => {
+    // If overlay is not visible, toggle overlay visibility and return
     if (!overlayVisibilities[index]) {
       setEnableViewButtons((prevButtons) =>
         prevButtons.map((button, idx) => (idx === index ? true : button))
@@ -269,10 +289,12 @@ const Team_D_Content = () => {
       return;
     }
 
+    // If view button is not enabled or view is disabled, return
     if (!enableViewButtons[index] || disableViewButtons[index]) {
       return;
     }
 
+    // Disable link and view button temporarily
     const link = document.getElementById(`viewLink_${index}`);
     const viewButton = document.getElementById(`viewButton_${index}`);
 
@@ -284,11 +306,13 @@ const Team_D_Content = () => {
       viewButton.style.pointerEvents = "none";
     }
 
+    // Show notification about disabled view
     setShowNotification({
       type: "info",
       message: "Viewing is disabled for 5 seconds."
     });
 
+    // Disable view button temporarily and reset state after 5 seconds
     setDisableViewButtons((prevButtons) =>
       prevButtons.map((button, idx) => (idx === index ? true : button))
     );
@@ -307,21 +331,27 @@ const Team_D_Content = () => {
     }, 0);
   };
 
+  // Handle scroll to top button click
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Tooltip for view button
   const viewTooltip = <Tooltip id="viewTooltip">View Certificate</Tooltip>;
+  // Tooltip for download button
   const downloadTooltip = (
     <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
   );
 
+  // Determine whether to show scroll to top button based on scroll position
   const shouldShowScrollToTop = window.scrollY > 200;
 
+  // JSX rendering
   return (
     <div>
-      <Team_D_HeaderV2 />
+      <Team_D_HeaderV2 /> {/* Render Team_D_HeaderV2 component */}
       <section className="TeamD_content">
+        {/* Section containing search bar */}
         <section className="withSearchBar">
           <h1>Certificates</h1>
 
@@ -345,8 +375,9 @@ const Team_D_Content = () => {
             </Button>
           </InputGroup>
         </section>
-        <div className="hr"></div>
+        <div className="hr"></div> {/* Horizontal rule */}
       </section>
+      {/* Section for displaying certificates */}
       <section className="certificates">
         {filteredCertificates.length > 0 ? (
           filteredCertificates.map((pdfFile, index) => (
@@ -368,6 +399,7 @@ const Team_D_Content = () => {
                 )
               }
             >
+              {/* Render certificate thumbnail */}
               <div className="cert">
                 {isMobile && thumbnails[index] ? (
                   <Link
@@ -387,6 +419,7 @@ const Team_D_Content = () => {
                   <p>Loading thumbnail...</p>
                 )}
 
+                {/* Render overlay with view and download buttons */}
                 {!isMobile && (
                   <div
                     className={`overlay${
@@ -395,6 +428,7 @@ const Team_D_Content = () => {
                   >
                     {thumbnails[index] && (
                       <div className="buttons">
+                        {/* View button */}
                         <Link
                           id={`viewLink_${index}`}
                           to="/viewCert"
@@ -418,6 +452,7 @@ const Team_D_Content = () => {
                             </button>
                           </OverlayTrigger>
                         </Link>
+                        {/* Download button */}
                         <OverlayTrigger
                           placement="top"
                           overlay={downloadTooltip}
@@ -443,6 +478,7 @@ const Team_D_Content = () => {
                   </div>
                 )}
               </div>
+              {/* Display course title */}
               <p style={{ textTransform: "capitalize" }}>
                 {pdfFile.quizTaken.quiz.course.title}
               </p>
@@ -455,6 +491,7 @@ const Team_D_Content = () => {
           </div>
         )}
       </section>
+      {/* Render notification */}
       {showNotification && (
         <Alert
           variant={showNotification.type}
@@ -470,6 +507,7 @@ const Team_D_Content = () => {
           {showNotification.message}
         </Alert>
       )}
+      {/* Render scroll to top button */}
       <div
         className={`scroll-to-top${shouldShowScrollToTop ? " visible" : ""}`}
         onClick={handleScrollToTop}

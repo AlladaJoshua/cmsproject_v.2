@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 // JPA repository interface for Certification entity with Long as the primary key type
 public interface CertificationRepository
-  extends JpaRepository<Certification, Long> {
+    extends JpaRepository<Certification, Long> {
   // Method to retrieve all certifications
   List<Certification> findAll();
 
@@ -18,8 +18,11 @@ public interface CertificationRepository
   Optional<Certification> findById(Long certificateID);
 
   // Custom query to retrieve certifications based on user ID
-  @Query(
-    "SELECT cr FROM Certification cr WHERE cr.quizTaken.users.userID = :user_ID"
-  )
+  @Query("SELECT cr FROM Certification cr WHERE cr.quizTaken.users.userID = :user_ID")
   List<Certification> findByUserId(@Param("user_ID") Long user_ID);
+
+  @Query(value = "SELECT * FROM certification cr WHERE cr.quiztkn_id IN " +
+      "(SELECT qt.quiztknID FROM quiz_taken qt WHERE qt.user_ID = :user_ID) " +
+      "ORDER BY cr.date_issued DESC, cr.time_issued DESC LIMIT 5", nativeQuery = true)
+  Certification findMostRecentCertificateByUser(@Param("user_ID") Long userID);
 }

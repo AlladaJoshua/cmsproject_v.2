@@ -1,64 +1,72 @@
+/* Styles for the TeamD_content section */
 .TeamD_content {
     display: flex;
-    padding: 0 75px;
+    padding: 0 75px; /* Padding on the sides */
     flex-direction: column;
     align-items: center;
-    /* gap: 5px; */
-    background: #EBFFE5;
-    margin-top: 15px; 
-    justify-content: space-between;
+    background: #EBFFE5; /* Background color */
+    margin-top: 15px; /* Margin from the top */
+    justify-content: space-between; /* Space between items */
 }   
 
+/* Styles for the section with search bar */
 .withSearchBar {
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    gap: 500px;
+    gap: 500px; /* Gap between items */
 }
 
+/* Styles for input group */
 .withSearchBar .input-group {
-    width: 35% !important;
-    height: 30px;
+    width: 35% !important; /* Width of the input group */
+    height: 30px; /* Height of the input group */
 }
 
+/* Styles for form control */
 .withSearchBar .form-control {
-    height: 30px;
+    height: 30px; /* Height of the form control */
 }
 
+/* Styles for buttons within input group */
 .withSearchBar .input-group .btn-success{
-    height: 30px;
+    height: 30px; /* Height of the button */
 }
 
+/* Styles for h1 within TeamD_content */
 .TeamD_content h1 {
-    color: #5e665b;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    color: #5e665b; /* Text color */
+    text-align: center; /* Text alignment */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Text shadow */
+    font-size: 35px; /* Font size */
+    font-style: normal; /* Font style */
+    font-weight: 600; /* Font weight */
+    line-height: normal; /* Line height */
 }
 
+/* Styles for horizontal rule within TeamD_content */
 .TeamD_content .hr {
-    width: 100%;
-    height: 1.5px;
-    background-color: #5e665b;
+    width: 100%; /* Full width */
+    height: 1.5px; /* Height of the horizontal rule */
+    background-color: #5e665b; /* Background color */
 }
 
+/* Styles for certificates section */
 .certificates {
-    margin-top: 50px;
-    padding: 0 75px;
-    padding-bottom: 25px;
+    margin-top: 50px; /* Margin from the top */
+    padding: 0 75px; /* Padding on the sides */
+    padding-bottom: 25px; /* Padding at the bottom */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background: #EBFFE5;
-    gap: 40px;
+    background: #EBFFE5; /* Background color */
+    gap: 40px; /* Gap between items */
 }
 
+/* Styles for individual certificate */
 .cert {
     display: flex;
     flex-direction: column;
@@ -68,10 +76,12 @@
     cursor: pointer;
 }
 
+/* Styles for certificate image */
 .cert img {
-    border-radius: 15px;
+    border-radius: 15px; /* Border radius */
 }
 
+/* Styles for overlay on certificate hover */
 .overlay {
     position: absolute;
     top: 0;
@@ -82,166 +92,179 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7); /* Overlay background color */
     opacity: 0;
     transition: opacity 0.3s ease;
-    border-radius: 15px;
-  }
+    border-radius: 15px; /* Border radius */
+}
 
-  .cert:hover .overlay {
-    opacity: 1;
-  }
-  
-  .buttons button {
-    margin: 5px;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    width: 70px;
-  }
-  
-  .buttons .view {
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 15px;
-    border: 1.5px solid #3498db;
-    text-align: center;
-  }
-  
-  .buttons .download {
-    background-color: #2ecc71;
-    color: #fff;
-    border-radius: 15px;
-    border: 1.5px solid #2ecc71;
-    text-align: center;
-  }
-  
-  .buttons .view:hover {
-    background-color: white;
-    color: #006384;
-    border: 2px solid #006384;
-  }
+.cert:hover .overlay {
+    opacity: 1; /* Show overlay on hover */
+}
 
-  .buttons .download:hover {
-    background-color: white;
-    color: #16A765;
-    border: 2px solid #16A765;
-  }
+/* Styles for buttons within certificate */
+.buttons button {
+    margin: 5px; /* Margin around buttons */
+    padding: 8px 16px; /* Padding inside buttons */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor pointer */
+    width: 70px; /* Width of buttons */
+}
+
+/* Styles for view button */
+.buttons .view {
+    background-color: #3498db; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 15px; /* Border radius */
+    border: 1.5px solid #3498db; /* Border */
+    text-align: center; /* Text alignment */
+}
+
+/* Styles for download button */
+.buttons .download {
+    background-color: #2ecc71; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 15px; /* Border radius */
+    border: 1.5px solid #2ecc71; /* Border */
+    text-align: center; /* Text alignment */
+}
+
+/* Hover styles for view button */
+.buttons .view:hover {
+    background-color: white; /* Background color */
+    color: #006384; /* Text color */
+    border: 2px solid #006384; /* Border */
+}
+
+/* Hover styles for download button */
+.buttons .download:hover {
+    background-color: white; /* Background color */
+    color: #16A765; /* Text color */
+    border: 2px solid #16A765; /* Border */
+}
+
+/* Styles for certificate image */
 .cert img {
-    width: 329px;
-    height: 200px;
+    width: 329px; /* Width of the image */
+    height: 200px; /* Height of the image */
 }
 
+/* Styles for icons within TeamD_content */
 .TeamD_icon {
-    width: 25px;
-    height: 25px;
+    width: 25px; /* Width of the icon */
+    height: 25px; /* Height of the icon */
 }
 
+/* Styles for buttons within input group */
 .withSearchBar .input-group .btn {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Styles for buttons within input group */
 .withSearchBar .input-group .btn {
-    width: 55px;
+    width: 55px; /* Width of the button */
 }
 
+/* Styles for icon within input group button */
 .withSearchBar .input-group .btn .icon {
-    width: 20px;
-    height: 20px;
+    width: 20px; /* Width of the icon */
+    height: 20px; /* Height of the icon */
 }
 
+/* Hover styles for success button within input group */
 .withSearchBar .btn-success:hover {
-    background-color: white;
-    color: #16A765;
-    border: 2px solid #16A765;
+    background-color: white; /* Background color */
+    color: #16A765; /* Text color */
+    border: 2px solid #16A765; /* Border */
 }
 
+/* Styles for certificate thumbnail */
 .certificate_thumbnail {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Styles for no certificates message */
 .no-certificates {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    font-size: 18px;
+    gap: 20px; /* Gap between items */
+    font-size: 18px; /* Font size */
 }
 
+/* Styles for image within no certificates message */
 .no-certificates img {
-    width: 80%;
+    width: 80%; /* Width of the image */
 }
-
 
 @media only screen and (max-width: 1024px){
     .withSearchBar{
-        gap: 200px;
+        gap: 200px; /* Gap between items */
     }
 }
 
 @media only screen and (max-width: 768px){
     .withSearchBar{
-        flex-direction: column;
-        gap: 0;
-        margin-bottom: 25px;
+        flex-direction: column; /* Change to column layout */
+        gap: 0; /* No gap between items */
+        margin-bottom: 25px; /* Margin at the bottom */
     }
     
     .no-certificates img {
-        width: 80%;
+        width: 80%; /* Width of the image */
     }
 }
 
 @media only screen and (max-width: 600px) {
+    /* Responsive styles for TeamD_content */
     .TeamD_content {
-        align-items: center;
+        align-items: center; /* Center alignment */
     }
 
     .TeamD_content h1 {
-        font-size: 35px;
+        font-size: 35px; /* Font size */
     }
 
     .certificates {
-        padding: 0 25px;
-        padding-bottom: 25px;
-        gap: 25px;    
-        margin-top: 35px;
+        padding: 0 25px; /* Padding on the sides */
+        padding-bottom: 25px; /* Padding at the bottom */
+        gap: 25px; /* Gap between items */
+        margin-top: 35px; /* Margin from the top */
     }
 
     .cert img {
-        width: 286px;
-        height: 178.67px;
+        width: 286px; /* Width of the image */
+        height: 178.67px; /* Height of the image */
     }
 
     .withSearchBar {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 25px;
+        flex-direction: column; /* Change to column layout */
+        justify-content: center; /* Center alignment */
+        align-items: center; /* Center alignment */
+        margin-bottom: 25px; /* Margin at the bottom */
     }
     
     .withSearchBar .input-group {
-        width: 100% !important;
-        height: 25px;
+        width: 100% !important; /* Full width */
+        height: 25px; /* Height of the input group */
     }
 }
 
 @media only screen and (max-width: 390px) {
-    
     .TeamD_content {
-        padding: 0 35px;
+        padding: 0 35px; /* Padding on the sides */
     }
     .TeamD_content h1 {
-        font-size: 35px;
+        font-size: 35px; /* Font size */
     }
 
     .withSearchBar .input-group {
-        width: 100% !important;
-        height: 25px;
+        width: 100% !important; /* Full width */
+        height: 25px; /* Height of the input group */
     }
-    
 }

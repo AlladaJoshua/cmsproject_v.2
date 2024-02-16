@@ -1,314 +1,368 @@
+/* Styles for content view PDF container */
 .contentViewPdf {
-    display: flex;
-    padding: 0 75px;
-    flex-direction: column;
-    align-items: center;
-    background-color: #EBFFE5;
-    margin-top: 15px;
+    display: flex; /* Display as flex */
+    padding: 0 75px; /* Padding */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Align items */
+    background-color: #EBFFE5; /* Background color */
+    margin-top: 15px; /* Margin top */
 }
 
+/* Styles for header view */
 .headerView {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    width: 100%; /* Full width */
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Column layout */
+    align-items: flex-start; /* Align items */
+    justify-content: center; /* Justify content */
 }
 
+/* Styles for header title */
 .headerView h1 {
-    color: #5e665b;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 650;
-    line-height: normal;
+    color: #5e665b; /* Text color */
+    text-align: center; /* Text alignment */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Text shadow */
+    font-size: 35px; /* Font size */
+    font-style: normal; /* Font style */
+    font-weight: 650; /* Font weight */
+    line-height: normal; /* Line height */
 }
 
+/* Styles for horizontal rule in header */
 .headerView .hr_view {
-    width: 100%;
-    height: 1.5px;
-    background-color: #5e665b;
+    width: 100%; /* Full width */
+    height: 1.5px; /* Height */
+    background-color: #5e665b; /* Background color */
 }
 
+/* Styles for certificates view container */
 .certificatesView {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #BCE8B1;
-    border-radius: 15px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    margin-top: 15px; /* Margin top */
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Column layout */
+    gap: 20px; /* Gap between elements */
+    background-color: #BCE8B1; /* Background color */
+    border-radius: 15px; /* Border radius */
+    width: 100%; /* Full width */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
 }
 
+/* Styles for top controls in certificates view */
 .certificatesView .control_top {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 75%;
-    margin-top: 10px;
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: flex-end; /* Justify content */
+    width: 75%; /* 75% width */
+    margin-top: 10px; /* Margin top */
 }
 
+/* Styles for buttons in top controls */
 .certificatesView .control_top button {
-    background-color: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    color: #EBFFE5;
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    font-size: 35px; /* Font size */
+    color: #EBFFE5; /* Text color */
 }
 
+/* Hover styles for buttons in top controls */
 .certificatesView .control_top button:hover {
-    color: #0e3b03;
+    color: #0e3b03; /* Text color on hover */
 }
 
+/* Styles for controls */
 .certificatesView .control {
-    margin-bottom: 10px;
-    width: 75%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    margin-bottom: 10px; /* Margin bottom */
+    width: 75%; /* 75% width */
+    display: flex; /* Display as flex */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
+    gap: 50px; /* Gap between elements */
 }
 
+/* Styles for buttons in controls */
 .certificatesView .control button {
-    height: 50px;
-    width: 100px;
+    height: 50px; /* Height */
+    width: 100px; /* Width */
 }
 
+/* Styles for modal buttons in controls */
 .certificatesView .control .modalBTN {
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 15px;
-    border: 1.5px solid #3498db;
-    text-align: center;
+    background-color: #3498db; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 15px; /* Border radius */
+    border: 1.5px solid #3498db; /* Border */
+    text-align: center; /* Text alignment */
 }
 
-.certificatesView .control .TeamD_modal_btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Hover styles for modal buttons */
 .certificatesView .control .TeamD_modal_btn .modalBTN:hover {
-    background-color: white;
-    color: #006384;
-    /* border: 2px solid #006384; */
-    outline: #006384 solid 2px;
+    background-color: white; /* Background color on hover */
+    color: #006384; /* Text color on hover */
+    outline: #006384 solid 2px; /* Outline on hover */
 }
 
+/* Styles for download buttons in controls */
 .certificatesView .control .download_View .downloadBTN {
-    background-color: #2ecc71;
-    color: #fff;
-    border-radius: 15px;
-    border: 1.5px solid #2ecc71;
-    text-align: center;
+    background-color: #2ecc71; /* Background color */
+    color: #fff; /* Text color */
+    border-radius: 15px; /* Border radius */
+    border: 1.5px solid #2ecc71; /* Border */
+    text-align: center; /* Text alignment */
 }
 
+/* Hover styles for download buttons */
 .certificatesView .control .download_View .downloadBTN:hover {
-    background-color: white;
-    color: #16A765;
-    outline: #16A765 solid 2px;
+    background-color: white; /* Background color on hover */
+    color: #16A765; /* Text color on hover */
+    outline: #16A765 solid 2px; /* Outline on hover */
 }
 
-
-.certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas{
-    margin-top: 30px;    
-    width: 741px !important;
-    height: 495px !important;
+/* Styles for PDF file view canvas */
+.certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
+    margin-top: 30px; /* Margin top */
+    width: 741px !important; /* Width */
+    height: 495px !important; /* Height */
 }
 
+/* Styles for go back title */
 .goBack_title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    gap: 30px; /* Gap between elements */
 }
 
+/* Styles for go back button */
 .goBack_title .goBack {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border-radius: 50px;
-    padding: 8px;
-    border: #5e665b solid 2px;
+    display: flex; /* Display as flex */
+    justify-content: center; /* Justify content */
+    align-items: center; /* Align items */
+    background-color: transparent; /* Transparent background */
+    border-radius: 50px; /* Border radius */
+    padding: 8px; /* Padding */
+    border: #5e665b solid 2px; /* Border */
 }
 
+/* Hover styles for go back button */
 .goBack_title .goBack:hover {
-    color: #BCE8B1;
-    background-color: #0e3b03;
+    color: #BCE8B1; /* Text color on hover */
+    background-color: #0e3b03; /* Background color on hover */
 }
 
+/* Styles for download button */
 .download_View button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    font-size: 20px; /* Font size */
 }
 
+/* Styles for modal button */
 .TeamD_modal_btn button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
+    display: flex; /* Display as flex */
+    align-items: center; /* Align items */
+    justify-content: center; /* Justify content */
+    font-size: 20px; /* Font size */
 }
 
-@media only screen and (max-width: 1240px){
+/* Media query for medium screens */
+@media only screen and (max-width: 1240px) {
+    /* Adjustments for PDF file view on medium screens */
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+        width: 100% !important; /* Full width */
+        height: auto !important; /* Auto height */
+        max-width: 100% !important; /* Maximum width */
+        max-height: 100% !important; /* Maximum height */
     }
 }
 
-@media only screen and (max-width: 768px) and (min-width: 425px){
+/* Media query for small screens */
+@media only screen and (max-width: 768px) and (min-width: 425px) {
+    /* Adjustments for PDF file view on small screens */
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+        width: 100% !important; /* Full width */
+        height: auto !important; /* Auto height */
+        max-width: 100% !important; /* Maximum width */
+        max-height: 100% !important; /* Maximum height */
     }
     
+    /* Adjustments for certificates view container on small screens */
     .certificatesView {
-        background-color: transparent;
+        background-color: transparent; /* Transparent background */
     }
 
-    
+    /* Adjustments for content view PDF container on small screens */
     .contentViewPdf {
-        padding: 20px;
+        padding: 20px; /* Padding */
     }
 }
 
-@media only screen and (max-width: 426px) and (min-width: 375px){
+/* Media query for extra-small screens */
+@media only screen and (max-width: 426px) and (min-width: 375px) {
+    /* Adjustments for PDF file view on extra-small screens */
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-        width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+        width: 100% !important; /* Full width */
+        height: auto !important; /* Auto height */
+        max-width: 100% !important; /* Maximum width */
+        max-height: 100% !important; /* Maximum height */
     }
 
+    /* Adjustments for certificates view container on extra-small screens */
     .certificatesView {
-        background-color: transparent;
+        background-color: transparent; /* Transparent background */
     }
     
+    /* Adjustments for header title on extra-small screens */
     .headerView h1 {
-        font-size: 25px;
+        font-size: 25px; /* Font size */
     }
+
+    /* Adjustments for go back button on extra-small screens */
     .goBack_title .goBack {
-        padding: 5px;
+        padding: 5px; /* Padding */
     }
 
+    /* Adjustments for buttons in controls on extra-small screens */
     .certificatesView .control button {
-        height: 50px;
-        
+        height: 50px; /* Height */
     }
 
+    /* Adjustments for content view PDF container on extra-small screens */
     .contentViewPdf {
-        padding: 20px;
+        padding: 20px; /* Padding */
     }
 }
 
+/* Styles for modal title */
 .modalTitle {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Column layout */
+    gap: 3px; /* Gap between elements */
 }
 
+/* Styles for modal title paragraph */
 .modalTitle p {
-    font-size: 12px;
+    font-size: 12px; /* Font size */
 }
 
+/* Styles for TeamD modal header */
 .TeamD_mdl_hdr {
-    align-items: flex-start !important;
-    height: 120px !important;
+    align-items: flex-start !important; /* Align items */
+    height: 120px !important; /* Height */
 }
 
-@media only screen and (max-width: 376px){
+/* Media query for screens up to 376px */
+@media only screen and (max-width: 376px) {
+    /* Adjustments for PDF file view on screens up to 376px */
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-        width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+        width: 100% !important; /* Full width */
+        height: auto !important; /* Auto height */
+        max-width: 100% !important; /* Maximum width */
+        max-height: 100% !important; /* Maximum height */
     }
+    
+    /* Adjustments for button in top controls on screens up to 376px */
     .certificatesView .control_top button {
-        padding: 8px;
-        font-size: 20px;
+        padding: 8px; /* Padding */
+        font-size: 20px; /* Font size */
     }
 
+    /* Adjustments for buttons in controls on screens up to 376px */
     .certificatesView .control button {
-        font-size: 12px;
-        
+        font-size: 12px; /* Font size */
     }
 
+    /* Adjustments for header title on screens up to 376px */
     .headerView h1 {
-        font-size: 20px;
+        font-size: 20px; /* Font size */
     }
+
+    /* Adjustments for go back button on screens up to 376px */
     .goBack_title .goBack {
-        padding: 2px;
+        padding: 2px; /* Padding */
     }
 
+    /* Adjustments for buttons in controls on screens up to 376px */
     .certificatesView .control button {
-        height: 50px;
-        width: 75px;
-        
+        height: 50px; /* Height */
+        width: 75px; /* Width */
     }
 
+    /* Adjustments for gap between elements in controls on screens up to 376px */
     .certificatesView .control {
-        gap: 25px;
+        gap: 25px; /* Gap between elements */
     }
+
+    /* Adjustments for certificates view container on screens up to 376px */
     .certificatesView {
-        background-color: transparent;
+        background-color: transparent; /* Transparent background */
     }
+
+    /* Adjustments for content view PDF container on screens up to 376px */
     .contentViewPdf {
-        padding: 20px;
+        padding: 20px; /* Padding */
     }
 }
 
-@media only screen and (max-width: 321px){
+/* Media query for screens up to 321px */
+@media only screen and (max-width: 321px) {
+    /* Adjustments for content view PDF container on screens up to 321px */
     .contentViewPdf {
-        padding: 20px;
+        padding: 20px; /* Padding */
     }
+
+    /* Adjustments for PDF file view on screens up to 321px */
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+        width: 100% !important; /* Full width */
+        height: auto !important; /* Auto height */
+        max-width: 100% !important; /* Maximum width */
+        max-height: 100% !important; /* Maximum height */
     }
+
+    /* Adjustments for button in top controls on screens up to 321px */
     .certificatesView .control_top button {
-        padding: 8px;
-        font-size: 20px;
+        padding: 8px; /* Padding */
+        font-size: 20px; /* Font size */
     }
 
+    /* Adjustments for controls on screens up to 321px */
     .certificatesView .control {
-        align-items: center;
-        justify-content: center;
-    }
-    .certificatesView .control button {
-        font-size: 11px;
-        
+        align-items: center; /* Align items */
+        justify-content: center; /* Justify content */
     }
 
+    /* Adjustments for buttons in controls on screens up to 321px */
+    .certificatesView .control button {
+        font-size: 11px; /* Font size */
+    }
+
+    /* Adjustments for header title on screens up to 321px */
     .headerView h1 {
-        font-size: 18px;
+        font-size: 18px; /* Font size */
     }
 
+    /* Adjustments for gap between elements in go back title on screens up to 321px */
     .goBack_title {
-        gap: 20px;
-    }
-    .certificatesView .control button {
-        height: 35px;
-        width: 75px;  
+        gap: 20px; /* Gap between elements */
     }
 
-    .certificatesView .control {
-        gap: 5px;
+    /* Adjustments for buttons in controls on screens up to 321px */
+    .certificatesView .control button {
+        height: 35px; /* Height */
+        width: 75px; /* Width */
     }
+
+    /* Adjustments for gap between elements in controls on screens up to 321px */
+    .certificatesView .control {
+        gap: 5px; /* Gap between elements */
+    }
+
+    /* Adjustments for certificates view container on screens up to 321px */
     .certificatesView {
-        background-color: transparent;
+        background-color: transparent; /* Transparent background */
     }
 }

@@ -34,8 +34,6 @@ const Team_D_HeaderV2 = () => {
     };
   }, [clicked]);
 
-
-  
   return (
     <>
       <nav className="navbar_TeamD">
@@ -44,6 +42,7 @@ const Team_D_HeaderV2 = () => {
         </NavLink>
         <div>
           <ul id="navbar" className={clicked ? "active" : ""}>
+            {/* Profile Info */}
             <li className="profile_info">
               <span className="profile_info_con">
                 <img src={Profile} alt="Logo" />
@@ -53,6 +52,7 @@ const Team_D_HeaderV2 = () => {
                 </span>
               </span>
             </li>
+            {/* Profile Links */}
             <li className="profile_link">
               <NavLink
                 to="/profile"
@@ -72,6 +72,7 @@ const Team_D_HeaderV2 = () => {
               </NavLink>
             </li>
             <li className="divider"></li>
+            {/* Navigation Links */}
             <li>
               <NavLink
                 to="/"
@@ -114,18 +115,19 @@ const Team_D_HeaderV2 = () => {
                 Verification
               </NavLink>
             </li>
+            {/* Log Out Link */}
             <li className="profile_link">
               <NavLink
                 to="/landing"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
-                
               >
-              <span className="teamD_LogOut_Btn">Log Out</span>
+                <span className="teamD_LogOut_Btn">Log Out</span>
               </NavLink>
             </li>
           </ul>
         </div>
+        {/* Mobile Menu */}
         <div id="mobile" onClick={handleClick}>
           {clicked ? (
             <i className="fas fa-times"></i>
@@ -133,6 +135,7 @@ const Team_D_HeaderV2 = () => {
             <img src={Profile} alt="Logo" className="mobile_profile" />
           )}
         </div>
+        {/* Profile Dropdown */}
         <div className="profile_side">
           <Dropdown>
             <Dropdown.Toggle
@@ -145,6 +148,7 @@ const Team_D_HeaderV2 = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
+              {/* Profile Dropdown Items */}
               <Dropdown.Item href="">
                 <FaRegUserCircle /> Profile
               </Dropdown.Item>

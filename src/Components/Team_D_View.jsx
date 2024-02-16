@@ -9,6 +9,7 @@ import { MdOutlineFileDownload, MdOutlineTextSnippet } from "react-icons/md";
 import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 import "../Css/view.css";
 
+// Configure PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Team_D_View = () => {
@@ -71,6 +72,7 @@ const Team_D_View = () => {
   };
 
   useEffect(() => {
+    // Event listener for online/offline status
     const handleOnline = () => {
       setShowNotification({
         type: "info",
@@ -96,6 +98,7 @@ const Team_D_View = () => {
     };
   }, []);
 
+  // Tooltips
   const goBackTooltip = <Tooltip id="goBackTooltip">Go Back</Tooltip>;
   const closeTooltip = <Tooltip id="closeTooltip">Close</Tooltip>;
   const downloadTooltip = (
@@ -107,10 +110,12 @@ const Team_D_View = () => {
 
   return (
     <div>
+      {/* Team D header component */}
       <Team_D_HeaderV2 />
       <section className="contentViewPdf">
         <section className="headerView">
           <div className="goBack_title">
+            {/* Go back button */}
             <Link to="/certificate">
               <OverlayTrigger placement="bottom" overlay={goBackTooltip}>
                 <button className="goBack">
@@ -118,12 +123,14 @@ const Team_D_View = () => {
                 </button>
               </OverlayTrigger>
             </Link>
-            {/* Replace data.courseTitle with the appropriate title */}
+            {/* Certificate title */}
             <h1 style={{ textTransform: "capitalize" }}>{courseTitle}</h1>
           </div>
+          {/* Horizontal rule */}
           <div className="hr_view"></div>
         </section>
         <section className="certificatesView">
+          {/* PDF viewer */}
           <div className="filePdfView">
             <Document
               file={pdfURL}
@@ -138,7 +145,9 @@ const Team_D_View = () => {
               />
             </Document>
           </div>
+          {/* Control buttons */}
           <div className="control">
+            {/* Modal button */}
             <div className="TeamD_modal_btn">
               <OverlayTrigger placement="top" overlay={criteriaTooltip}>
                 <Button
@@ -150,6 +159,7 @@ const Team_D_View = () => {
                 </Button>
               </OverlayTrigger>
             </div>
+            {/* Download button */}
             <div className="download_View">
               <OverlayTrigger placement="top" overlay={downloadTooltip}>
                 <Button
@@ -162,19 +172,19 @@ const Team_D_View = () => {
                 </Button>
               </OverlayTrigger>
             </div>
-
+            {/* Certificate Criteria Modal */}
             <Modal show={showModal} onHide={handleCloseModal}>
               <Modal.Header closeButton className="TeamD_mdl_hdr">
                 <Modal.Title>
                   <div className="modalTitle">
                     <h4>Certificate Criteria</h4>
                     <p>
-                      {/* Replace data properties with appropriate values */}
-                      <b>Course:</b> {/* data.courseTitle */}
+                      {/* Certificate criteria */}
+                      <b>Course:</b> {/* courseTitle */}
                       <br />
-                      <b>Course Code:</b> {/* data.courseCode */}
+                      <b>Course Code:</b> {/* courseCode */}
                       <br />
-                      <b>Instructor:</b> {/* data.instructor */}
+                      <b>Instructor:</b> {/* instructor */}
                     </p>
                   </div>
                 </Modal.Title>
@@ -187,7 +197,7 @@ const Team_D_View = () => {
                   {/* Replace data properties with appropriate values */}
                   Quizzes Scores {/* data.quizzes */}
                   <br />
-                  Quiz 1: {/* data.quiz1 */}
+                  Quiz 1: {/* quiz1 */}
                   <br />
                   Quiz 2: {/* data.quiz2 */}
                   <br />
@@ -198,6 +208,7 @@ const Team_D_View = () => {
           </div>
         </section>
       </section>
+      {/* Notification for download status */}
       {showNotification && (
         <Alert
           variant={showNotification.type}
