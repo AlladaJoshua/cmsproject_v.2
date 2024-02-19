@@ -78,7 +78,7 @@ public class CertificationController {
           ? originalFilename.substring(3)
           : originalFilename;
       Path path = Paths.get(
-          "C:\\Users\\vsbu\\Desktop\\CMSPROJECT_V.2\\cmsproject_v.2\\public\\PDF\\" +
+          "C:C:\\Users\\vsbu\\Documents\\GitHub\\cmsproject_v.21\\public\\PDF\\" +
               filenameWithoutPrefix);
       Files.write(path, bytes);
 
