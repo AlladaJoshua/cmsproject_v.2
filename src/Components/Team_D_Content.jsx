@@ -222,7 +222,8 @@ const Team_D_Content = () => {
     const pdfPath = `/PDF/${pdfFileNames[index].certificate_file}`; // Assuming certificate_file contains the path to the PDF
     const link = document.createElement("a");
     link.href = pdfPath;
-    link.download = "Certificate.pdf";
+    // Assuming certificate_file contains the desired name for the downloaded file
+    link.download = pdfFileNames[index].certificate_file;
 
     // Event listeners for download events
     link.addEventListener("abort", () => {
@@ -371,7 +372,7 @@ const Team_D_Content = () => {
                   // Handle the "Enter" key press, e.g., trigger the verification function
                   handleSearch();
                 }
-              }}
+              }}  
             />
             <Button variant="success" id="button-addon2" onClick={handleSearch}>
               <FiSearch className="TeamD_icon search_icon" />
