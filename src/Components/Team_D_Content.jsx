@@ -13,7 +13,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
 import NoCert from "../assets/undraw_learning_re_32qv.svg";
-
+import { Spinner } from 'react-bootstrap';
 import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
 // Set up PDF.js worker source
@@ -423,7 +423,8 @@ const Team_D_Content = () => {
                 ) : !isMobile && thumbnails[index] ? (
                   <img src={thumbnails[index]} alt="PDF Thumbnail" />
                 ) : (
-                  <p>Loading thumbnail...</p>
+                  <p className="TeamD_loading-spinner"><Spinner/> <br/>
+                  Loading.. </p>
                 )}
 
                 {/* Render overlay with view and download buttons */}

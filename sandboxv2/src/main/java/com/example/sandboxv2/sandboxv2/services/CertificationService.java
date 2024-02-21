@@ -43,4 +43,8 @@ public class CertificationService {
   public Certification getMostRecentCertificationForUser(Long userID) {
     return certificationRepository.findMostRecentCertificateByUser(userID);
   }
+
+  public boolean existsByQuizTakenId(Long quizTakenId) {
+    return certificationRepository.existsByQuizTakenQuiztknID(quizTakenId);
+}
 }

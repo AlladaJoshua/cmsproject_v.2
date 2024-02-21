@@ -66,6 +66,17 @@ public class CertificationController {
       @RequestParam("time_issued") String time_issued,
       @RequestParam("criteria") String criteria,
       @RequestParam("quiztkn_ID") Long quiztkn_ID) {
+
+
+          // Check if a certificate already exists for the given QuizTaken ID
+    if (certificationService.existsByQuizTakenId(quiztkn_ID)) {
+      return ResponseEntity.badRequest().body("Certificate already exists for QuizTaken ID: " + quiztkn_ID);
+  }
+
+  if (certificate_file.isEmpty()) {
+      return ResponseEntity.badRequest().body("File is empty");
+  }
+
     if (certificate_file.isEmpty()) {
       return ResponseEntity.badRequest().body("File is empty");
     }

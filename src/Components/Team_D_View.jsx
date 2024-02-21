@@ -32,7 +32,7 @@ const Team_D_View = () => {
 
     const link = document.createElement("a");
     link.href = pdfURL;
-    link.download = "Certificate.pdf";
+   link.download = pdfName;
 
     link.addEventListener("error", () => {
       handleDownloadError();
