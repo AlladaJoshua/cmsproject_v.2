@@ -13,7 +13,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
 import NoCert from "../assets/undraw_learning_re_32qv.svg";
-
+import { Spinner } from 'react-bootstrap';
 import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
 // Set up PDF.js worker source
@@ -30,7 +30,7 @@ const Team_D_Content = () => {
   const [overlayVisibilities, setOverlayVisibilities] = useState([]);
   const [disableViewButtons, setDisableViewButtons] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769); // Check if the viewport width is less than 769
-  
+
   // State to store the search term
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem("searchTerm") || ""
@@ -102,7 +102,6 @@ const Team_D_Content = () => {
     // Set the filtered certificates in the state
     setFilteredCertificates(filtered);
   }, [searchTerm, pdfFileNames]);
-
 
   // Effect to load thumbnails for PDF files
   useEffect(() => {
@@ -222,7 +221,8 @@ const Team_D_Content = () => {
     const pdfPath = `/PDF/${pdfFileNames[index].certificate_file}`; // Assuming certificate_file contains the path to the PDF
     const link = document.createElement("a");
     link.href = pdfPath;
-    link.download = "Certificate.pdf";
+    // Assuming certificate_file contains the desired name for the downloaded file
+    link.download = pdfFileNames[index].certificate_file;
 
     // Event listeners for download events
     link.addEventListener("abort", () => {
@@ -359,9 +359,9 @@ const Team_D_Content = () => {
           <h1>Certificates</h1>
 
           <InputGroup expand="lg" size="sm" className="float-right">
-            {/* Search input form */}
             <Form.Control
-              placeholder="Search..."
+              type="text"
+              placeholder="Search here..."
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
               value={searchTerm}
@@ -372,10 +372,13 @@ const Team_D_Content = () => {
                   handleSearch();
                 }
               }}
+              className="TeamD_search-input" // Add a class for styling
             />
-            <Button variant="success" id="button-addon2" onClick={handleSearch}>
-              <FiSearch className="TeamD_icon search_icon" />
-            </Button>
+            <InputGroup.Text className="TeamD_icon_search_icon-container">
+              <span>
+                <FiSearch className="TeamD_icon_search_icon" />
+              </span>
+            </InputGroup.Text>
           </InputGroup>
         </section>
         <div className="hr"></div> {/* Horizontal rule */}
@@ -420,7 +423,8 @@ const Team_D_Content = () => {
                 ) : !isMobile && thumbnails[index] ? (
                   <img src={thumbnails[index]} alt="PDF Thumbnail" />
                 ) : (
-                  <p>Loading thumbnail...</p>
+                  <p className="TeamD_loading-spinner"><Spinner/> <br/>
+                  Loading.. </p>
                 )}
 
                 {/* Render overlay with view and download buttons */}
@@ -483,7 +487,7 @@ const Team_D_Content = () => {
                 )}
               </div>
               {/* Display course title */}
-              <p style={{ textTransform: "capitalize" }}>
+              <p className="TeamD_certificate_courseTitle">
                 {pdfFile.quizTaken.quiz.course.title}
               </p>
             </div>
