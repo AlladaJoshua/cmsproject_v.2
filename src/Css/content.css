@@ -117,6 +117,15 @@
   border-radius: 15px; /* Border radius */
 }
 
+.TeamD_loading-spinner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  gap: 10px;
+}
+
 /* Styles for overlay on certificate hover */
 .overlay {
   position: absolute;

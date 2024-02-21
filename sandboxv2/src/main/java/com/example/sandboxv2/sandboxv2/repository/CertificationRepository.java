@@ -25,4 +25,7 @@ public interface CertificationRepository
       "(SELECT qt.quiztknID FROM quiz_taken qt WHERE qt.user_ID = :user_ID) " +
       "ORDER BY cr.date_issued DESC, cr.time_issued DESC LIMIT 5", nativeQuery = true)
   Certification findMostRecentCertificateByUser(@Param("user_ID") Long userID);
+
+     // Method to check if a certification already exists for a given QuizTaken ID
+     boolean existsByQuizTakenQuiztknID(@Param("quizTakenId") Long quizTakenId);
 }

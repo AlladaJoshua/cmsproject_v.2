@@ -229,7 +229,7 @@ const CertificateGenerator = () => {
       formDataToSend.append("file", pdfFile);
       formDataToSend.append("date_issued", formattedDate);
       formDataToSend.append("time_issued", formattedTime);
-      formDataToSend.append("criteria", "test");
+      formDataToSend.append("criteria", "PASS");
       formDataToSend.append("quiztkn_ID", quiztknId);
 
       // Send the PDF file to the backend
