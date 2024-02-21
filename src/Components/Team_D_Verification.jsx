@@ -12,7 +12,7 @@ const Team_D_Verification = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isValidSerial, setIsValidSerial] = useState(false);
-
+  const defaultCodePrefix = "B55-";
   const handleVerify = async () => {
     setLoading(true);
     try {
@@ -75,24 +75,48 @@ const Team_D_Verification = () => {
               placeholder="Enter Serial Number"
               value={code}
               onClick={() => {
-                // Append "B55-" only if the input is empty
-                if (!code) {
-                  setCode("B55-");
+                // Append "B55-" only if the input is empty or does not start with the default prefix
+                if (!code || !code.startsWith(defaultCodePrefix)) {
+                  setCode(defaultCodePrefix);
                   setIsValidSerial(false); // Reset isValidSerial on input click
                 }
               }}
               onChange={(e) => {
-                const inputValue = e.target.value
-                  .toUpperCase()
-                  .substring(0, 18); // Limit to 18 characters
+                let inputValue = e.target.value.toUpperCase();
+                // If the input does not start with the default prefix, prepend it
+                if (!inputValue.startsWith(defaultCodePrefix)) {
+                  inputValue = defaultCodePrefix;
+                }
+                // Limit to 18 characters after the prefix
+                inputValue = inputValue.substring(
+                  0,
+                  defaultCodePrefix.length + 18
+                );
                 setCode(inputValue);
                 setIsValidSerial(false); // Reset isValidSerial on input change
+              }}
+              onKeyDown={(e) => {
+                // Prevent deletion of default prefix with the delete key
+                if (e.key === "Backspace" && code === defaultCodePrefix) {
+                  e.preventDefault();
+                }
+                if (e.key === "Delete" && code === defaultCodePrefix) {
+                  e.preventDefault();
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key === "a") {
+                  // Prevent the default action (select all) when Control (or Command on Mac) + A is pressed
+                  e.preventDefault();
+                }
               }}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   // Handle the "Enter" key press, e.g., trigger the verification function
                   handleVerify();
                 }
+              }}
+              onPaste={(e) => {
+                // Prevent pasting into the input field
+                e.preventDefault();
               }}
               style={{
                 borderColor: isValidSerial
@@ -105,9 +129,10 @@ const Team_D_Verification = () => {
                   ? "#28a745"
                   : errorMessage
                   ? "#ff0000"
-                  : "inherit" // Set font color to green when certified
+                  : "inherit", // Set font color to green when certified
               }}
             />
+
             {/* Verify button */}
             <Button
               variant="primary"
