@@ -12,9 +12,13 @@ const Team_D_Verification = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isValidSerial, setIsValidSerial] = useState(false);
+  const [showPlaceholderText, setShowPlaceholderText] = useState(false);
+  const [verifyClicked, setVerifyClicked] = useState(false);
   const defaultCodePrefix = "B55-";
+
   const handleVerify = async () => {
     setLoading(true);
+    setVerifyClicked(true);
     try {
       const response = await fetch(
         `http://localhost:8080/api/verifications/verifyCertificate/${code}`
@@ -29,11 +33,10 @@ const Team_D_Verification = () => {
           setIsValidSerial(false);
         } else {
           setVerificationResult(data);
-          setErrorMessage(""); // Clear previous error message if any
+          setErrorMessage("");
           setIsValidSerial(true);
         }
       } else {
-        // Handle non-200 status codes
         if (response.status === 404) {
           setVerificationResult(null);
           setErrorMessage(
@@ -45,12 +48,13 @@ const Team_D_Verification = () => {
         }
       }
     } catch (error) {
-      // Handle fetch errors
       console.error("Error verifying certificate:", error);
       setVerificationResult(null);
-      setErrorMessage(
-        "An error occurred while verifying the certificate. Please try again."
-      );
+      if (code.trim() !== "" && code !== defaultCodePrefix) {
+        setErrorMessage(
+          "An error occurred while verifying the certificate. Please try again."
+        );
+      }
       setIsValidSerial(false);
     } finally {
       setLoading(false);
@@ -59,7 +63,6 @@ const Team_D_Verification = () => {
 
   return (
     <div>
-      {/* Team D header component */}
       <Team_D_HeaderV2 />
       <section className="verification_container">
         <div className="verification_title">
@@ -68,35 +71,39 @@ const Team_D_Verification = () => {
         <div className="verification_search">
           <div className="left">
             <h2>Verify Course Certificate</h2>
-            {/* Serial number input field */}
             <Form.Control
               size="sm"
               type="text"
               placeholder="Enter Serial Number"
               value={code}
               onClick={() => {
-                // Append "B55-" only if the input is empty or does not start with the default prefix
                 if (!code || !code.startsWith(defaultCodePrefix)) {
                   setCode(defaultCodePrefix);
-                  setIsValidSerial(false); // Reset isValidSerial on input click
+                  setIsValidSerial(false);
                 }
               }}
               onChange={(e) => {
                 let inputValue = e.target.value.toUpperCase();
-                // If the input does not start with the default prefix, prepend it
                 if (!inputValue.startsWith(defaultCodePrefix)) {
                   inputValue = defaultCodePrefix;
                 }
-                // Limit to 18 characters after the prefix
                 inputValue = inputValue.substring(
                   0,
                   defaultCodePrefix.length + 18
                 );
                 setCode(inputValue);
-                setIsValidSerial(false); // Reset isValidSerial on input change
+                setIsValidSerial(false);
+                setShowPlaceholderText(false);
+              }}
+              onFocus={() => {
+                if (!code) {
+                  setShowPlaceholderText(true);
+                }
+              }}
+              onBlur={() => {
+                setShowPlaceholderText(false);
               }}
               onKeyDown={(e) => {
-                // Prevent deletion of default prefix with the delete key
                 if (e.key === "Backspace" && code === defaultCodePrefix) {
                   e.preventDefault();
                 }
@@ -104,36 +111,38 @@ const Team_D_Verification = () => {
                   e.preventDefault();
                 }
                 if ((e.ctrlKey || e.metaKey) && e.key === "a") {
-                  // Prevent the default action (select all) when Control (or Command on Mac) + A is pressed
                   e.preventDefault();
                 }
               }}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
-                  // Handle the "Enter" key press, e.g., trigger the verification function
                   handleVerify();
                 }
               }}
-              onPaste={(e) => {
-                // Prevent pasting into the input field
-                e.preventDefault();
-              }}
               style={{
-                borderColor: isValidSerial
-                  ? "#28a745"
-                  : errorMessage
-                  ? "#ff0000"
-                  : "#ced4da",
-                borderWidth: "1.5px", // Adjust the border width as needed
+                borderColor: verifyClicked && !code && "#ff0000", // Red border when verify clicked and input is empty
+                borderWidth: "1.5px",
                 color: isValidSerial
                   ? "#28a745"
                   : errorMessage
                   ? "#ff0000"
-                  : "inherit", // Set font color to green when certified
+                  : "inherit",
               }}
             />
+            <span
+              style={{
+                color: "#FF0000",
+                fontSize: "15px",
+                marginTop: "-20px",
+                marginBottom: "-20px",
+              }}
+            >
+              {!code &&
+                verifyClicked &&
+                !loading &&
+                "Please Enter Serial Number"}
+            </span>
 
-            {/* Verify button */}
             <Button
               variant="primary"
               className="verify"
@@ -146,10 +155,8 @@ const Team_D_Verification = () => {
           <div className="right">
             {!loading && (
               <>
-                {/* Render certificate information */}
                 {!verificationResult && !errorMessage && (
                   <>
-                    {/* Render input boxes if verificationResult doesn't exist */}
                     <div className="nameVerification">
                       <Form.Label>Name</Form.Label>
                       <Form.Control size="sm" type="text" readOnly />
@@ -167,7 +174,6 @@ const Team_D_Verification = () => {
                     </div>
                   </>
                 )}
-                {/* Render certificate information if verificationResult exists */}
                 {verificationResult && verificationResult.length > 0 && (
                   <>
                     <div className="nameVerification">
@@ -202,7 +208,6 @@ const Team_D_Verification = () => {
                     </div>
                   </>
                 )}
-                {/* Render error message if any */}
                 {errorMessage && (
                   <div className="error-message">
                     <img src={warningErr} alt="warningErr" />
