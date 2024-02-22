@@ -27,9 +27,15 @@ const Team_D_Verification = () => {
         const data = await response.json();
         if (data.length === 0) {
           setVerificationResult(null);
-          setErrorMessage(
-            "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
-          );
+          if (code.trim() === "B55-") {
+            setErrorMessage(
+              "An error occurred while verifying the certificate. Please try again."
+            );
+          } else {
+            setErrorMessage(
+              "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
+            );
+          }
           setIsValidSerial(false);
         } else {
           setVerificationResult(data);
@@ -39,9 +45,15 @@ const Team_D_Verification = () => {
       } else {
         if (response.status === 404) {
           setVerificationResult(null);
-          setErrorMessage(
-            "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
-          );
+          if (code.trim() === "B55-") {
+            setErrorMessage(
+              "An error occurred while verifying the certificate. Please try again."
+            );
+          } else {
+            setErrorMessage(
+              "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
+            );
+          }
           setIsValidSerial(false);
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -50,7 +62,7 @@ const Team_D_Verification = () => {
     } catch (error) {
       console.error("Error verifying certificate:", error);
       setVerificationResult(null);
-      if (code.trim() !== "" && code !== defaultCodePrefix) {
+      if (code.trim() === "B55-") {
         setErrorMessage(
           "An error occurred while verifying the certificate. Please try again."
         );
@@ -120,7 +132,13 @@ const Team_D_Verification = () => {
                 }
               }}
               style={{
-                borderColor: verifyClicked && !code && "#ff0000", // Red border when verify clicked and input is empty
+                borderColor:
+                  (verifyClicked && !code) ||
+                  (errorMessage && code.trim() === "B55-")
+                    ? "#ff0000"
+                    : isValidSerial
+                    ? "#28a745"
+                    : "#ced4da",
                 borderWidth: "1.5px",
                 color: isValidSerial
                   ? "#28a745"
@@ -129,20 +147,27 @@ const Team_D_Verification = () => {
                   : "inherit",
               }}
             />
-            <span
+            <div
               style={{
-                color: "#FF0000",
-                fontSize: "15px",
+                height: "15px",
                 marginTop: "-20px",
-                marginBottom: "-20px",
+                marginBottom: "-10px",
               }}
             >
-              {!code &&
-                verifyClicked &&
-                !loading &&
-                "Please Enter Serial Number"}
-            </span>
-
+              <span
+                style={{
+                  color: "#FF0000",
+                  fontSize: "13px",
+                  display:
+                    (verifyClicked && !code) ||
+                    (errorMessage && code.trim() === "B55-")
+                      ? "block"
+                      : "none",
+                }}
+              >
+                Please Enter Serial Number.
+              </span>
+            </div>
             <Button
               variant="primary"
               className="verify"
@@ -222,5 +247,4 @@ const Team_D_Verification = () => {
     </div>
   );
 };
-
 export default Team_D_Verification;
