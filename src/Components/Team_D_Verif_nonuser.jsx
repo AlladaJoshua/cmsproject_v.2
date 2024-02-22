@@ -151,7 +151,7 @@ const Team_D_Verification = () => {
               style={{
                 height: "15px",
                 marginTop: "-20px",
-                marginBottom: "-10px",
+                marginBottom: "-5px",
               }}
             >
               <span
