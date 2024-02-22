@@ -75,7 +75,7 @@ const Team_D_Verification = () => {
 
   return (
     <div>
-      <Team_D_HeaderV2 />
+      <Team_D_HeaderLanding />
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
