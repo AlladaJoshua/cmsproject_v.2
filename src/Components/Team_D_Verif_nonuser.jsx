@@ -16,7 +16,10 @@ const Team_D_Verification = () => {
   const [verifyClicked, setVerifyClicked] = useState(false);
   const defaultCodePrefix = "B55-";
 
+  const [showVer, setShowVer] = useState(false)
+
   const handleVerify = async () => {
+    setShowVer(true)
     setLoading(true);
     setVerifyClicked(true); // Set verifyClicked to true when verification process starts
     // Delay the execution of verification process for 500 milliseconds (adjust as needed)
@@ -97,6 +100,7 @@ const Team_D_Verification = () => {
                   setCode(defaultCodePrefix);
                   setIsValidSerial(false);
                 }
+                setShowVer(false)
               }}
               onChange={(e) => {
                 let inputValue = e.target.value.toUpperCase();
@@ -158,25 +162,28 @@ const Team_D_Verification = () => {
                 marginBottom: "-5px",
               }}
             >
-              <span
+            { showVer && <span
                 style={{
                   color: "#FF0000",
                   fontSize: "13px",
                   display:
-                    (verifyClicked && !code) ||
-                    (errorMessage && code.trim() === "B55-")
+                    !code ||
+                    !code.trim() ||
+                    errorMessage ||
+                    (verifyClicked && code.trim() === "B55-")
                       ? "block"
                       : "none",
                 }}
               >
                 Please Enter Serial Number.
-              </span>
+              </span>}
             </div>
             <Button
               variant="primary"
               className="verify"
               onClick={handleVerify}
               disabled={loading}
+              
             >
               {loading ? "Verifying..." : "Verify"}
             </Button>
