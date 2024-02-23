@@ -101,7 +101,7 @@ const Team_D_Verification = () => {
                 }
                 inputValue = inputValue.substring(
                   0,
-                  defaultCodePrefix.length + 18
+                  defaultCodePrefix.length + 14
                 );
                 setCode(inputValue);
                 setIsValidSerial(false);
