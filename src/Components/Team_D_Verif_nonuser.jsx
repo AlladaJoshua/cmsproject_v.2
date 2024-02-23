@@ -75,7 +75,7 @@ const Team_D_Verification = () => {
 
   return (
     <div>
-      <Team_D_HeaderV2 />
+      <Team_D_HeaderLanding />
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
@@ -101,7 +101,7 @@ const Team_D_Verification = () => {
                 }
                 inputValue = inputValue.substring(
                   0,
-                  defaultCodePrefix.length + 18
+                  defaultCodePrefix.length + 14
                 );
                 setCode(inputValue);
                 setIsValidSerial(false);
@@ -151,7 +151,7 @@ const Team_D_Verification = () => {
               style={{
                 height: "15px",
                 marginTop: "-20px",
-                marginBottom: "-10px",
+                marginBottom: "-5px",
               }}
             >
               <span
