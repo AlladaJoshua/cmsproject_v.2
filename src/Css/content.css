@@ -60,6 +60,18 @@
   margin: 0 !important; /* Remove any margin */
   color: gray;
   z-index: 10;
+  justify-content: flex-start;
+}
+
+.clear-tooltip {
+  font-size: 10px !important; 
+}
+
+.TeamD_icon_clear_search_icon{
+  margin-right: 20px;
+  color: #000;
+  padding: 0;
+
 }
 
 .withSearchBar .form-control::placeholder {
