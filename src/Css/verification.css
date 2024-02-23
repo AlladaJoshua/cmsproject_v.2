@@ -180,10 +180,9 @@
         height: 20px; /* Height */
         margin-bottom: 1rem;
     } 
-        .left {
-            display: flex;
-            
-        }
+    .verification_search .verify{
+        margin-top: 5px;
+    }
 }
 
 /* Media query for medium screens */
@@ -230,7 +229,12 @@
     .verification_search .left .form-control {
         width: 100%; /* Full width */
         height: 20px; /* Height */
+        margin-bottom: 1rem;
     }
+    .verification_search .verify{
+        margin-top: 5px;
+    }
+    
 }
 
 /* Additional styles for error message in right section */
