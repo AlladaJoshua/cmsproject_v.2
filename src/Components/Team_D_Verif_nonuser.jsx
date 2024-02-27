@@ -165,7 +165,7 @@ const Team_D_Verification = () => {
                       : "none",
                 }}
               >
-                Please Enter Serial Number.
+                Please Enter Serial Number
               </span>
             </div>
             <Button
