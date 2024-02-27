@@ -16,68 +16,61 @@ const Team_D_Verification = () => {
   const [verifyClicked, setVerifyClicked] = useState(false);
   const defaultCodePrefix = "B55-";
 
-  const [showVer, setShowVer] = useState(false)
-
   const handleVerify = async () => {
-    setShowVer(true)
     setLoading(true);
-    setVerifyClicked(true); // Set verifyClicked to true when verification process starts
-    // Delay the execution of verification process for 500 milliseconds (adjust as needed)
-    setTimeout(async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/api/verifications/verifyCertificate/${code}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          if (data.length === 0) {
-            setVerificationResult(null);
-            if (code.trim() === "B55-") {
-              setErrorMessage(
-                "An error occurred while verifying the certificate. Please try again."
-              );
-            } else {
-              setErrorMessage(
-                "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
-              );
-            }
-            setIsValidSerial(false);
+    setVerifyClicked(true);
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/verifications/verifyCertificate/${code}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        if (data.length === 0) {
+          setVerificationResult(null);
+          if (code.trim() === "B55-") {
+            setErrorMessage(
+              "An error occurred while verifying the certificate. Please try again."
+            );
           } else {
-            setVerificationResult(data);
-            setErrorMessage("");
-            setIsValidSerial(true);
+            setErrorMessage(
+              "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
+            );
           }
+          setIsValidSerial(false);
         } else {
-          if (response.status === 404) {
-            setVerificationResult(null);
-            if (code.trim() === "B55-") {
-              setErrorMessage(
-                "An error occurred while verifying the certificate. Please try again."
-              );
-            } else {
-              setErrorMessage(
-                "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
-              );
-            }
-            setIsValidSerial(false);
+          setVerificationResult(data);
+          setErrorMessage("");
+          setIsValidSerial(true);
+        }
+      } else {
+        if (response.status === 404) {
+          setVerificationResult(null);
+          if (code.trim() === "B55-") {
+            setErrorMessage(
+              "An error occurred while verifying the certificate. Please try again."
+            );
           } else {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            setErrorMessage(
+              "Sorry, the serial number you entered does not exist in our system. Please check the serial number and try again."
+            );
           }
+          setIsValidSerial(false);
+        } else {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-      } catch (error) {
-        console.error("Error verifying certificate:", error);
-        setVerificationResult(null);
-        if (code.trim() === "B55-") {
-          setErrorMessage(
-            "An error occurred while verifying the certificate. Please try again."
-          );
-        }
-        setIsValidSerial(false);
-      } finally {
-        setLoading(false);
-        setVerifyClicked(false); // Set verifyClicked back to false after verification process completes
       }
-    }, 500); // Delay for 500 milliseconds (adjust as needed)
+    } catch (error) {
+      console.error("Error verifying certificate:", error);
+      setVerificationResult(null);
+      if (code.trim() === "B55-") {
+        setErrorMessage(
+          "An error occurred while verifying the certificate. Please try again."
+        );
+      }
+      setIsValidSerial(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -100,7 +93,6 @@ const Team_D_Verification = () => {
                   setCode(defaultCodePrefix);
                   setIsValidSerial(false);
                 }
-                setShowVer(false)
               }}
               onChange={(e) => {
                 let inputValue = e.target.value.toUpperCase();
@@ -162,28 +154,25 @@ const Team_D_Verification = () => {
                 marginBottom: "-5px",
               }}
             >
-            { showVer && <span
+              <span
                 style={{
                   color: "#FF0000",
                   fontSize: "13px",
                   display:
-                    !code ||
-                    !code.trim() ||
-                    errorMessage ||
-                    (verifyClicked && code.trim() === "B55-")
+                    (verifyClicked && !code) ||
+                    (errorMessage && code.trim() === "B55-")
                       ? "block"
                       : "none",
                 }}
               >
-                Please Enter Serial Number.
-              </span>}
+                Please Enter Serial Number
+              </span>
             </div>
             <Button
               variant="primary"
               className="verify"
               onClick={handleVerify}
               disabled={loading}
-              
             >
               {loading ? "Verifying..." : "Verify"}
             </Button>
