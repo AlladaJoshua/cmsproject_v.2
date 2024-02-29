@@ -12,7 +12,7 @@ const CertificateGenerator = () => {
     const loadQuiz = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/quizTkn/userQuizTkn/19"    
+          "http://localhost:8080/api/v1/auth/finalscore/1"    
         );
         if (!response.ok) {
           throw new Error("Failed to fetch quiz data");
@@ -25,7 +25,8 @@ const CertificateGenerator = () => {
     };
     loadQuiz();
   }, []);
-
+  // const name = quiz.enrollment.course.course_date_created;
+  console.log(name);
   const generateCertificate = async () => {
     console.log(quiz);
     if (!quiz) {
@@ -33,27 +34,27 @@ const CertificateGenerator = () => {
       return;
     }
 
-    const name = quiz[0].userFullName;
-    const userId = quiz[0].userID;
-    console.log(userId);
-    console.log(quiz[0].userFullName);
-    const instructor = quiz[0].instructorFullName;
-    const course = quiz[0].courseTitle;
-    const courseCode = quiz[0].courseID;
+    const name = quiz.enrollment.user.firstName + " " +quiz.enrollment.user.lastName;
+    const userId = quiz.enrollment.user.user_id;
+    // console.log(userId);
+    // console.log(quiz[0].userFullName);
+    const instructor = quiz.enrollment.course.instructor.firstName + " " + quiz.enrollment.course.instructor.lastName;
+    const course = quiz.enrollment.course.course_title;
+    const courseCode = quiz.enrollment.course.course_id;
     //console.log(courseCode);
-    const quiztknId = quiz[0].quiztknID;
+    const fscore_id = quiz.fscore_id;
 
-    const creditHours = quiz[0].courseStartDate;
+    const creditHours = quiz.enrollment.course.course_date_created;
     console.log(creditHours);
 
     // Calculate the percentage
-    const courseQuizScore = quiz[0].quizScore;
-    console.log(quiz[0].quizScore);
-    const courseTargetScore = quiz[0].targetScore;
-    console.log(quiz[0].targetScore);
+    const courseQuizScore = quiz.final_score;
+    // console.log(quiz[0].quizScore);
+    const courseTargetScore = 80;
+    console.log(courseTargetScore);
 
     // Check if the percentage is at least 80%
-    const percentage = (courseQuizScore / courseTargetScore) * 100;
+    const percentage = courseQuizScore;
 
     if (percentage >= 80) {
       const doc = new jsPDF({
@@ -230,10 +231,10 @@ const CertificateGenerator = () => {
       formDataToSend.append("date_issued", formattedDate);
       formDataToSend.append("time_issued", formattedTime);
       formDataToSend.append("criteria", "PASS");
-      formDataToSend.append("quiztkn_ID", quiztknId);
+      formDataToSend.append("fscoreId", fscore_id);
 
       // Send the PDF file to the backend
-      fetch("http://localhost:8080/api/certifications", {
+      fetch("http://localhost:8080/api/v1/auth/certificate/post", {
         method: "POST",
         body: formDataToSend
       })
